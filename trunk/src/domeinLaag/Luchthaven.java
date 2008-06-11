@@ -9,7 +9,10 @@ public class Luchthaven
    private Land land;
    private static Set<Luchthaven> alleLuchthavens = new HashSet<Luchthaven>();
 
-
+      public static HashSet geefAlleLuchthavensAlsHashSet()
+   {
+	return (HashSet)alleLuchthavens;
+   }
    /**
 	* @return java.util.TreeMap
 	*/
