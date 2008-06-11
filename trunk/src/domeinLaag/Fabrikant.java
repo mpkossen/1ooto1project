@@ -3,6 +3,10 @@ import java.util.TreeMap;
 import java.util.HashSet;
 
 
+/**
+ * Hierin worden Fabrikanten en hun vliegtuig typen aangemaakt.
+ */
+
 public class Fabrikant
 {
    private String naam;
