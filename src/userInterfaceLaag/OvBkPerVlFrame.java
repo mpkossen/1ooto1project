@@ -7,7 +7,6 @@
  */
 package userInterfaceLaag;
 
-import java.util.Calendar;
 import java.util.TreeMap;
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
@@ -21,15 +20,15 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
 
     private OvBkPerVlContr ovBkPerVlContr;
     private TreeMap<String, Luchthaven> luchthavens;
-    private TreeMap<Calendar, Vlucht> vluchten;
+    private TreeMap<String, Vlucht> vluchten;
 
     /** Creates new form OvBkPerVlFrame */
     public OvBkPerVlFrame(TreeMap<String, Luchthaven> lhvns, OvBkPerVlContr obpvctl)
     {
         this.luchthavens = lhvns;
         this.ovBkPerVlContr = obpvctl;
-        this.vluchten = new TreeMap<Calendar, Vlucht>();
-        
+        this.vluchten = new TreeMap<String, Vlucht>();
+		
         initComponents();
     }
 
@@ -82,129 +81,129 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
             }
         });
 
-        vertrekComboBox.setModel(vluchten.keySet()));
-    vertrekComboBox.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            vertrekComboBoxActionPerformed(evt);
-        }
-    });
+        vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().<String>toArray()));
+        vertrekComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vertrekComboBoxActionPerformed(evt);
+            }
+        });
 
-    tijdTextField.setEditable(false);
-    tijdTextField.setText("jTextField1");
+        tijdTextField.setEditable(false);
+        tijdTextField.setText("jTextField1");
 
-    javax.swing.GroupLayout VluchtPanelLayout = new javax.swing.GroupLayout(VluchtPanel);
-    VluchtPanel.setLayout(VluchtPanelLayout);
-    VluchtPanelLayout.setHorizontalGroup(
-        VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(VluchtPanelLayout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(vertrekPuntLabel)
-                .addComponent(bestemmingLabel)
-                .addComponent(vertrekLabel))
-            .addGap(84, 84, 84)
-            .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(vertrekComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(vertrekPuntComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bestemmingPuntComboBox, 0, 193, Short.MAX_VALUE))
-            .addGap(52, 52, 52)
-            .addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(70, Short.MAX_VALUE))
-    );
-    VluchtPanelLayout.setVerticalGroup(
-        VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(VluchtPanelLayout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(vertrekPuntLabel)
-                .addComponent(vertrekPuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(bestemmingLabel)
-                .addComponent(bestemmingPuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(vertrekLabel)
-                .addComponent(vertrekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(21, Short.MAX_VALUE))
-    );
+        javax.swing.GroupLayout VluchtPanelLayout = new javax.swing.GroupLayout(VluchtPanel);
+        VluchtPanel.setLayout(VluchtPanelLayout);
+        VluchtPanelLayout.setHorizontalGroup(
+            VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VluchtPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vertrekPuntLabel)
+                    .addComponent(bestemmingLabel)
+                    .addComponent(vertrekLabel))
+                .addGap(84, 84, 84)
+                .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(vertrekComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vertrekPuntComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bestemmingPuntComboBox, 0, 193, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        VluchtPanelLayout.setVerticalGroup(
+            VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VluchtPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vertrekPuntLabel)
+                    .addComponent(vertrekPuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bestemmingLabel)
+                    .addComponent(bestemmingPuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vertrekLabel)
+                    .addComponent(vertrekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
 
-    vluchtInfoPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        vluchtInfoPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-    infoTable.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
+        infoTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        },
-        new String [] {
-            "KLANT", "WOONPLAATS", "STOELEN", "ROKEN"
-        }
-    ));
-    infoScrollPane.setViewportView(infoTable);
+            },
+            new String [] {
+                "KLANT", "WOONPLAATS", "STOELEN", "ROKEN"
+            }
+        ));
+        infoScrollPane.setViewportView(infoTable);
 
-    javax.swing.GroupLayout vluchtInfoPanelLayout = new javax.swing.GroupLayout(vluchtInfoPanel);
-    vluchtInfoPanel.setLayout(vluchtInfoPanelLayout);
-    vluchtInfoPanelLayout.setHorizontalGroup(
-        vluchtInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(vluchtInfoPanelLayout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(infoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
-            .addContainerGap())
-    );
-    vluchtInfoPanelLayout.setVerticalGroup(
-        vluchtInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(vluchtInfoPanelLayout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(infoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-    );
+        javax.swing.GroupLayout vluchtInfoPanelLayout = new javax.swing.GroupLayout(vluchtInfoPanel);
+        vluchtInfoPanel.setLayout(vluchtInfoPanelLayout);
+        vluchtInfoPanelLayout.setHorizontalGroup(
+            vluchtInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vluchtInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(infoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        vluchtInfoPanelLayout.setVerticalGroup(
+            vluchtInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vluchtInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(infoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-    cancelButton.setText("Cancel");
-    cancelButton.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            cancelButtonActionPerformed(evt);
-        }
-    });
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
-    OKButton.setText("OK");
-    OKButton.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            OKButtonActionPerformed(evt);
-        }
-    });
+        OKButton.setText("OK");
+        OKButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OKButtonActionPerformed(evt);
+            }
+        });
 
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-    getContentPane().setLayout(layout);
-    layout.setHorizontalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(vluchtInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(VluchtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(cancelButton)))
-            .addContainerGap())
-    );
-    layout.setVerticalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(VluchtPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addComponent(vluchtInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(cancelButton)
-                .addComponent(OKButton))
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-    );
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vluchtInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(VluchtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelButton)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(VluchtPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(vluchtInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(OKButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-    VluchtPanel.getAccessibleContext().setAccessibleName("");
+        VluchtPanel.getAccessibleContext().setAccessibleName("");
 
-    pack();
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
 private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed

@@ -8,6 +8,7 @@ import domeinLaag.LuchtvaartMaatschappij;
 
 import java.util.Calendar;
 import java.util.HashSet;
+import java.text.SimpleDateFormat;
 import java.util.TreeMap;
 import java.util.Vector;
 
@@ -31,7 +32,7 @@ public class OvBkPerVlContr
         TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
         
         myFrame = new OvBkPerVlFrame(luchthavens, this);
-   	myFrame.setVisible(true);
+		myFrame.setVisible(true);
     }    
     
     /*  Dit wordt aangeroepen door de ActionHandler van het vertrek veld.
@@ -58,22 +59,25 @@ public class OvBkPerVlContr
         return vluchten;
     }
     
-    public TreeMap<Calendar, Vlucht> bestemming (String lhvnnm)
+    public TreeMap<String, Vlucht> bestemming (String lhvnnm)
     {
+		
         TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
         this.aankomstpunt = luchthavens.get(lhvnnm);
         
         HashSet<Vlucht> alleVluchten = Vlucht.vertrekpEnbestemm(vertrekpunt, aankomstpunt);
         
-        TreeMap<Calendar, Vlucht> vluchten = new TreeMap<Calendar, Vlucht>();
-        
-        for (Vlucht vl: alleVluchten)
+        TreeMap<String, Vlucht> vluchten = new TreeMap<String, Vlucht>();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM'.xx'");
+		
+	    for (Vlucht vl: alleVluchten)
         {
-            Calendar datumtijd = vl.geefVertrekTijd();
+            String datumtijd = formatter.format(vl.geefVertrekTijd().getTime());
             vluchten.put(datumtijd, vl);
         }
         
-        return vluchten;           
+        return vluchten;
     }
 
     public Object[][] vlucht (Vlucht vl)
