@@ -33,7 +33,7 @@ public class Land
     */
    public int geefCode()
    {
-    return 0;
+    return code;
    }
 
    /**

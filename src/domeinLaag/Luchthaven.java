@@ -80,7 +80,7 @@ public class Luchthaven
     */
 	public void zetCode(String code)
 	{
-		this.code =code;
+		this.code = code;
 	}
 
 	/**
