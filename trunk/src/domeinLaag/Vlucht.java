@@ -21,7 +21,7 @@ public class Vlucht
 	   boolean b = false;
 	   for (Vlucht v : alleVluchten) {
 			if (v.vt.equals(vliegtuig)) {
-				if (v.getVertrekTijd().after(d) && v.getAankomstTijd().before(d) )
+				if (v.geefVertrekTijd().after(d) && v.getAankomstTijd().before(d) )
 				b = true;
 			}
 	   }
@@ -68,6 +68,11 @@ public class Vlucht
    		throw new IllegalArgumentException("bestemming en vertrek zijn gelijk");
 
    }
+   
+   public Luchthaven geefBestemming()
+   {
+       return bestemming;
+   }
 
    /**
     * Controleer dat de vertrektijd niet overlapt met een andere vlucht van het toestel.
@@ -92,7 +97,7 @@ public class Vlucht
 
    }
 
-   public Calendar getVertrekTijd(){
+   public Calendar geefVertrekTijd(){
    	return vertrekTijd;
    }
 
@@ -120,6 +125,12 @@ public class Vlucht
 	   return aankomstTijd;
 	  }
 
+   public Luchthaven geefVertrekpunt()
+   {
+       return vertrekpunt;
+   }
+   
+   
    /**
     * Controleer of alle gegevens gezet zijn. Zo ja, bewaar de vluchtgegevens.
     */
