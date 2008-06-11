@@ -11,17 +11,15 @@ public class Klant
     private String straat;
     private String plaats;
     private int huisNr;
-    private Boeking boeking;
     private static HashSet alleKlanten;
 
     // Constructors
-    public Klant(String nm, String ad, int huis, String pl, Boeking boeking)
+    public Klant(String nm, String ad, int huis, String pl)
     {
         this.naam = nm;
         this.plaats = pl;
         this.huisNr = huis;
         this.plaats = pl;
-        this.boeking = boeking;
     }
 
     // Setters
