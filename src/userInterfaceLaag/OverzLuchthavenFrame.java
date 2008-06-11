@@ -2,9 +2,19 @@
  * OverzLuchthavenFrame.java
  *
  * Created on 11 juni 2008, 14:21
+ * 
+ * Afgemaakt op 11 juni 2008, 15,26
+ * 
  */
 
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*\
+!! NIET AANZITTEN NIET AANZITTEN NIET AANZITTEN  !!
+\*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
 package userInterfaceLaag;
+
+import domeinLaag.*;
+import java.util.HashSet;
 
 /**
  *
@@ -12,9 +22,34 @@ package userInterfaceLaag;
  */
 public class OverzLuchthavenFrame extends javax.swing.JFrame {
 
+    HashSet<Luchthaven> alleLuchtHavens;
+    Object[][] tableInformatie;
+
     /** Creates new form OverzLuchthavenFrame */
     public OverzLuchthavenFrame() {
-        initComponents();
+	initComponents();
+	alleLuchtHavens = (HashSet<Luchthaven>) Luchthaven.geefAlleLuchthavensAlsHashSet();
+	tableInformatie = new Object[alleLuchtHavens.size()][4];
+	int i = 0;
+	for (Luchthaven lh : alleLuchtHavens) {
+	    tableInformatie[i][0] = new String(lh.geefNaam());
+	    tableInformatie[i][1] = new String(lh.geefCode());
+	    if (lh.geefWerkPlaats()) {
+		tableInformatie[i][2] = new String("Ja");
+	    } else {
+		tableInformatie[i][2] = new String("Nee");
+	    }
+	    tableInformatie[i][3] = new String(lh.geefLand().geefNaam());
+	    i++;
+	}
+
+
+	overzTable.setModel(new javax.swing.table.DefaultTableModel(
+		tableInformatie,
+		new String[]{
+		    "NAAM", "CODE", "WERKPLAATS", "LAND"
+		}));
+	this.setVisible(true);
     }
 
     /** This method is called from within the constructor to
@@ -26,34 +61,73 @@ public class OverzLuchthavenFrame extends javax.swing.JFrame {
 // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
 private void initComponents() {
 
+scrollPane = new javax.swing.JScrollPane();
+overzTable = new javax.swing.JTable();
+okButton = new javax.swing.JButton();
+
 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+overzTable.setModel(new javax.swing.table.DefaultTableModel(
+	new Object [][] {
+		
+	},
+	new String [] {
+		"NAAM", "CODE", "WERKPLAATS", "LAND"
+	}
+) {
+	Class[] types = new Class [] {
+		java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+	};
+
+	public Class getColumnClass(int columnIndex) {
+		return types [columnIndex];
+	}
+});
+scrollPane.setViewportView(overzTable);
+
+okButton.setText("OK");
+okButton.addActionListener(new java.awt.event.ActionListener() {
+public void actionPerformed(java.awt.event.ActionEvent evt) {
+okButtonActionPerformed(evt);
+}
+});
 
 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 getContentPane().setLayout(layout);
 layout.setHorizontalGroup(
 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addGap(0, 400, Short.MAX_VALUE)
+.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+.addContainerGap(467, Short.MAX_VALUE)
+.addComponent(okButton)
+.addContainerGap())
+.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addGroup(layout.createSequentialGroup()
+.addGap(36, 36, 36)
+.addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addContainerGap(36, Short.MAX_VALUE)))
 );
 layout.setVerticalGroup(
 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addGap(0, 300, Short.MAX_VALUE)
+.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+.addContainerGap(341, Short.MAX_VALUE)
+.addComponent(okButton)
+.addContainerGap())
+.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addGroup(layout.createSequentialGroup()
+.addGap(12, 12, 12)
+.addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addContainerGap(86, Short.MAX_VALUE)))
 );
 
 pack();
 }// </editor-fold>//GEN-END:initComponents
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new OverzLuchthavenFrame().setVisible(true);
-            }
-        });
-    }
-
+private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+    this.dispose();
+}//GEN-LAST:event_okButtonActionPerformed
 // Variables declaration - do not modify//GEN-BEGIN:variables
+private javax.swing.JButton okButton;
+private javax.swing.JTable overzTable;
+private javax.swing.JScrollPane scrollPane;
 // End of variables declaration//GEN-END:variables
-
 }
