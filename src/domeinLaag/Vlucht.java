@@ -14,6 +14,7 @@ public class Vlucht
     private Calendar aankomstTijd;
     private Calendar duur;
     private Boeking boeking;
+    private Vector<Boeking> boekingen;
 
     /** Controleert of het vliegtuig op het meegegeven tijdstip al een vlucht heeft.
      * @return true, als vliegtuig bezet. Anders false.
@@ -172,6 +173,29 @@ public class Vlucht
         return vt;
     }
 
+    
+    public Vector<Boeking> getAlleBoekingen ()
+    {
+        return boekingen;
+    }
+
+    public void addBoeking (Boeking bk)
+    {
+        if (!boekingen.contains(bk))
+        {
+            boekingen.add(bk);
+        }
+    }
+
+
+    public void removeBoeking (Boeking bk)
+    {
+        if (boekingen.contains(bk))
+        {
+            boekingen.remove(bk);
+        }
+    }
+    
     /**
      * Controleer of alle gegevens gezet zijn. Zo ja, bewaar de vluchtgegevens.
      */
