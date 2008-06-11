@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 
 /**
- * Hierin worden Fabrikanten en hun vliegtuig typen aangemaakt.
+ * Hierin worden fabrikanten en hun vliegtuig typen aangemaakt.
  */
 
 public class Fabrikant
