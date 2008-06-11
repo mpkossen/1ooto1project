@@ -2,6 +2,7 @@ package userInterfaceLaag;
 
 import java.util.*;
 import domeinLaag.*;
+import javax.swing.*;
 
 public class Main {
 
@@ -38,10 +39,16 @@ public class Main {
 	aankomst.set(2008, 0, 2, 12, 0);
 	Vlucht v1 = new Vlucht(vt3, lh1, lh2, vertrek, aankomst);
 
-
+	try {
+	    UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceBusinessLookAndFeel");
+	    }
+	catch (Exception e) {
+	    System.out.println("Substance couldn't be loaded, loading regular look and feel.");
+	    }
 	try {
 	    MenuFrame lvmMenu = new MenuFrame(lvm);
 	    lvmMenu.setVisible(true);
+	    //new RegLuchthavenFrame().setVisible(true);
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
