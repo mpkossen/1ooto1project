@@ -1,8 +1,8 @@
 package userInterfaceLaag;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Set;
 import javax.swing.*;
 
 /**
@@ -32,6 +32,8 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
 	private JRadioButton neeRadioButton;
 	private JLabel werkplaatsLabel;
 	private JLabel codeLabel;
+	private Set<String> landNamen;
+	private RegLuchthavenContr rlc;
 	{
 		//Set Look & Feel
 		try {
@@ -45,7 +47,7 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				RegLuchthavenFrame inst = new RegLuchthavenFrame();
@@ -53,10 +55,12 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
 				inst.setVisible(true);
 			}
 		});
-	}
+	}*/
 	
-	public RegLuchthavenFrame() {
+	public RegLuchthavenFrame(RegLuchthavenContr r, Set<String> l) {
 		super();
+		this.rlc = r;
+		this.landNamen = l;
 		initGUI();
 		postInitGUI();
 	}
