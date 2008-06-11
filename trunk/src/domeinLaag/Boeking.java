@@ -46,7 +46,7 @@ public class Boeking
     {
         return vlucht;
     }
-    public Vector<Klant> alleKlanten ()
+    public Vector<Klant> getAlleKlanten ()
     {
         return klanten;
     }
