@@ -36,9 +36,16 @@ public class Land
     return code;
    }
 
+
+   public static HashSet geefAlleLandenAlsHashSet()
+   {
+	return alleLanden;
+   }
+   
    /**
    @return java.util.TreeMap een TreeMap met naam als key en een referentie naar het land als value.
    */
+   
    public static TreeMap<String, Land> geefAlleLanden()
    {
 	TreeMap<String, Land> landMap = new TreeMap<String, Land>();
