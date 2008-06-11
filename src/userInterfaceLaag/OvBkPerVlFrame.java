@@ -7,6 +7,8 @@
  */
 package userInterfaceLaag;
 
+import javax.swing.*;
+import java.text.SimpleDateFormat;
 import java.util.TreeMap;
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
@@ -17,7 +19,6 @@ import domeinLaag.Vlucht;
  */
 public class OvBkPerVlFrame extends javax.swing.JFrame
 {
-
     private OvBkPerVlContr ovBkPerVlContr;
     private TreeMap<String, Luchthaven> luchthavens;
     private TreeMap<String, Vlucht> vluchten;
@@ -45,6 +46,8 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
         vertrekPuntLabel = new javax.swing.JLabel();
         bestemmingLabel = new javax.swing.JLabel();
         vertrekLabel = new javax.swing.JLabel();
+        DefaultListCellRenderer lRenderer = new DefaultListCellRenderer();
+        lRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
         vertrekPuntComboBox = new javax.swing.JComboBox();
         bestemmingPuntComboBox = new javax.swing.JComboBox();
         vertrekComboBox = new javax.swing.JComboBox();
@@ -67,29 +70,33 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
 
         vertrekLabel.setText("Vertrek");
 
-        vertrekPuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().<String>toArray()));
+        vertrekPuntComboBox.setRenderer(lRenderer);
+        vertrekPuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray()));
         vertrekPuntComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vertrekPuntComboBoxActionPerformed(evt);
             }
         });
 
-        bestemmingPuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().<String>toArray()));
+        bestemmingPuntComboBox.setRenderer(lRenderer);
+        bestemmingPuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray()));
         bestemmingPuntComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bestemmingPuntComboBoxActionPerformed(evt);
             }
         });
 
-        vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().<String>toArray()));
+        vertrekComboBox.setRenderer(lRenderer);
+        vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
         vertrekComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vertrekComboBoxActionPerformed(evt);
             }
         });
 
+        tijdTextField.setBackground(new java.awt.Color(255, 255, 255));
         tijdTextField.setEditable(false);
-        tijdTextField.setText("jTextField1");
+        tijdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout VluchtPanelLayout = new javax.swing.GroupLayout(VluchtPanel);
         VluchtPanel.setLayout(VluchtPanelLayout);
@@ -207,23 +214,49 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
 private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
-// TODO add your handling code here:
+	ovBkPerVlContr.ok();
 }//GEN-LAST:event_OKButtonActionPerformed
 
 private void bestemmingPuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestemmingPuntComboBoxActionPerformed
-// TODO add your handling code here:
+    JComboBox jcb = (JComboBox)evt.getSource();
+	String s = (String)jcb.getSelectedItem();
+	this.vluchten = ovBkPerVlContr.bestemming(s);
+	vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+	
+	SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+	String vertrektijd = formatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime());
+	tijdTextField.setText(vertrektijd);
+	
+	Object[][] data = ovBkPerVlContr.vlucht(vluchten.firstEntry().getValue());
+	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
+	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));		
 }//GEN-LAST:event_bestemmingPuntComboBoxActionPerformed
 
 private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-// TODO add your handling code here:
+	ovBkPerVlContr.cancel();
 }//GEN-LAST:event_cancelButtonActionPerformed
 
 private void vertrekPuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekPuntComboBoxActionPerformed
-    // TODO add your handling code here:
+    JComboBox jcb = (JComboBox)evt.getSource();
+	String s = (String)jcb.getSelectedItem();
+	this.vluchten = ovBkPerVlContr.vertrek(s);
+	vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+
+	SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+	String vertrektijd = formatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime());
+	tijdTextField.setText(vertrektijd);
+	
+	Object[][] data = ovBkPerVlContr.vlucht(vluchten.firstEntry().getValue());
+	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
+	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));	
 }//GEN-LAST:event_vertrekPuntComboBoxActionPerformed
 
 private void vertrekComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekComboBoxActionPerformed
-    // TODO add your handling code here:
+    JComboBox jcb = (JComboBox)evt.getSource();
+	String s = (String)jcb.getSelectedItem();
+	Object[][] data = ovBkPerVlContr.vlucht(vluchten.get(s));
+	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
+	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
 }//GEN-LAST:event_vertrekComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
