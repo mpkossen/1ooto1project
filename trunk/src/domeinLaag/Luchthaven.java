@@ -82,7 +82,7 @@ public class Luchthaven
 	 * @param code
     */
 	
-	public String getCode() {
+	public String geefCode() {
 	    return this.code;
 	}
 	public void zetCode(String code)
