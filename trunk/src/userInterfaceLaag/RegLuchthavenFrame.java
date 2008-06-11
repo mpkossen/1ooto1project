@@ -13,7 +13,7 @@ package userInterfaceLaag;
 public class RegLuchthavenFrame extends javax.swing.JFrame {
 
     /** Creates new form RegLuchthavenFrame */
-    public RegLuchthavenFrame() {
+    public RegLuchthavenFrame(RegLuchthavenContr rlhctr, String ln) {
         initComponents();
     }
 
