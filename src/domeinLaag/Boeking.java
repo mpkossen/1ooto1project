@@ -9,6 +9,7 @@ public class Boeking
     private int aantalPlaatsen;
     private Vector<Klant> klanten;
     private Vlucht vlucht;
+    private Klant klant;
     
     public Boeking ()
     {
@@ -32,6 +33,11 @@ public class Boeking
         this.vlucht = vl;
     }
     
+    public void setKlant(Klant kl)
+    {
+        this.klant = kl;
+    }
+    
     // Getters
     public Boolean getRoken ()
     {
@@ -52,6 +58,11 @@ public class Boeking
         return klanten;
     }
     
+    public Klant getKlant()
+    {
+        return klant;
+    }
+    
     // Adders
     public void addKlant (Klant kl)
     {
@@ -69,4 +80,10 @@ public class Boeking
             klanten.remove(kl);
         }
     }
+    
+    public void bewaar()
+    {
+    }
+    
 }
+
