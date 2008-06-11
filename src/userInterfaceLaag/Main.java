@@ -34,11 +34,31 @@ public class Main {
 	Luchthaven lh3 = new Luchthaven("Tegel", "TEG", true, l4);
 
 	Calendar vertrek = Calendar.getInstance();
-	vertrek.set(2008, 0, 1, 12, 0);
 	Calendar aankomst = Calendar.getInstance();
+	vertrek.set(2008, 0, 1, 12, 0);
 	aankomst.set(2008, 0, 2, 12, 0);
+	
 	Vlucht v1 = new Vlucht(vt3, lh1, lh2, vertrek, aankomst);
+	Vlucht v2 = new Vlucht(vt3, lh1, lh3, vertrek, aankomst);
+	Vlucht v3 = new Vlucht(vt3, lh2, lh3, vertrek, aankomst);
 
+	vertrek.set(2008, 0, 2, 12, 0);
+	aankomst.set(2008, 0, 3, 12, 0);
+	
+	Vlucht v4 = new Vlucht(vt3, lh1, lh2, vertrek, aankomst);
+	Vlucht v5 = new Vlucht(vt3, lh1, lh3, vertrek, aankomst);
+	Vlucht v6 = new Vlucht(vt3, lh2, lh3, vertrek, aankomst);	
+	
+	Klant k1 = new Klant("Frank Masolijn", "Eikeboom", 19, "Culemborg");
+	Klant k2 = new Klant("Maarten Kossen", "Geen Idee", 10, "Ergens");
+	Klant k3 = new Klant("Tim Lambo", "Weet ik veel?", 17, "Ergens Anders");
+	Klant k4 = new Klant("Arno Becker", "Nergens?", 1, "Dakloos");
+	
+	Boeking b1 = new Boeking(v1, 1, false, k1);
+	Boeking b2 = new Boeking(v2, 1, false, k2);
+	v1.addBoeking(b1);
+	v1.addBoeking(b2);
+	
 	try {
 	    UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceBusinessLookAndFeel");
 	    }
