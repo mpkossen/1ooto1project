@@ -26,108 +26,171 @@ public class OvBkPerVlFrame extends javax.swing.JFrame {
 // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
 private void initComponents() {
 
-jPanel1 = new javax.swing.JPanel();
-jLabel1 = new javax.swing.JLabel();
-jLabel2 = new javax.swing.JLabel();
-jLabel3 = new javax.swing.JLabel();
-jComboBox1 = new javax.swing.JComboBox();
-jComboBox2 = new javax.swing.JComboBox();
-jComboBox3 = new javax.swing.JComboBox();
-jTextField1 = new javax.swing.JTextField();
-jPanel2 = new javax.swing.JPanel();
+VluchtPanel = new javax.swing.JPanel();
+vertrekPuntLabel = new javax.swing.JLabel();
+bestemmingLabel = new javax.swing.JLabel();
+vertrekLabel = new javax.swing.JLabel();
+vertrekPuntComboBox = new javax.swing.JComboBox();
+bestemmingPuntComboBox = new javax.swing.JComboBox();
+vertrekComboBox = new javax.swing.JComboBox();
+tijdTextField = new javax.swing.JTextField();
+vluchtInfoPanel = new javax.swing.JPanel();
+infoScrollPane = new javax.swing.JScrollPane();
+infoTable = new javax.swing.JTable();
+cancelButton = new javax.swing.JButton();
+OKButton = new javax.swing.JButton();
 
 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+VluchtPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+VluchtPanel.setToolTipText("");
+VluchtPanel.setName(""); // NOI18N
 
-jLabel1.setText("Vetrekpunt");
+vertrekPuntLabel.setText("Vetrekpunt");
 
-jLabel2.setText("Bestemming");
+bestemmingLabel.setText("Bestemming");
 
-jLabel3.setText("Vertrek");
+vertrekLabel.setText("Vertrek");
 
-jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+vertrekPuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+bestemmingPuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+bestemmingPuntComboBox.addActionListener(new java.awt.event.ActionListener() {
+public void actionPerformed(java.awt.event.ActionEvent evt) {
+bestemmingPuntComboBoxActionPerformed(evt);
+}
+});
 
-jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-jTextField1.setText("jTextField1");
+tijdTextField.setText("jTextField1");
 
-javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-jPanel1.setLayout(jPanel1Layout);
-jPanel1Layout.setHorizontalGroup(
-jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addGroup(jPanel1Layout.createSequentialGroup()
+javax.swing.GroupLayout VluchtPanelLayout = new javax.swing.GroupLayout(VluchtPanel);
+VluchtPanel.setLayout(VluchtPanelLayout);
+VluchtPanelLayout.setHorizontalGroup(
+VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addGroup(VluchtPanelLayout.createSequentialGroup()
 .addContainerGap()
-.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addComponent(jLabel1)
-.addComponent(jLabel2)
-.addComponent(jLabel3))
+.addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addComponent(vertrekPuntLabel)
+.addComponent(bestemmingLabel)
+.addComponent(vertrekLabel))
 .addGap(84, 84, 84)
-.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-.addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-.addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-.addComponent(jComboBox2, 0, 193, Short.MAX_VALUE))
+.addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+.addComponent(vertrekComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+.addComponent(vertrekPuntComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+.addComponent(bestemmingPuntComboBox, 0, 193, Short.MAX_VALUE))
 .addGap(52, 52, 52)
-.addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
 .addContainerGap(70, Short.MAX_VALUE))
 );
-jPanel1Layout.setVerticalGroup(
-jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addGroup(jPanel1Layout.createSequentialGroup()
+VluchtPanelLayout.setVerticalGroup(
+VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addGroup(VluchtPanelLayout.createSequentialGroup()
 .addContainerGap()
-.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-.addComponent(jLabel1)
-.addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+.addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+.addComponent(vertrekPuntLabel)
+.addComponent(vertrekPuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 .addGap(18, 18, 18)
-.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-.addComponent(jLabel2)
-.addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+.addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+.addComponent(bestemmingLabel)
+.addComponent(bestemmingPuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 .addGap(18, 18, 18)
-.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-.addComponent(jLabel3)
-.addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-.addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+.addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+.addComponent(vertrekLabel)
+.addComponent(vertrekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 .addContainerGap(21, Short.MAX_VALUE))
 );
 
-jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+vluchtInfoPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-jPanel2.setLayout(jPanel2Layout);
-jPanel2Layout.setHorizontalGroup(
-jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addGap(0, 546, Short.MAX_VALUE)
+infoTable.setModel(new javax.swing.table.DefaultTableModel(
+	new Object [][] {
+		
+	},
+	new String [] {
+		"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"
+	}
+));
+infoScrollPane.setViewportView(infoTable);
+
+javax.swing.GroupLayout vluchtInfoPanelLayout = new javax.swing.GroupLayout(vluchtInfoPanel);
+vluchtInfoPanel.setLayout(vluchtInfoPanelLayout);
+vluchtInfoPanelLayout.setHorizontalGroup(
+vluchtInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addGroup(vluchtInfoPanelLayout.createSequentialGroup()
+.addContainerGap()
+.addComponent(infoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+.addContainerGap())
 );
-jPanel2Layout.setVerticalGroup(
-jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addGap(0, 214, Short.MAX_VALUE)
+vluchtInfoPanelLayout.setVerticalGroup(
+vluchtInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addGroup(vluchtInfoPanelLayout.createSequentialGroup()
+.addContainerGap()
+.addComponent(infoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 );
+
+cancelButton.setText("Cancel");
+cancelButton.addActionListener(new java.awt.event.ActionListener() {
+public void actionPerformed(java.awt.event.ActionEvent evt) {
+cancelButtonActionPerformed(evt);
+}
+});
+
+OKButton.setText("OK");
+OKButton.addActionListener(new java.awt.event.ActionListener() {
+public void actionPerformed(java.awt.event.ActionEvent evt) {
+OKButtonActionPerformed(evt);
+}
+});
 
 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 getContentPane().setLayout(layout);
 layout.setHorizontalGroup(
 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+.addGroup(layout.createSequentialGroup()
 .addContainerGap()
-.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-.addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-.addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addComponent(vluchtInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+.addComponent(VluchtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+.addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+.addComponent(cancelButton)))
 .addContainerGap())
 );
 layout.setVerticalGroup(
 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 .addGroup(layout.createSequentialGroup()
 .addContainerGap()
-.addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addComponent(VluchtPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 .addGap(18, 18, 18)
-.addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addComponent(vluchtInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+.addComponent(cancelButton)
+.addComponent(OKButton))
 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 );
 
+VluchtPanel.getAccessibleContext().setAccessibleName("");
+
 pack();
 }// </editor-fold>//GEN-END:initComponents
+
+private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
+// TODO add your handling code here:
+}//GEN-LAST:event_OKButtonActionPerformed
+
+private void bestemmingPuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestemmingPuntComboBoxActionPerformed
+// TODO add your handling code here:
+}//GEN-LAST:event_bestemmingPuntComboBoxActionPerformed
+
+private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+// TODO add your handling code here:
+}//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
     * @param args the command line arguments
@@ -141,15 +204,19 @@ pack();
     }
 
 // Variables declaration - do not modify//GEN-BEGIN:variables
-private javax.swing.JComboBox jComboBox1;
-private javax.swing.JComboBox jComboBox2;
-private javax.swing.JComboBox jComboBox3;
-private javax.swing.JLabel jLabel1;
-private javax.swing.JLabel jLabel2;
-private javax.swing.JLabel jLabel3;
-private javax.swing.JPanel jPanel1;
-private javax.swing.JPanel jPanel2;
-private javax.swing.JTextField jTextField1;
+private javax.swing.JButton OKButton;
+private javax.swing.JPanel VluchtPanel;
+private javax.swing.JLabel bestemmingLabel;
+private javax.swing.JComboBox bestemmingPuntComboBox;
+private javax.swing.JButton cancelButton;
+private javax.swing.JScrollPane infoScrollPane;
+private javax.swing.JTable infoTable;
+private javax.swing.JTextField tijdTextField;
+private javax.swing.JComboBox vertrekComboBox;
+private javax.swing.JLabel vertrekLabel;
+private javax.swing.JComboBox vertrekPuntComboBox;
+private javax.swing.JLabel vertrekPuntLabel;
+private javax.swing.JPanel vluchtInfoPanel;
 // End of variables declaration//GEN-END:variables
 
 }
