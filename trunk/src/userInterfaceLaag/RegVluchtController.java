@@ -58,7 +58,7 @@ public class RegVluchtController
    }
 
    /**
-    * Creëer een nieuwe vlucht en geef de maatschappij, het vliegtuig en vertrekpunt
+    * Creeer een nieuwe vlucht en geef de maatschappij, het vliegtuig en vertrekpunt
     * mee.
     * @roseuid 4030DCB6032A
     */
