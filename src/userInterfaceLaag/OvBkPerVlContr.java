@@ -14,7 +14,7 @@ import java.util.Vector;
 public class OvBkPerVlContr
 {
     private LuchtvaartMaatschappij luchtvaartMaatschappij;
-    private OvBkPerVlJFrame myFrame;
+    private OvBkPerVlFrame myFrame;
     
     private Luchthaven vertrekpunt;
     private Luchthaven aankomstpunt;
@@ -30,7 +30,7 @@ public class OvBkPerVlContr
         this.luchtvaartMaatschappij = lvm;
         TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
         
-        myFrame = new OvBkPerVlJFrame(luchthavens, this);
+        myFrame = new OvBkPerVlFrame(luchthavens, this);
    	myFrame.setVisible(true);
     }    
     
