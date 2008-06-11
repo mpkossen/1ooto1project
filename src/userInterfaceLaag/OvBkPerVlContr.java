@@ -9,6 +9,7 @@ import domeinLaag.LuchtvaartMaatschappij;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.TreeMap;
+import java.util.Vector;
 
 public class OvBkPerVlContr
 {
@@ -18,6 +19,7 @@ public class OvBkPerVlContr
     private Luchthaven vertrekpunt;
     private Luchthaven aankomstpunt;
     private Calendar vertrektijd;
+    private Vlucht vlucht;
     
     public OvBkPerVlContr ()
     {
@@ -72,6 +74,31 @@ public class OvBkPerVlContr
         }
         
         return vluchten;           
+    }
+
+    public Object[][] vlucht (Vlucht vl)
+    {
+        this.vlucht = vl;
+        Vector<Boeking> alleBoekingen = vlucht.getAlleBoekingen();
+        int size = alleBoekingen.size();
+        Object[][] boekingen = new Object[size][4];
+
+        int i = 0;
+        for (Boeking boeking : alleBoekingen)
+        {
+            boekingen[i][0] = boeking.getAlleKlanten().firstElement().getNaam();
+            boekingen[i][1] = boeking.getAlleKlanten().firstElement().getPlaats();
+            boekingen[i][2] = Integer.toString(boeking.getAantalPlaatsen());
+            boekingen[i][3] = Boolean.toString(boeking.getRoken());
+            i++;
+        }
+        
+        return boekingen;
+    }
+    
+    public void cancel ()
+    {
+        myFrame.dispose();
     }
     
     public void ok ()
