@@ -6,6 +6,8 @@
 
 package userInterfaceLaag;
 
+import java.util.Set;
+
 /**
  *
  * @author  Bami
@@ -13,7 +15,7 @@ package userInterfaceLaag;
 public class RegLuchthavenFrame extends javax.swing.JFrame {
 
     /** Creates new form RegLuchthavenFrame */
-    public RegLuchthavenFrame(RegLuchthavenContr rlhctr, String ln) {
+    public RegLuchthavenFrame(RegLuchthavenContr rlhctr, Set<String> ln) {
         initComponents();
     }
 
