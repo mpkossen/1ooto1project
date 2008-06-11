@@ -217,7 +217,7 @@ public class Vlucht
         return bestemming.geefNaam();
     }
     
-    public HashSet<Vlucht> geefVluchtenPerLuchthavenCombi (Luchthaven vertrek, Luchthaven aankomst)
+    public static HashSet<Vlucht> geefVluchtenPerLuchthavenCombi (Luchthaven vertrek, Luchthaven aankomst)
     {
         HashSet<Vlucht> vluchtenPerLuchthavenCombi = new HashSet();
         for (Vlucht vl : alleVluchten)
