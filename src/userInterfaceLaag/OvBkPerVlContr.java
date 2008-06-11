@@ -43,7 +43,7 @@ public class OvBkPerVlContr
         TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
         this.vertrekpunt = luchthavens.get(lhvnm);
         
-        HashSet<Vlucht> alleVluchten = Vlucht.geefVluchtenPerLuchthavenCombi(vertrekpunt, aankomstpunt);
+        HashSet<Vlucht> alleVluchten = Vlucht.vertrekpEnbestemm(vertrekpunt, aankomstpunt);
         
         TreeMap<Calendar, Vlucht> vluchten = new TreeMap<Calendar, Vlucht>();
         
@@ -61,7 +61,7 @@ public class OvBkPerVlContr
         TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
         this.aankomstpunt = luchthavens.get(lhvnnm);
         
-        HashSet<Vlucht> alleVluchten = Vlucht.geefVluchtenPerLuchthavenCombi(vertrekpunt, aankomstpunt);
+        HashSet<Vlucht> alleVluchten = Vlucht.vertrekpEnbestemm(vertrekpunt, aankomstpunt);
         
         TreeMap<Calendar, Vlucht> vluchten = new TreeMap<Calendar, Vlucht>();
         
@@ -76,6 +76,6 @@ public class OvBkPerVlContr
     
     public void ok ()
     {
-        myframe.dispose();
+        myFrame.dispose();
     }
 }
