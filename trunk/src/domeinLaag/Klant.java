@@ -2,6 +2,9 @@ package domeinLaag;
 
 import java.util.HashSet;
 
+/**
+ * In deze klasse worden Klanten aangemaakt en opgeslagen.
+ */
 public class Klant
 {
     private String naam;
