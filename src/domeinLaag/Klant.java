@@ -10,9 +10,9 @@ public class Klant
     private int huisNr;
     private static HashSet alleKlanten;
 
+    // Constructors
     public Klant()
     {
-
     }
 
     // Setters
