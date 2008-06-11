@@ -13,7 +13,6 @@ public class Boeking
     private int aantalPlaatsen;
     private Vector<Klant> klanten;
     private Vlucht vlucht;
-    private Klant klant;
     
     /**
      * Maakt een klanten vector aan.
@@ -23,6 +22,23 @@ public class Boeking
         this.klanten = new Vector<Klant>();
     }
     
+	public Boeking (Vlucht vl, int ap, boolean rkn, Klant kl)
+	{
+		this.vlucht = vl;
+		this.aantalPlaatsen = ap;
+		this.roken = rkn;
+		this.klanten = new Vector<Klant>();
+		klanten.add(kl);
+	}
+	
+	public Boeking (Vlucht vl, int ap, boolean rkn, Vector<Klant> kln)
+	{
+		this.vlucht = vl;
+		this.aantalPlaatsen = ap;
+		this.roken = rkn;
+		this.klanten = kln;
+	}
+	
     /**
      * 
      * @param rkn is roken als het true is en niet roken als het false is.
@@ -47,11 +63,6 @@ public class Boeking
         this.vlucht = vl;
     }
     
-    public void setKlant(Klant kl)
-    {
-        this.klant = kl;
-    }
-    
     // Getters
     public Boolean getRoken ()
     {
@@ -70,11 +81,6 @@ public class Boeking
     public Vector<Klant> getAlleKlanten ()
     {
         return klanten;
-    }
-    
-    public Klant getKlant()
-    {
-        return klant;
     }
     
     // Adders
