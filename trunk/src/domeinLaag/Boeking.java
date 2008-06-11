@@ -3,6 +3,10 @@ package domeinLaag;
 
 import java.util.Vector;
 
+/**
+ * Hierin worden boekingen geregeld. 
+ */
+
 public class Boeking
 {
     private boolean roken;
@@ -11,17 +15,27 @@ public class Boeking
     private Vlucht vlucht;
     private Klant klant;
     
+    /**
+     * Maakt een klanten vector aan.
+     */
     public Boeking ()
     {
         this.klanten = new Vector<Klant>();
     }
     
+    /**
+     * 
+     * @param rkn is roken als het true is en niet roken als het false is.
+     */
     // Setters
     public void setRoken (Boolean rkn)
     {
         this.roken = rkn;
     }
     
+    /**
+     * Deze methode controleert het aantal plaatsen en Roken/Niet roken en geeft vervolgens aan of het kan ja of nee.
+     */
     //T.L. Deze Methode moet nog een Roken Check krijgen en een Aantal plaatsen Check
     public void setPlaatsen (int ap)
     {
