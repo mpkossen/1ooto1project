@@ -21,7 +21,8 @@ public class Boeking
         this.roken = rkn;
     }
     
-    public void setAantalPlaatsen (int ap)
+    //T.L. Deze Methode moet nog een Roken Check krijgen en een Aantal plaatsen Check
+    public void setPlaatsen (int ap)
     {
         this.aantalPlaatsen = ap;
     }
