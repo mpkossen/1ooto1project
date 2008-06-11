@@ -12,6 +12,7 @@ public class Vlucht
    private Calendar vertrekTijd;
    private Calendar aankomstTijd;
    private Calendar duur;
+   private Boeking boeking;
 
 
    /** Controleert of het vliegtuig op het meegegeven tijdstip al een vlucht heeft.
@@ -130,7 +131,25 @@ public class Vlucht
        return vertrekpunt;
    }
    
+   public void setBoeking(Boeking b)
+   {
+       this.boeking = b;
+   }
    
+   public Boeking getBoeking()
+   {
+       return boeking;
+   }
+   
+   public void setVliegtuig(Vliegtuig v)
+   {
+       this.vt = v;
+   }
+   
+   public Vliegtuig getVliegtuig()
+   {
+       return vt;
+   }
    /**
     * Controleer of alle gegevens gezet zijn. Zo ja, bewaar de vluchtgegevens.
     */
