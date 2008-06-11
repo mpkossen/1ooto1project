@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Vlucht
 {
-
     private static HashSet<Vlucht> alleVluchten = new HashSet<Vlucht>();
     private int vluchtNummer;
     private Vliegtuig vt;
@@ -167,12 +166,30 @@ public class Vlucht
     {
         this.vt = v;
     }
+   
+   /**
+    * @return java.util.HashSet
+    * Ik weet niet of dit zo klopt.
+    */
+   public static HashSet<Vlucht> geefAlleVluchten()
+   {
+	HashSet<Vlucht> alleV= new HashSet<Vlucht>();
+	for (Iterator<Vlucht> i = alleVluchten.iterator(); i.hasNext();) {
+		Vlucht v = i.next();
+		alleV.add(v);
+	}
+	return alleV;
+   }
 
     public Vliegtuig getVliegtuig()
     {
         return vt;
     }
-
+    
+    public Vector geefBoeking()
+    {
+	return boekingen;
+    }
     
     public Vector<Boeking> getAlleBoekingen ()
     {
