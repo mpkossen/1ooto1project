@@ -101,6 +101,10 @@ public class Luchthaven
 	public boolean geefWerkPlaats() {
 	    return werkPlaats;
 	}
+	
+	public Land geefLand() {
+	    return land;
+	}
 	/**
 	@param land
 	*/
