@@ -106,8 +106,6 @@ public class Vlucht
         {
             throw new VluchtException("vliegtuig reeds bezet op " + tijd.getTime());
         }
-
-
     }
 
     public Calendar geefVertrekTijd()
