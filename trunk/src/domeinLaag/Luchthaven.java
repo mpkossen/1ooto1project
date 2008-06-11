@@ -98,6 +98,9 @@ public class Luchthaven
 		werkPlaats = wp;
 	}
 
+	public boolean geefWerkPlaats() {
+	    return werkPlaats;
+	}
 	/**
 	@param land
 	*/
