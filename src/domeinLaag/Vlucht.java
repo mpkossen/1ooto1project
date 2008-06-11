@@ -6,34 +6,15 @@ public class Vlucht
 {
     private static HashSet<Vlucht> alleVluchten = new HashSet<Vlucht>();
     private int vluchtNummer;
-    private Vliegtuig vt;
+    private Vliegtuig vliegtuig;
     private Luchthaven bestemming;
     private Luchthaven vertrekpunt;
     private Calendar vertrekTijd;
     private Calendar aankomstTijd;
     private Calendar duur;
-    private Boeking boeking;
     private Vector<Boeking> boekingen;
 
-    /** Controleert of het vliegtuig op het meegegeven tijdstip al een vlucht heeft.
-     * @return true, als vliegtuig bezet. Anders false.
-     */
-    private static boolean isBezet(Vliegtuig vliegtuig, Calendar d)
-    {
-        boolean b = false;
-        for (Vlucht v : alleVluchten)
-        {
-            if (v.vt.equals(vliegtuig))
-            {
-                if (v.geefVertrekTijd().after(d) && v.getAankomstTijd().before(d))
-                {
-                    b = true;
-                }
-            }
-        }
-        return b;
-    }
-
+	//Constructors
     /**
      * Constructor bedoeld om in RegVluchtController te gebruiken.
      * de overige attributen worden dat met de zetmethoden gevuld.
@@ -42,8 +23,9 @@ public class Vlucht
      */
     public Vlucht(Vliegtuig vt, Luchthaven vertrekp)
     {
-        this.vt = vt;
+        this.vliegtuig = vt;
         this.vertrekpunt = vertrekp;
+		this.boekingen = new Vector<Boeking>();
     }
 
     /**
@@ -51,12 +33,32 @@ public class Vlucht
      */
     public Vlucht(Vliegtuig vt, Luchthaven vertrekp, Luchthaven best, Calendar vertrek, Calendar aankomst)
     {
-        this.vt = vt;
+        this.vliegtuig = vt;
         this.vertrekpunt = vertrekp;
         this.bestemming = best;
         this.vertrekTijd = (Calendar) vertrek.clone();
         this.aankomstTijd = (Calendar) aankomst.clone();
+		this.boekingen = new Vector<Boeking>();
         alleVluchten.add(this);
+    }	
+	
+    /** Controleert of het vliegtuig op het meegegeven tijdstip al een vlucht heeft.
+     * @return true, als vliegtuig bezet. Anders false.
+     */
+    private static boolean isBezet(Vliegtuig vliegtuig, Calendar d)
+    {
+        boolean b = false;
+        for (Vlucht v : alleVluchten)
+        {
+            if (v.vliegtuig.equals(vliegtuig))
+            {
+                if (v.geefVertrekTijd().after(d) && v.getAankomstTijd().before(d))
+                {
+                    b = true;
+                }
+            }
+        }
+        return b;
     }
 
     /**
@@ -98,7 +100,7 @@ public class Vlucht
         {
             throw new VluchtException("Geen geldige datum!");
         }
-        if (!Vlucht.isBezet(vt, vTijd))
+        if (!Vlucht.isBezet(vliegtuig, vTijd))
         {
             vertrekTijd = (Calendar) vTijd.clone();
         }
@@ -150,19 +152,9 @@ public class Vlucht
         return vertrekpunt;
     }
 
-    public void setBoeking(Boeking b)
+    public void setVliegtuig(Vliegtuig vt)
     {
-        this.boeking = b;
-    }
-
-    public Boeking getBoeking()
-    {
-        return boeking;
-    }
-
-    public void setVliegtuig(Vliegtuig v)
-    {
-        this.vt = v;
+        this.vliegtuig = vt;
     }
    
    /**
@@ -173,15 +165,15 @@ public class Vlucht
    {
 	HashSet<Vlucht> alleV= new HashSet<Vlucht>();
 	for (Iterator<Vlucht> i = alleVluchten.iterator(); i.hasNext();) {
-		Vlucht v = i.next();
-		alleV.add(v);
+		Vlucht vl = i.next();
+		alleV.add(vl);
 	}
 	return alleV;
    }
 
     public Vliegtuig getVliegtuig()
     {
-        return vt;
+        return vliegtuig;
     }
     
     public Vector geefBoeking()
@@ -259,8 +251,11 @@ public class Vlucht
     public static HashSet<Vlucht> vertrekpEnbestemm (Luchthaven vertrek, Luchthaven aankomst)
     {
         HashSet<Vlucht> vluchtenPerLuchthavenCombi = new HashSet();
+		
+		int i = 0;
         for (Vlucht vl : alleVluchten)
         {
+			i++;
             if (vl.vertrekpunt.equals(vertrek))
             {
                 if (vl.bestemming.equals(aankomst))
