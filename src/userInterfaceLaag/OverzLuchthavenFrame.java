@@ -67,6 +67,7 @@ okButton = new javax.swing.JButton();
 
 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+overzTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 overzTable.setModel(new javax.swing.table.DefaultTableModel(
 	new Object [][] {
 		
