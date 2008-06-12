@@ -6,17 +6,33 @@
 
 package userInterfaceLaag;
 
+import domeinLaag.Luchthaven;
+import domeinLaag.Vlucht;
+import java.util.TreeMap;
+import java.text.SimpleDateFormat;
+import javax.swing.*;
+
 /**
  *
  * @author  Frank
  */
-public class BoekVluchtFrame extends javax.swing.JFrame {
+public class BoekVluchtFrame extends javax.swing.JFrame
+{
+	
+	private BoekVluchtContr myController;
+	private TreeMap<String, Luchthaven> luchthavens;
+	private TreeMap<String, Vlucht> vluchten;
 	
 	/** Creates new form BoekVluchtFrame */
-	public BoekVluchtFrame() {
+	public BoekVluchtFrame (TreeMap<String, Luchthaven> lhvns, BoekVluchtContr bvc)
+	{
+		this.luchthavens = lhvns;
+		this.myController = bvc;
+		this.vluchten = new TreeMap<String, Vlucht>();
+		
 		initComponents();
 	}
-	
+
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -28,6 +44,8 @@ public class BoekVluchtFrame extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         vluchtPanel = new javax.swing.JPanel();
         vertrekpuntLabel = new javax.swing.JLabel();
+        DefaultListCellRenderer lRenderer = new DefaultListCellRenderer();
+        lRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
         vertrekpuntComboBox = new javax.swing.JComboBox();
         bestemmingComboBox = new javax.swing.JComboBox();
         vertrekComboBox = new javax.swing.JComboBox();
@@ -56,20 +74,23 @@ public class BoekVluchtFrame extends javax.swing.JFrame {
 
         vertrekpuntLabel.setText("Vertrekpunt");
 
-        vertrekpuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vertrekpuntComboBox.setRenderer(lRenderer);
+        vertrekpuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray()));
         vertrekpuntComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vertrekpuntComboBoxActionPerformed(evt);
             }
         });
 
-        bestemmingComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        bestemmingComboBox.setRenderer(lRenderer);
+        bestemmingComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray()));
         bestemmingComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bestemmingComboBoxActionPerformed(evt);
             }
         });
 
+        vertrekComboBox.setRenderer(lRenderer);
         vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         vertrekComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +99,6 @@ public class BoekVluchtFrame extends javax.swing.JFrame {
         });
 
         aankomstTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        aankomstTextField.setText("aankomst dag");
 
         bestemmingLabel.setText("Bestemming");
 
@@ -190,6 +210,7 @@ public class BoekVluchtFrame extends javax.swing.JFrame {
         stoelenLabel.setText("Stoelen");
 
         buttonGroup1.add(nietRokenButton);
+        nietRokenButton.setSelected(true);
         nietRokenButton.setText("Niet Roken");
         nietRokenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,66 +308,80 @@ public class BoekVluchtFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
 	private void vertrekpuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekpuntComboBoxActionPerformed
-		// TODO add your handling code here:
+		Luchthaven vertrekpunt = luchthavens.get((String)vertrekpuntComboBox.getSelectedItem());
+		Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
+		this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
+		
+		vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+		aankomstTextField.setText(vluchten.firstEntry().getKey());
+		
+		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
+		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+		aankomstTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
 	}//GEN-LAST:event_vertrekpuntComboBoxActionPerformed
 
 	private void bestemmingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestemmingComboBoxActionPerformed
-		// TODO add your handling code here:
+		Luchthaven vertrekpunt = luchthavens.get((String)vertrekpuntComboBox.getSelectedItem());
+		Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
+		this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
+		
+		vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+		aankomstTextField.setText(vluchten.firstEntry().getKey());
+		
+		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
+		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+		aankomstTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
 	}//GEN-LAST:event_bestemmingComboBoxActionPerformed
 
 	private void vertrekComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekComboBoxActionPerformed
-		// TODO add your handling code here:
+		Vlucht vlucht = vluchten.get((String)vertrekComboBox.getSelectedItem());
+		myController.vlucht(vlucht);
+
+		SimpleDateFormat dagFormatter = new SimpleDateFormat("dd-MM-yy");
+		aankomstTextField.setText(dagFormatter.format(vlucht.getAankomstTijd().getTime()));
+		
+		SimpleDateFormat tijdFormatter = new SimpleDateFormat("HH:mm");
+		vertrekTijdTextField.setText(tijdFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+		aankomstTijdTextField.setText(tijdFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
 	}//GEN-LAST:event_vertrekComboBoxActionPerformed
 
 	private void naamTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naamTextFieldActionPerformed
-		// TODO add your handling code here:
+		myController.klant(naamTextField.getText(), straatTextField.getText(), Integer.parseInt(huisNummerTextField.getText()), plaatsTextField.getText());
 	}//GEN-LAST:event_naamTextFieldActionPerformed
 
 	private void straatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_straatTextFieldActionPerformed
-		// TODO add your handling code here:
+		myController.klant(naamTextField.getText(), straatTextField.getText(), Integer.parseInt(huisNummerTextField.getText()), plaatsTextField.getText());
 	}//GEN-LAST:event_straatTextFieldActionPerformed
 
 	private void huisNummerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huisNummerTextFieldActionPerformed
-		// TODO add your handling code here:
+		myController.klant(naamTextField.getText(), straatTextField.getText(), Integer.parseInt(huisNummerTextField.getText()), plaatsTextField.getText());
 	}//GEN-LAST:event_huisNummerTextFieldActionPerformed
 
 	private void plaatsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plaatsTextFieldActionPerformed
-		// TODO add your handling code here:
+		myController.klant(naamTextField.getText(), straatTextField.getText(), Integer.parseInt(huisNummerTextField.getText()), plaatsTextField.getText());
 	}//GEN-LAST:event_plaatsTextFieldActionPerformed
 
 	private void stoelenTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stoelenTextFieldActionPerformed
-		// TODO add your handling code here:
+		myController.plaats(Integer.parseInt(stoelenTextField.getText()), rokenButton.isSelected());
 	}//GEN-LAST:event_stoelenTextFieldActionPerformed
 
 	private void nietRokenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nietRokenButtonActionPerformed
-		// TODO add your handling code here:
+		myController.plaats(Integer.parseInt(stoelenTextField.getText()), rokenButton.isSelected());
 	}//GEN-LAST:event_nietRokenButtonActionPerformed
 
 	private void rokenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rokenButtonActionPerformed
-		// TODO add your handling code here:
+		myController.plaats(Integer.parseInt(stoelenTextField.getText()), rokenButton.isSelected());
 	}//GEN-LAST:event_rokenButtonActionPerformed
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-		// TODO add your handling code here:
+		myController.ok();
 	}//GEN-LAST:event_okButtonActionPerformed
 
 	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-		// TODO add your handling code here:
+		myController.cancel();
 	}//GEN-LAST:event_cancelButtonActionPerformed
-	
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String args[]) {
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new BoekVluchtFrame().setVisible(true);
-			}
-		});
-	}
-	
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aankomstLabel;
     private javax.swing.JTextField aankomstTextField;
@@ -373,5 +408,4 @@ public class BoekVluchtFrame extends javax.swing.JFrame {
     private javax.swing.JLabel vertrekpuntLabel;
     private javax.swing.JPanel vluchtPanel;
     // End of variables declaration//GEN-END:variables
-	
 }
