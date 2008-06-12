@@ -2,24 +2,17 @@
 package userInterfaceLaag;
 
 import domeinLaag.Boeking;
-import domeinLaag.Klant;
-import domeinLaag.Vlucht;
 import domeinLaag.Luchthaven;
-import domeinLaag.LuchtvaartMaatschappij;
-
-import java.util.Calendar;
-import java.util.HashSet;
+import domeinLaag.Vlucht;
 import java.text.SimpleDateFormat;
 import java.util.TreeMap;
 import java.util.Vector;
 
 public class OvBkPerVlContr
 {
-	private LuchtvaartMaatschappij luchtvaartMaatschappij;
 	private OvBkPerVlFrame myFrame;
 	private Luchthaven vertrekpunt;
 	private Luchthaven aankomstpunt;
-	private Calendar vertrektijd;
 	private Vlucht vlucht;
 
 	public OvBkPerVlContr ()

@@ -2,6 +2,7 @@
 package domeinLaag;
 
 // Imports
+import javax.swing.*;
 
 public class BoekingException extends Exception
 {
@@ -15,11 +16,13 @@ public class BoekingException extends Exception
 	public BoekingException (String s)
 	{
 		super(s);
+		JOptionPane.showMessageDialog(null, s);
 	}
 
 	public BoekingException ()
 	{
 		super();
+		JOptionPane.showMessageDialog(null, "LuchthavenException");
 	}
 	
 	// Setters
