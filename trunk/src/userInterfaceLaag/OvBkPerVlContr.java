@@ -88,7 +88,14 @@ public class OvBkPerVlContr
 			boekingen[i][0] = boeking.getAlleKlanten().firstElement().getNaam();
 			boekingen[i][1] = boeking.getAlleKlanten().firstElement().getPlaats();
 			boekingen[i][2] = Integer.toString(boeking.getAantalPlaatsen());
-			boekingen[i][3] = Boolean.toString(boeking.getRoken());
+			if (boeking.getRoken())
+			{
+				boekingen[i][3] = "Ja";
+			}
+			else
+			{
+				boekingen[i][3] = "Nee";
+			}
 			i++;
 		}
 
