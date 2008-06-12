@@ -9,7 +9,7 @@ import domeinLaag.Vlucht;
 public class BoekVluchtContr
 {
 	// Attributes
-
+	private BoekVluchtFrame myFrame;
 	
 	// Relations
 
@@ -17,7 +17,8 @@ public class BoekVluchtContr
 	// Constructors
 	public BoekVluchtContr ()
 	{
-		
+		this.myFrame = new BoekVluchtFrame();
+		myFrame.setVisible(true);
 	}
 
 	// Overige Methodes

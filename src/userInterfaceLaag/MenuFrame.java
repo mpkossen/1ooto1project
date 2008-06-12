@@ -182,7 +182,7 @@ public class MenuFrame extends javax.swing.JFrame
 				// Deze Usecase hoeft niet (denk ik), mag wel.
 				break;
 			case 7:
-				// Hier komt de Usecase: Boek Vlucht;
+				BoekVluchtContr bvc = new BoekVluchtContr();
 				break;
 			case 8:
 				OvBkPerVlContr ovkpvc = new OvBkPerVlContr(lvm);
