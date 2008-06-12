@@ -64,14 +64,21 @@ public class Klant
         return huisNr;
     }
     
-    public HashSet getAlleKlanten ()
+    public static HashSet getAlleKlanten ()
     {
         return alleKlanten;
     }
     
-    public void bewaar()
+    public void bewaar() throws KlantException
     {
-        
+        if (naam.equals(null)	||
+			straat.equals(null)	||
+			huisNr < 1			||
+			plaats.equals(null)
+			)
+		{
+			throw new KlantException();
+		}
     }
     
 }
