@@ -181,33 +181,30 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="vertrekpuntComboBox">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray())" type="code"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vertrekpuntComboBoxActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="DefaultListCellRenderer lRenderer = new DefaultListCellRenderer();&#xa;lRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="vertrekpuntComboBox.setRenderer(lRenderer);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="bestemmingComboBox">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray())" type="code"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bestemmingComboBoxActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="bestemmingComboBox.setRenderer(lRenderer);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="vertrekComboBox">
           <Properties>
@@ -223,11 +220,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vertrekComboBoxActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="vertrekComboBox.setRenderer(lRenderer);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="aankomstTextField">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="aankomst dag"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="bestemmingLabel">
@@ -332,6 +331,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Niet Roken"/>
       </Properties>
       <Events>
