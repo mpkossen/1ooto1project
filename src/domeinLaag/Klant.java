@@ -79,6 +79,10 @@ public class Klant
 		{
 			throw new KlantException();
 		}
+		else
+		{
+			alleKlanten.add(this);
+		}
     }
     
 }
