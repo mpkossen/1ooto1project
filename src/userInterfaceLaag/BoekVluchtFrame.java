@@ -18,16 +18,15 @@ import javax.swing.*;
  */
 public class BoekVluchtFrame extends javax.swing.JFrame
 {
-	
 	private BoekVluchtContr myController;
 	private TreeMap<String, Luchthaven> luchthavens;
 	private TreeMap<String, Vlucht> vluchten;
 	
 	/** Creates new form BoekVluchtFrame */
-	public BoekVluchtFrame (TreeMap<String, Luchthaven> lhvns, BoekVluchtContr bvc)
+	public BoekVluchtFrame (BoekVluchtContr bvc)
 	{
-		this.luchthavens = lhvns;
 		this.myController = bvc;
+		this.luchthavens = Luchthaven.geefAlle();
 		this.vluchten = new TreeMap<String, Vlucht>();
 		
 		initComponents();

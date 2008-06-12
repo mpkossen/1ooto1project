@@ -68,8 +68,8 @@ public class OvBkPerVlContr
 		int i = 0;
 		for (Boeking boeking : alleBoekingen)
 		{
-			boekingen[i][0] = boeking.getAlleKlanten().firstElement().getNaam();
-			boekingen[i][1] = boeking.getAlleKlanten().firstElement().getPlaats();
+			boekingen[i][0] = boeking.getKlant().getNaam();
+			boekingen[i][1] = boeking.getKlant().getPlaats();
 			boekingen[i][2] = Integer.toString(boeking.getAantalPlaatsen());
 			if (boeking.getRoken())
 			{
