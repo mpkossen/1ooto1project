@@ -98,7 +98,6 @@ public class OvBkPerVlContr
 			}
 			i++;
 		}
-
 		return boekingen;
 	}
 
