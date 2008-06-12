@@ -170,15 +170,19 @@ public class MenuFrame extends javax.swing.JFrame
 				OverzVliegtuigenFrame ovf = new OverzVliegtuigenFrame(lvm);
 				break;
 			case 3:
+				RegLuchthavenContr rlhnc = new RegLuchthavenContr();
 				break;
 			case 4:
+				OverzLuchthavenFrame olf = new OverzLuchthavenFrame();
 				break;
 			case 5:
 				RegVluchtController rvc = new RegVluchtController(lvm);
 				break;
 			case 6:
+				// Deze Usecase hoeft niet (denk ik), mag wel.
 				break;
 			case 7:
+				// Hier komt de Usecase: Boek Vlucht;
 				break;
 			case 8:
 				OvBkPerVlContr ovkpvc = new OvBkPerVlContr(lvm);
