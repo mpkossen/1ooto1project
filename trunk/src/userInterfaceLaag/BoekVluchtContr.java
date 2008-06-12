@@ -3,14 +3,12 @@ package userInterfaceLaag;
 
 // Imports
 import domeinLaag.Boeking;
+import domeinLaag.BoekingException;
 import domeinLaag.Klant;
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
-import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.TreeMap;
-import javax.swing.JOptionPane;
-
 
 public class BoekVluchtContr
 {
@@ -75,7 +73,20 @@ public class BoekVluchtContr
 	
 	public void ok ()
 	{
-
+		Klant klant = new Klant(naam, straat, huisNr, plaats);
+		Boeking boeking = new Boeking();
+		boeking.setVlucht(vlucht);
+		boeking.setKlant(klant);
+		boeking.setPlaatsen(aantalPlaatsen);
+		boeking.setRoken(roken);
+		try
+		{
+			boeking.bewaar();
+		}
+		catch (BoekingException be)
+		{
+			
+		}
 	}
 	
 	public void cancel ()
