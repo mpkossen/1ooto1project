@@ -60,7 +60,7 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        VluchtPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        VluchtPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Vlucht", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 0)));
         VluchtPanel.setToolTipText("");
         VluchtPanel.setName(""); // NOI18N
 
@@ -94,7 +94,6 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
             }
         });
 
-        tijdTextField.setBackground(new java.awt.Color(255, 255, 255));
         tijdTextField.setEditable(false);
         tijdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
@@ -115,7 +114,7 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
                     .addComponent(bestemmingPuntComboBox, 0, 193, Short.MAX_VALUE))
                 .addGap(52, 52, 52)
                 .addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         VluchtPanelLayout.setVerticalGroup(
             VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,6 +172,9 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
         });
 
         OKButton.setText("OK");
+        OKButton.setMaximumSize(new java.awt.Dimension(65, 23));
+        OKButton.setMinimumSize(new java.awt.Dimension(65, 23));
+        OKButton.setPreferredSize(new java.awt.Dimension(65, 23));
         OKButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OKButtonActionPerformed(evt);
@@ -204,7 +206,7 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
-                    .addComponent(OKButton))
+                    .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
