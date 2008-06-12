@@ -86,11 +86,11 @@
                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="vertrekComboBox" max="32767" attributes="1"/>
-                      <Component id="vertrekPuntComboBox" max="32767" attributes="1"/>
-                      <Component id="bestemmingPuntComboBox" alignment="0" pref="193" max="32767" attributes="1"/>
+                      <Component id="vertrekpuntComboBox" max="32767" attributes="1"/>
+                      <Component id="bestemmingComboBox" alignment="0" pref="193" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="tijdTextField" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Component id="vertrekTextField" min="-2" pref="80" max="-2" attributes="0"/>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -101,18 +101,18 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="vertrekPuntLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="vertrekPuntComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vertrekpuntComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bestemmingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="bestemmingPuntComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bestemmingComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="vertrekLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="vertrekComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tijdTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vertrekTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="21" max="32767" attributes="0"/>
               </Group>
@@ -135,31 +135,31 @@
             <Property name="text" type="java.lang.String" value="Vertrek"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="vertrekPuntComboBox">
+        <Component class="javax.swing.JComboBox" name="vertrekpuntComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray())" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vertrekPuntComboBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vertrekpuntComboBoxActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="DefaultListCellRenderer lRenderer = new DefaultListCellRenderer();&#xa;lRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="vertrekPuntComboBox.setRenderer(lRenderer);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="vertrekpuntComboBox.setRenderer(lRenderer);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="bestemmingPuntComboBox">
+        <Component class="javax.swing.JComboBox" name="bestemmingComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray())" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bestemmingPuntComboBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bestemmingComboBoxActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="bestemmingPuntComboBox.setRenderer(lRenderer);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="bestemmingComboBox.setRenderer(lRenderer);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="vertrekComboBox">
@@ -175,7 +175,7 @@
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="vertrekComboBox.setRenderer(lRenderer);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="tijdTextField">
+        <Component class="javax.swing.JTextField" name="vertrekTextField">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="0"/>

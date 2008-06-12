@@ -19,7 +19,7 @@ import domeinLaag.Vlucht;
  */
 public class OvBkPerVlFrame extends javax.swing.JFrame
 {
-    private OvBkPerVlContr ovBkPerVlContr;
+    private OvBkPerVlContr myController;
     private TreeMap<String, Luchthaven> luchthavens;
     private TreeMap<String, Vlucht> vluchten;
 
@@ -27,7 +27,7 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
     public OvBkPerVlFrame(TreeMap<String, Luchthaven> lhvns, OvBkPerVlContr obpvctl)
     {
         this.luchthavens = lhvns;
-        this.ovBkPerVlContr = obpvctl;
+        this.myController = obpvctl;
         this.vluchten = new TreeMap<String, Vlucht>();
 		
         initComponents();
@@ -48,10 +48,10 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
         vertrekLabel = new javax.swing.JLabel();
         DefaultListCellRenderer lRenderer = new DefaultListCellRenderer();
         lRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
-        vertrekPuntComboBox = new javax.swing.JComboBox();
-        bestemmingPuntComboBox = new javax.swing.JComboBox();
+        vertrekpuntComboBox = new javax.swing.JComboBox();
+        bestemmingComboBox = new javax.swing.JComboBox();
         vertrekComboBox = new javax.swing.JComboBox();
-        tijdTextField = new javax.swing.JTextField();
+        vertrekTextField = new javax.swing.JTextField();
         vluchtInfoPanel = new javax.swing.JPanel();
         infoScrollPane = new javax.swing.JScrollPane();
         infoTable = new javax.swing.JTable();
@@ -70,19 +70,19 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
 
         vertrekLabel.setText("Vertrek");
 
-        vertrekPuntComboBox.setRenderer(lRenderer);
-        vertrekPuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray()));
-        vertrekPuntComboBox.addActionListener(new java.awt.event.ActionListener() {
+        vertrekpuntComboBox.setRenderer(lRenderer);
+        vertrekpuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray()));
+        vertrekpuntComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vertrekPuntComboBoxActionPerformed(evt);
+                vertrekpuntComboBoxActionPerformed(evt);
             }
         });
 
-        bestemmingPuntComboBox.setRenderer(lRenderer);
-        bestemmingPuntComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray()));
-        bestemmingPuntComboBox.addActionListener(new java.awt.event.ActionListener() {
+        bestemmingComboBox.setRenderer(lRenderer);
+        bestemmingComboBox.setModel(new javax.swing.DefaultComboBoxModel(luchthavens.keySet().toArray()));
+        bestemmingComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bestemmingPuntComboBoxActionPerformed(evt);
+                bestemmingComboBoxActionPerformed(evt);
             }
         });
 
@@ -94,8 +94,8 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
             }
         });
 
-        tijdTextField.setEditable(false);
-        tijdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        vertrekTextField.setEditable(false);
+        vertrekTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout VluchtPanelLayout = new javax.swing.GroupLayout(VluchtPanel);
         VluchtPanel.setLayout(VluchtPanelLayout);
@@ -110,10 +110,10 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
                 .addGap(84, 84, 84)
                 .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(vertrekComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vertrekPuntComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bestemmingPuntComboBox, 0, 193, Short.MAX_VALUE))
+                    .addComponent(vertrekpuntComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bestemmingComboBox, 0, 193, Short.MAX_VALUE))
                 .addGap(52, 52, 52)
-                .addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vertrekTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         VluchtPanelLayout.setVerticalGroup(
@@ -122,16 +122,16 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vertrekPuntLabel)
-                    .addComponent(vertrekPuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vertrekpuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bestemmingLabel)
-                    .addComponent(bestemmingPuntComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bestemmingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vertrekLabel)
                     .addComponent(vertrekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vertrekTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -216,47 +216,48 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
 private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
-	ovBkPerVlContr.ok();
+	myController.ok();
 }//GEN-LAST:event_OKButtonActionPerformed
 
-private void bestemmingPuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestemmingPuntComboBoxActionPerformed
-    JComboBox jcb = (JComboBox)evt.getSource();
-	String s = (String)jcb.getSelectedItem();
-	this.vluchten = ovBkPerVlContr.bestemming(s);
+private void bestemmingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestemmingComboBoxActionPerformed
+	Luchthaven vertrekpunt = luchthavens.get((String)vertrekpuntComboBox.getSelectedItem());
+	Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
+	this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
+		
 	vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
-	
-	SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-	String vertrektijd = formatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime());
-	tijdTextField.setText(vertrektijd);
-	
-	Object[][] data = ovBkPerVlContr.vlucht(vluchten.firstEntry().getValue());
+			
+	SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
+	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+		
+	Object[][] data = myController.vlucht(vluchten.firstEntry().getValue());
 	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
 	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));		
-}//GEN-LAST:event_bestemmingPuntComboBoxActionPerformed
+}//GEN-LAST:event_bestemmingComboBoxActionPerformed
 
 private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-	ovBkPerVlContr.cancel();
+	myController.cancel();
 }//GEN-LAST:event_cancelButtonActionPerformed
 
-private void vertrekPuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekPuntComboBoxActionPerformed
-    JComboBox jcb = (JComboBox)evt.getSource();
-	String s = (String)jcb.getSelectedItem();
-	this.vluchten = ovBkPerVlContr.vertrek(s);
+private void vertrekpuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekpuntComboBoxActionPerformed
+	Luchthaven vertrekpunt = luchthavens.get((String)vertrekpuntComboBox.getSelectedItem());
+	Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
+	this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
+		
 	vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
-
-	SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-	String vertrektijd = formatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime());
-	tijdTextField.setText(vertrektijd);
-	
-	Object[][] data = ovBkPerVlContr.vlucht(vluchten.firstEntry().getValue());
+			
+	SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
+	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+		
+	Object[][] data = myController.vlucht(vluchten.firstEntry().getValue());
 	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
-	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));	
-}//GEN-LAST:event_vertrekPuntComboBoxActionPerformed
+	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
+}//GEN-LAST:event_vertrekpuntComboBoxActionPerformed
 
 private void vertrekComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekComboBoxActionPerformed
-    JComboBox jcb = (JComboBox)evt.getSource();
-	String s = (String)jcb.getSelectedItem();
-	Object[][] data = ovBkPerVlContr.vlucht(vluchten.get(s));
+    Vlucht vlucht = vluchten.get((String)vertrekComboBox.getSelectedItem());
+	myController.vlucht(vlucht);
+	
+	Object[][] data = myController.vlucht(vlucht);
 	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
 	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
 }//GEN-LAST:event_vertrekComboBoxActionPerformed
@@ -264,16 +265,16 @@ private void vertrekComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//G
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton OKButton;
     private javax.swing.JPanel VluchtPanel;
+    private javax.swing.JComboBox bestemmingComboBox;
     private javax.swing.JLabel bestemmingLabel;
-    private javax.swing.JComboBox bestemmingPuntComboBox;
     private javax.swing.JButton cancelButton;
     private javax.swing.JScrollPane infoScrollPane;
     private javax.swing.JTable infoTable;
-    private javax.swing.JTextField tijdTextField;
     private javax.swing.JComboBox vertrekComboBox;
     private javax.swing.JLabel vertrekLabel;
-    private javax.swing.JComboBox vertrekPuntComboBox;
     private javax.swing.JLabel vertrekPuntLabel;
+    private javax.swing.JTextField vertrekTextField;
+    private javax.swing.JComboBox vertrekpuntComboBox;
     private javax.swing.JPanel vluchtInfoPanel;
     // End of variables declaration//GEN-END:variables
 

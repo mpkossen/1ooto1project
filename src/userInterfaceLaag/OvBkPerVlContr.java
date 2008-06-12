@@ -24,11 +24,6 @@ public class OvBkPerVlContr
 
 	public OvBkPerVlContr ()
 	{
-	}
-
-	public OvBkPerVlContr (LuchtvaartMaatschappij lvm)
-	{
-		this.luchtvaartMaatschappij = lvm;
 		this.vertrekpunt = Luchthaven.geefAlle().firstEntry().getValue();
 		this.aankomstpunt = Luchthaven.geefAlle().firstEntry().getValue();
 		TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
@@ -43,34 +38,22 @@ public class OvBkPerVlContr
 	 *  Deze Vertrek momenten worden dan terug gegeven zodat de GUI die weer
 	 *  kan geven.
 	 */
-	public TreeMap<String, Vlucht> vertrek (String lhvnm)
+	public TreeMap<String, Vlucht> vertrekpuntEnBestemming (Luchthaven vertrekpunt, Luchthaven bestemming)
 	{
-		TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
-		this.vertrekpunt = luchthavens.get(lhvnm);
-		HashSet<Vlucht> alleVluchten = Vlucht.vertrekpEnbestemm(vertrekpunt, aankomstpunt);
-		TreeMap<String, Vlucht> vluchten = new TreeMap<String, Vlucht>();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
-		
-		for (Vlucht vl : alleVluchten)
-		{
-			String datumtijd = formatter.format(vl.geefVertrekTijd().getTime());
-			vluchten.put(datumtijd, vl);
-		}
-		return vluchten;
-	}
-
-	public TreeMap<String, Vlucht> bestemming (String lhvnnm)
-	{
-		TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
-		this.aankomstpunt = luchthavens.get(lhvnnm);
-		HashSet<Vlucht> alleVluchten = Vlucht.vertrekpEnbestemm(vertrekpunt, aankomstpunt);
 		TreeMap<String, Vlucht> vluchten = new TreeMap<String, Vlucht>();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
-
-		for (Vlucht vl : alleVluchten)
-		{
-			String datumtijd = formatter.format(vl.geefVertrekTijd().getTime());
-			vluchten.put(datumtijd, vl);
+		int i = 0;
+        for (Vlucht vl : Vlucht.geefAlleVluchten())
+        {
+			i++;
+            if (vl.geefVertrekpunt().equals(vertrekpunt))
+            {
+                if (vl.geefBestemming().equals(bestemming))
+                {
+                    String datumtijd = formatter.format(vl.geefVertrekTijd().getTime());
+					vluchten.put(datumtijd, vl);
+                }
+            }
 		}
 		return vluchten;
 	}
