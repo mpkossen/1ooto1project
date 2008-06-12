@@ -2,40 +2,38 @@
 package userInterfaceLaag;
 
 // Imports
-import java.util.Calendar;
-import java.util.TreeMap;
-import java.text.SimpleDateFormat;
+import domeinLaag.Boeking;
+import domeinLaag.Klant;
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.TreeMap;
+import javax.swing.JOptionPane;
+
 
 public class BoekVluchtContr
 {
-	// Attributes
-	private BoekVluchtFrame myFrame;
-	private Luchthaven vertrekpunt;
-	private Luchthaven aankomstpunt;
-	private Calendar vertrektijd;
-	private Vlucht vlucht;	
+	// Attributen
+	private int aantalPlaatsen;
+	private boolean roken;
+	private String naam;
+	private String straat;
+	private int huisNr;
+	private String plaats;
+	
 	// Relations
-
+	private BoekVluchtFrame myFrame;
+	private Vlucht vlucht;
 
 	// Constructors
 	public BoekVluchtContr ()
 	{
-		this.vertrekpunt = Luchthaven.geefAlle().firstEntry().getValue();
-		this.aankomstpunt = Luchthaven.geefAlle().firstEntry().getValue();
-		TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
-		
-		this.myFrame = new BoekVluchtFrame(luchthavens, this);
+		this.myFrame = new BoekVluchtFrame(this);
 		myFrame.setVisible(true);
 	}
 
 	// Overige Methodes
-	public void Vlucht ()
-	{
-		
-	}
-	
 	public TreeMap<String, Vlucht> vertrekpuntEnBestemming (Luchthaven vertrekpunt, Luchthaven bestemming)
 	{
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
@@ -58,22 +56,26 @@ public class BoekVluchtContr
 
 	public void vlucht	(Vlucht vlucht)
 	{
-		return;
+		this.vlucht = vlucht;
 	}
 	
-	public void klant (String naam, String adres, int huisNr, String plaats)
+	public void klant (String naam, String straat, int huisNr, String plaats)
 	{
-		
+		this.naam = naam.trim();
+		this.straat = straat.trim();
+		this.huisNr = huisNr;
+		this.plaats = plaats.trim();
 	}
 	
 	public void plaats (int aantal, boolean roken)
 	{
-		
+		this.aantalPlaatsen = aantal;
+		this.roken = roken;
 	}
 	
 	public void ok ()
 	{
-		
+
 	}
 	
 	public void cancel ()
