@@ -185,7 +185,7 @@ public class MenuFrame extends javax.swing.JFrame
 				BoekVluchtContr bvc = new BoekVluchtContr();
 				break;
 			case 8:
-				OvBkPerVlContr ovkpvc = new OvBkPerVlContr(lvm);
+				OvBkPerVlContr ovkpvc = new OvBkPerVlContr();
 				break;
 		}
 
