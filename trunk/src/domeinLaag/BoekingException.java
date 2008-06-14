@@ -6,37 +6,16 @@ import javax.swing.*;
 
 public class BoekingException extends Exception
 {
-	// Attributes
-
-
-	// Relations
-
-
 	// Constructors
 	public BoekingException (String s)
 	{
-		super(s);
-		JOptionPane.showMessageDialog(null, s);
+		JOptionPane.showMessageDialog(null, "BoekingException: " + s);
+		System.out.println("BoekingException: " + s);
 	}
 
 	public BoekingException ()
 	{
-		super();
-		JOptionPane.showMessageDialog(null, "LuchthavenException");
+		JOptionPane.showMessageDialog(null, "BoekingException");
+		System.out.println("BoekingException");
 	}
-	
-	// Setters
-
-
-	// Getters
-
-
-	// Adders
-
-	
-	// Removers
-
-
-	// Others
-
 }

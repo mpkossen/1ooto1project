@@ -2,6 +2,7 @@ package domeinLaag;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
@@ -13,14 +14,14 @@ public class Klant
     private String straat;
     private String plaats;
     private int huisNr;
-    private static HashSet alleKlanten;
+    private static HashSet alleKlanten = new HashSet();
 
     // Constructors
-    public Klant(String nm, String ad, int huis, String pl)
+    public Klant(String nm, String str, int hnr, String pl)
     {
         this.naam = nm;
-        this.plaats = pl;
-        this.huisNr = huis;
+        this.straat = str;
+        this.huisNr = hnr;
         this.plaats = pl;
     }
 
@@ -70,20 +71,38 @@ public class Klant
     {
 		TreeMap<String, Klant> klanten = new TreeMap<String, Klant>();
 		
-		for (Iterator it = alleKlanten.iterator(); it.hasNext(); )
+		Iterator it = alleKlanten.iterator();
+		for (; it.hasNext();)
 		{
 			Klant kl = (Klant)it.next();
 			klanten.put(kl.getNaam(), kl);
 		}
         return klanten;
     }
-    
+	    
+	public static boolean bestaatAl (Klant klant)
+	{
+		for (Iterator it = geefAlle().values().iterator(); it.hasNext();)
+		{
+			Klant andereKlant = (Klant)it.next();
+			if (andereKlant.getNaam().equals(klant.getNaam())		&&
+				andereKlant.getStraat().equals(klant.getStraat())	&&
+				andereKlant.getHuisNr() == klant.getHuisNr()		&&
+				andereKlant.getPlaats().equals(klant.getHuisNr())
+			)
+			{
+			return true;
+			}
+		}
+		return false;
+	}
+	
     public void bewaar() throws KlantException, KlantBestaatAlException
     {
-        if (naam.equals(null)	||
-			straat.equals(null)	||
+		if (naam == null		||
+			straat == null		||
 			huisNr < 1			||
-			plaats.equals(null)
+			plaats == null
 			)
 		{
 			throw new KlantException("Onvolledige Invoer");
@@ -96,22 +115,5 @@ public class Klant
 		{
 			alleKlanten.add(this);
 		}
-    }
-	
-	public static boolean bestaatAl (Klant klant)
-	{
-		for (Iterator i = alleKlanten.iterator(); i.hasNext();)
-		{
-			Klant andereKlant = (Klant)i.next();
-			if (andereKlant.getNaam().equals(klant.getNaam())		&&
-				andereKlant.getStraat().equals(klant.getStraat())	&&
-				andereKlant.getHuisNr() == klant.getHuisNr()		&&
-				andereKlant.getPlaats().equals(klant.getHuisNr())
-			)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
+    }	
 }

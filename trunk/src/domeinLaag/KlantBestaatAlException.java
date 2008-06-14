@@ -8,13 +8,13 @@ public class KlantBestaatAlException extends Exception
 {
 	public KlantBestaatAlException (String s)
 	{
-		super(s);
-		JOptionPane.showMessageDialog(null, s);
+		JOptionPane.showMessageDialog(null, "KlantBestaatAlException: " + s);
+		System.out.println("KlantBestaatAlException: " + s);
 	}
 	
 	public KlantBestaatAlException ()
 	{
-		super();
-		JOptionPane.showMessageDialog(null, "KlantException");
+		JOptionPane.showMessageDialog(null, "KlantBestaatAlException");
+		System.out.println("KlantBestaatAlException");
 	}
 }

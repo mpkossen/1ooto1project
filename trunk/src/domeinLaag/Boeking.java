@@ -28,7 +28,7 @@ public class Boeking
 		this.vlucht = vl;
 		this.aantalPlaatsen = ap;
 		this.roken = rkn;
-		this.klant = klant;
+		this.klant = kl;
 	}
 	
 	/**
@@ -83,17 +83,17 @@ public class Boeking
 
 	public void bewaar () throws BoekingException, KlantException, KlantBestaatAlException
 	{
-		if (vlucht.equals(null))
+		if (vlucht == null)
 		{
-			throw new BoekingException("");
+			throw new BoekingException("Geen vlucht geselecteerd");
 		}
-		else if (klant.equals(null))
+		else if (klant == null)
 		{
-			throw new BoekingException("");
+			throw new BoekingException("Geen klant ingevoerd");
 		}
 		else if (aantalPlaatsen < 1)
 		{
-			throw new BoekingException("");
+			throw new BoekingException("Ongeldige invoer voor het aantal plaatsen");
 		}
 		else
 		{
