@@ -85,7 +85,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="vertrekComboBox" max="32767" attributes="1"/>
+                      <Component id="vluchtComboBox" max="32767" attributes="1"/>
                       <Component id="vertrekpuntComboBox" max="32767" attributes="1"/>
                       <Component id="bestemmingComboBox" alignment="0" pref="193" max="32767" attributes="1"/>
                   </Group>
@@ -111,7 +111,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="vertrekLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="vertrekComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vluchtComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="vertrekTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="21" max="32767" attributes="0"/>
@@ -162,21 +162,24 @@
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="bestemmingComboBox.setRenderer(lRenderer);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="vertrekComboBox">
+        <Component class="javax.swing.JComboBox" name="vluchtComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray())" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vertrekComboBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vluchtComboBoxActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="vertrekComboBox.setRenderer(lRenderer);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="vluchtComboBox.setRenderer(lRenderer);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="vertrekTextField">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
