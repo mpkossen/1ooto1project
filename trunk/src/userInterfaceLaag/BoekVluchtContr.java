@@ -5,6 +5,8 @@ package userInterfaceLaag;
 import domeinLaag.Boeking;
 import domeinLaag.BoekingException;
 import domeinLaag.Klant;
+import domeinLaag.KlantException;
+import domeinLaag.KlantBestaatAlException;
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
 import java.text.SimpleDateFormat;
@@ -83,8 +85,18 @@ public class BoekVluchtContr
 		{
 			boeking.bewaar();
 		}
+		catch (KlantException ke)
+		{
+			// De klantgegevens (naam, straat huisnummer, plaats) zijn niet ok.
+			// De boekingsgevens (vlucht, aantalPlaasen, roken) zijn dus wel ok.
+		}
+		catch (KlantBestaatAlException kbae)	// Klant bestaat dus al
+		{
+			boeking.setKlant(klant);
+		}
 		catch (BoekingException be)
 		{
+			// De boekingsgegevens (vlucht, aantalPlaasen, roken) zijn niet ok.
 		}
 	}
 	
