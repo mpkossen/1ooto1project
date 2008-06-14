@@ -4,19 +4,19 @@ package domeinLaag;
 /**
  * @author jzuurbier
  */
-public class VluchtException extends Exception {
-
+public class VluchtException extends Exception
+{
+	/**
+	 * @param s
+	 */
+	public VluchtException(String s) {
+		super(s);
+	}
+	
 	/**
 	 * 
 	 */
 	public VluchtException() {
 		super();
-	}
-
-	/**
-	 * @param arg0
-	 */
-	public VluchtException(String arg0) {
-		super(arg0);
 	}
 }

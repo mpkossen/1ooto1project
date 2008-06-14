@@ -8,13 +8,13 @@ public class KlantException extends Exception
 {
 	public KlantException (String s)
 	{
-		super(s);
-		JOptionPane.showMessageDialog(null, s);
+		JOptionPane.showMessageDialog(null, "KlantException: " + s);
+		System.out.println("KlantException: " + s);
 	}
 	
 	public KlantException ()
 	{
-		super();
 		JOptionPane.showMessageDialog(null, "KlantException");
+		System.out.println("KlantException");
 	}
 }

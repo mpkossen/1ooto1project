@@ -59,22 +59,40 @@ public class BoekVluchtContr
 		this.vlucht = vlucht;
 	}
 	
-	public void klant (String naam, String straat, int huisNr, String plaats)
+	public void klant (String nm, String str, String hnr, String pl) throws NumberFormatException
 	{
-		this.naam = naam.trim();
-		this.straat = straat.trim();
-		this.huisNr = huisNr;
-		this.plaats = plaats.trim();
+		try
+		{
+			this.naam = nm.trim();
+			this.straat = str.trim();
+			this.huisNr = Integer.parseInt(hnr.trim());
+			this.plaats = pl.trim();
+		}
+		catch (NumberFormatException nfe)
+		{
+			throw new NumberFormatException("Ongeldige invoer voor het huisnummer.");
+		}
 	}
 	
-	public void plaats (int aantal, boolean roken)
+	public void plaats (String aantal, boolean roken) throws NumberFormatException
 	{
-		this.aantalPlaatsen = aantal;
-		this.roken = roken;
+		try
+		{
+			this.aantalPlaatsen = Integer.parseInt(aantal);
+			this.roken = roken;
+		}
+		catch (NumberFormatException nfe)
+		{
+			throw new NumberFormatException("Ongeldige invoer voor het aantal stoelen.");
+		}		
 	}
 	
 	public void ok ()
 	{
+		System.out.println("Naam: " + naam);
+		System.out.println("Straat: " + straat);
+		System.out.println("HuisNr: " + huisNr);			
+		System.out.println("Plaats: " + plaats);
 		Klant klant = new Klant(naam, straat, huisNr, plaats);
 		Boeking boeking = new Boeking();
 		boeking.setVlucht(vlucht);
@@ -84,6 +102,7 @@ public class BoekVluchtContr
 		try
 		{
 			boeking.bewaar();
+			myFrame.dispose();
 		}
 		catch (KlantException ke)
 		{
@@ -92,7 +111,8 @@ public class BoekVluchtContr
 		}
 		catch (KlantBestaatAlException kbae)	// Klant bestaat dus al
 		{
-			boeking.setKlant(klant);
+			boeking.setKlant(klant);			// Dan maar een bestaande klant refereren.
+			vlucht.addBoeking(boeking);			// Uiteraard moeten we dan wel nog even de boeking bewaren.
 		}
 		catch (BoekingException be)
 		{
