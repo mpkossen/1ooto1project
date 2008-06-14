@@ -81,7 +81,7 @@ public class Boeking
 		return klant;
 	}
 
-	public void bewaar () throws BoekingException
+	public void bewaar () throws BoekingException, KlantException, KlantBestaatAlException
 	{
 		if (vlucht.equals(null))
 		{
