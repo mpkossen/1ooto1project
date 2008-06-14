@@ -96,7 +96,9 @@ public class BoekVluchtFrame extends javax.swing.JFrame
             }
         });
 
+        aankomstTextField.setBackground(new java.awt.Color(240, 240, 240));
         aankomstTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        aankomstTextField.setFocusable(false);
 
         bestemmingLabel.setText("Bestemming");
 
@@ -104,13 +106,17 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 
         aankomstLabel.setText("Aankomst");
 
+        vertrekTijdTextField.setBackground(new java.awt.Color(240, 240, 240));
         vertrekTijdTextField.setEditable(false);
         vertrekTijdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         vertrekTijdTextField.setText("tijd");
+        vertrekTijdTextField.setFocusable(false);
 
+        aankomstTijdTextField.setBackground(new java.awt.Color(240, 240, 240));
         aankomstTijdTextField.setEditable(false);
         aankomstTijdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         aankomstTijdTextField.setText("tijd");
+        aankomstTijdTextField.setFocusable(false);
 
         javax.swing.GroupLayout vluchtPanelLayout = new javax.swing.GroupLayout(vluchtPanel);
         vluchtPanel.setLayout(vluchtPanelLayout);
@@ -158,6 +164,13 @@ public class BoekVluchtFrame extends javax.swing.JFrame
                     .addComponent(aankomstTijdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        vertrekpuntComboBox.getAccessibleContext().setAccessibleDescription("Luchthaven waar de Vlucht vertrekt");
+        bestemmingComboBox.getAccessibleContext().setAccessibleDescription("Luchthaven waar de vlucht eindigt");
+        vluchtComboBox.getAccessibleContext().setAccessibleDescription("Dag waarop de vlucht vertrekt");
+        aankomstTextField.getAccessibleContext().setAccessibleDescription("Dag waarop de vlucht aankomt");
+        vertrekTijdTextField.getAccessibleContext().setAccessibleDescription("Tijdstip waarop de vlucht vertrekt");
+        aankomstTijdTextField.getAccessibleContext().setAccessibleDescription("Tijdstip waarop de vlucht aankomt");
 
         naamTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         naamTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -323,6 +336,14 @@ public class BoekVluchtFrame extends javax.swing.JFrame
                 .addContainerGap())
         );
 
+        naamTextField.getAccessibleContext().setAccessibleDescription("Naam van de klant (Voorletters + Achternaam)");
+        straatTextField.getAccessibleContext().setAccessibleDescription("Straat waar de klant woont");
+        stoelenTextField.getAccessibleContext().setAccessibleDescription("Aantal door de klant gewenste stoelen");
+        huisNummerTextField.getAccessibleContext().setAccessibleDescription("Huisnummer van de klant");
+        plaatsTextField.getAccessibleContext().setAccessibleDescription("Woonplaats van de klant");
+        nietRokenButton.getAccessibleContext().setAccessibleDescription("Geboekte stoelen zijn \"Niet Roken\"");
+        rokenButton.getAccessibleContext().setAccessibleDescription("Geboekte stoelen zijn \"Roken\"");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 	private void vertrekpuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekpuntComboBoxActionPerformed
@@ -377,48 +398,25 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 
 	private void straatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_straatTextFieldActionPerformed
 		huisNummerTextField.requestFocusInWindow();
-		// myController.klant(naamTextField.getText(), straatTextField.getText(), Integer.parseInt(huisNummerTextField.getText()), plaatsTextField.getText());
 	}//GEN-LAST:event_straatTextFieldActionPerformed
 
 	private void huisNummerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huisNummerTextFieldActionPerformed
 		plaatsTextField.requestFocusInWindow();
-		// myController.klant(naamTextField.getText(), straatTextField.getText(), Integer.parseInt(huisNummerTextField.getText()), plaatsTextField.getText());
 	}//GEN-LAST:event_huisNummerTextFieldActionPerformed
 
 	private void plaatsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plaatsTextFieldActionPerformed
 		stoelenTextField.requestFocusInWindow();
-		// myController.klant(naamTextField.getText(), straatTextField.getText(), Integer.parseInt(huisNummerTextField.getText()), plaatsTextField.getText());
 	}//GEN-LAST:event_plaatsTextFieldActionPerformed
 
 	private void nietRokenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nietRokenButtonActionPerformed
 		okButton.requestFocusInWindow();
-		// myController.plaats(Integer.parseInt(stoelenTextField.getText()), rokenButton.isSelected());
 	}//GEN-LAST:event_nietRokenButtonActionPerformed
 
 	private void rokenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rokenButtonActionPerformed
 		okButton.requestFocusInWindow();
-		// myController.plaats(Integer.parseInt(stoelenTextField.getText()), rokenButton.isSelected());
 	}//GEN-LAST:event_rokenButtonActionPerformed
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-/*
-		try
-		{
-			myController.plaats(stoelenTextField.getText(), rokenButton.isSelected());
-		}
-		catch (NumberFormatException nfe)
-		{
-			stoelenTextField.requestFocusInWindow();
-		}
-		try
-		{
-			myController.klant(naamTextField.getText(), straatTextField.getText(), huisNummerTextField.getText(), plaatsTextField.getText());
-		}
-		catch (NumberFormatException nfe)
-		{
-			huisNummerTextField.requestFocusInWindow();
-		}		
-*/		
 		myController.ok();
 	}//GEN-LAST:event_okButtonActionPerformed
 

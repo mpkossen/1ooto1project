@@ -52,7 +52,9 @@ public class Vlucht
         {
             if (v.vliegtuig.equals(vliegtuig))
             {
-                if (v.geefVertrekTijd().after(d) && v.getAankomstTijd().before(d))
+                if ((d.getTimeInMillis()/1000 >= v.geefVertrekTijd().getTimeInMillis()/1000)	&&
+					(d.getTimeInMillis()/1000 <= v.getAankomstTijd().getTimeInMillis()/1000)
+					)
                 {
                     b = true;
                 }
@@ -65,15 +67,15 @@ public class Vlucht
      * Controleer dat bestemming <> vertrekpunt.
      * @param bestemming
      */
-    public void zetBestemming(Luchthaven bestemming)
+    public void zetBestemming(Luchthaven bestemming) throws VluchtException
     {
-        if (bestemming == vertrekpunt)
+        if (bestemming != vertrekpunt)
         {
             this.bestemming = bestemming;
         }
         else
         {
-            throw new IllegalArgumentException("bestemming en vertrek zijn gelijk");
+            throw new VluchtException("Vertrekpunt en bestemming zijn gelijk");
         }
 
     }
@@ -132,7 +134,7 @@ public class Vlucht
         {
             throw new VluchtException("Geen geldige datum!");
         }
-        if (aTijd.before(vertrekTijd))
+        if(aTijd.after(vertrekTijd)) 
         {
             aankomstTijd = (Calendar) aTijd.clone();
         }

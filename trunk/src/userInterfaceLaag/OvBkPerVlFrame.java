@@ -50,7 +50,7 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
         lRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
         vertrekpuntComboBox = new javax.swing.JComboBox();
         bestemmingComboBox = new javax.swing.JComboBox();
-        vertrekComboBox = new javax.swing.JComboBox();
+        vluchtComboBox = new javax.swing.JComboBox();
         vertrekTextField = new javax.swing.JTextField();
         vluchtInfoPanel = new javax.swing.JPanel();
         infoScrollPane = new javax.swing.JScrollPane();
@@ -86,14 +86,15 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
             }
         });
 
-        vertrekComboBox.setRenderer(lRenderer);
-        vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
-        vertrekComboBox.addActionListener(new java.awt.event.ActionListener() {
+        vluchtComboBox.setRenderer(lRenderer);
+        vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+        vluchtComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vertrekComboBoxActionPerformed(evt);
+                vluchtComboBoxActionPerformed(evt);
             }
         });
 
+        vertrekTextField.setBackground(new java.awt.Color(240, 240, 240));
         vertrekTextField.setEditable(false);
         vertrekTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
@@ -109,7 +110,7 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
                     .addComponent(vertrekLabel))
                 .addGap(84, 84, 84)
                 .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(vertrekComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vluchtComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(vertrekpuntComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bestemmingComboBox, 0, 193, Short.MAX_VALUE))
                 .addGap(52, 52, 52)
@@ -130,7 +131,7 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addGroup(VluchtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vertrekLabel)
-                    .addComponent(vertrekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vluchtComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vertrekTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -224,7 +225,7 @@ private void bestemmingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
 	Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
 	this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
 		
-	vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+	vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
 			
 	SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
 	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
@@ -243,7 +244,7 @@ private void vertrekpuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) 
 	Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
 	this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
 		
-	vertrekComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+	vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
 			
 	SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
 	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
@@ -253,14 +254,14 @@ private void vertrekpuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) 
 	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
 }//GEN-LAST:event_vertrekpuntComboBoxActionPerformed
 
-private void vertrekComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekComboBoxActionPerformed
-    Vlucht vlucht = vluchten.get((String)vertrekComboBox.getSelectedItem());
+private void vluchtComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vluchtComboBoxActionPerformed
+    Vlucht vlucht = vluchten.get((String)vluchtComboBox.getSelectedItem());
 	myController.vlucht(vlucht);
 	
 	Object[][] data = myController.vlucht(vlucht);
 	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
 	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
-}//GEN-LAST:event_vertrekComboBoxActionPerformed
+}//GEN-LAST:event_vluchtComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton OKButton;
@@ -270,11 +271,11 @@ private void vertrekComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JButton cancelButton;
     private javax.swing.JScrollPane infoScrollPane;
     private javax.swing.JTable infoTable;
-    private javax.swing.JComboBox vertrekComboBox;
     private javax.swing.JLabel vertrekLabel;
     private javax.swing.JLabel vertrekPuntLabel;
     private javax.swing.JTextField vertrekTextField;
     private javax.swing.JComboBox vertrekpuntComboBox;
+    private javax.swing.JComboBox vluchtComboBox;
     private javax.swing.JPanel vluchtInfoPanel;
     // End of variables declaration//GEN-END:variables
 

@@ -32,31 +32,37 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
         landLabel = new javax.swing.JLabel();
         landComboBox = new javax.swing.JComboBox();
         codeLabel = new javax.swing.JLabel();
-        codeTextField = new javax.swing.JTextField();
+        landCodeTextField = new javax.swing.JTextField();
         nieuweLuchthavenPanel = new javax.swing.JPanel();
         naamLabel = new javax.swing.JLabel();
         naamTextField = new javax.swing.JTextField();
         landCodeLabel = new javax.swing.JLabel();
-        landCodeTextField = new javax.swing.JTextField();
+        luchthavenCodeTextField = new javax.swing.JTextField();
         werkPlaatsLabel = new javax.swing.JLabel();
         jaButton = new javax.swing.JRadioButton();
         neeButton = new javax.swing.JRadioButton();
-        okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         landLabel.setText("Land");
 
-        landComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        landComboBox.setNextFocusableComponent(naamTextField);
+        landComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                landComboBoxActionPerformed(evt);
+            }
+        });
 
         codeLabel.setText("Code");
 
-        codeTextField.setBackground(new java.awt.Color(255, 255, 255));
-        codeTextField.setEditable(false);
-        codeTextField.addActionListener(new java.awt.event.ActionListener() {
+        landCodeTextField.setBackground(new java.awt.Color(240, 240, 240));
+        landCodeTextField.setEditable(false);
+        landCodeTextField.setFocusable(false);
+        landCodeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codeTextFieldActionPerformed(evt);
+                landCodeTextFieldActionPerformed(evt);
             }
         });
 
@@ -65,17 +71,29 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
         naamLabel.setText("Naam");
 
         naamTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        naamTextField.setNextFocusableComponent(luchthavenCodeTextField);
         naamTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 naamTextFieldActionPerformed(evt);
             }
         });
+        naamTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                naamTextFieldFocusLost(evt);
+            }
+        });
 
         landCodeLabel.setText("Code");
 
-        landCodeTextField.addActionListener(new java.awt.event.ActionListener() {
+        luchthavenCodeTextField.setNextFocusableComponent(jaButton);
+        luchthavenCodeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                landCodeTextFieldActionPerformed(evt);
+                luchthavenCodeTextFieldActionPerformed(evt);
+            }
+        });
+        luchthavenCodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                luchthavenCodeTextFieldFocusLost(evt);
             }
         });
 
@@ -83,6 +101,7 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
 
         jaNeeButtonGroup.add(jaButton);
         jaButton.setText("Ja");
+        jaButton.setNextFocusableComponent(okButton);
         jaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jaButtonActionPerformed(evt);
@@ -90,7 +109,9 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
         });
 
         jaNeeButtonGroup.add(neeButton);
+        neeButton.setSelected(true);
         neeButton.setText("Nee");
+        neeButton.setNextFocusableComponent(okButton);
         neeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 neeButtonActionPerformed(evt);
@@ -107,16 +128,15 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
                     .addComponent(naamLabel)
                     .addComponent(landCodeLabel)
                     .addComponent(werkPlaatsLabel))
-                .addGap(92, 92, 92)
-                .addGroup(nieuweLuchthavenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(45, 45, 45)
+                .addGroup(nieuweLuchthavenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(nieuweLuchthavenPanelLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addComponent(jaButton)
-                        .addGap(37, 37, 37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(neeButton))
-                    .addComponent(landCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(luchthavenCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(naamTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         nieuweLuchthavenPanelLayout.setVerticalGroup(
             nieuweLuchthavenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,29 +148,34 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(nieuweLuchthavenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(landCodeLabel)
-                    .addComponent(landCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(luchthavenCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(nieuweLuchthavenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(werkPlaatsLabel)
                     .addComponent(jaButton)
                     .addComponent(neeButton))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        okButton.setText("Cancel");
-        okButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButtonActionPerformed(evt);
-            }
-        });
+        naamTextField.getAccessibleContext().setAccessibleDescription("Naam van de te registreren luchthaven");
+        luchthavenCodeTextField.getAccessibleContext().setAccessibleDescription("Code voor de te registreren luchthaven");
+        jaButton.getAccessibleContext().setAccessibleDescription("De te registreren luchthaven beschikt over een werkplaats");
+        neeButton.getAccessibleContext().setAccessibleDescription("De te registreren luchthaven beschikt niet over een werkplaats");
 
-        cancelButton.setText("OK");
-        cancelButton.setMaximumSize(new java.awt.Dimension(65, 23));
-        cancelButton.setMinimumSize(new java.awt.Dimension(65, 23));
-        cancelButton.setPreferredSize(new java.awt.Dimension(65, 23));
+        cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
+            }
+        });
+
+        okButton.setText("OK");
+        okButton.setMaximumSize(new java.awt.Dimension(65, 23));
+        okButton.setMinimumSize(new java.awt.Dimension(65, 23));
+        okButton.setPreferredSize(new java.awt.Dimension(65, 23));
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
             }
         });
 
@@ -159,24 +184,27 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(nieuweLuchthavenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(landLabel)
-                        .addGap(124, 124, 124)
-                        .addComponent(landComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(codeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(codeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(okButton)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(landLabel)
+                                .addGap(80, 80, 80)
+                                .addComponent(landComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(codeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(landCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addComponent(cancelButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -186,16 +214,19 @@ public class RegLuchthavenFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(landLabel)
                     .addComponent(landComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(codeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(landCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nieuweLuchthavenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(okButton)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancelButton)
+                    .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        landComboBox.getAccessibleContext().setAccessibleDescription("Land waarin de te registreren luchthaven zich bevindt");
+        landCodeTextField.getAccessibleContext().setAccessibleDescription("Code van het geselecteerde land");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -204,9 +235,9 @@ private void naamTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 // TODO add your handling code here:
 }//GEN-LAST:event_naamTextFieldActionPerformed
 
-private void landCodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_landCodeTextFieldActionPerformed
+private void luchthavenCodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luchthavenCodeTextFieldActionPerformed
 // TODO add your handling code here:
-}//GEN-LAST:event_landCodeTextFieldActionPerformed
+}//GEN-LAST:event_luchthavenCodeTextFieldActionPerformed
 
 private void jaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaButtonActionPerformed
 // TODO add your handling code here:
@@ -216,29 +247,41 @@ private void neeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 // TODO add your handling code here:
 }//GEN-LAST:event_neeButtonActionPerformed
 
-private void codeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeTextFieldActionPerformed
+private void landCodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_landCodeTextFieldActionPerformed
 // TODO add your handling code here:
-}//GEN-LAST:event_codeTextFieldActionPerformed
-
-private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-	// TODO add your handling code here:
-}//GEN-LAST:event_cancelButtonActionPerformed
+}//GEN-LAST:event_landCodeTextFieldActionPerformed
 
 private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
 	// TODO add your handling code here:
 }//GEN-LAST:event_okButtonActionPerformed
 
+private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+	// TODO add your handling code here:
+}//GEN-LAST:event_cancelButtonActionPerformed
+
+private void landComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_landComboBoxActionPerformed
+	// TODO add your handling code here:
+}//GEN-LAST:event_landComboBoxActionPerformed
+
+private void naamTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_naamTextFieldFocusLost
+	// TODO add your handling code here:
+}//GEN-LAST:event_naamTextFieldFocusLost
+
+private void luchthavenCodeTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_luchthavenCodeTextFieldFocusLost
+	// TODO add your handling code here:
+}//GEN-LAST:event_luchthavenCodeTextFieldFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel codeLabel;
-    private javax.swing.JTextField codeTextField;
     private javax.swing.JRadioButton jaButton;
     private javax.swing.ButtonGroup jaNeeButtonGroup;
     private javax.swing.JLabel landCodeLabel;
     private javax.swing.JTextField landCodeTextField;
     private javax.swing.JComboBox landComboBox;
     private javax.swing.JLabel landLabel;
+    private javax.swing.JTextField luchthavenCodeTextField;
     private javax.swing.JLabel naamLabel;
     private javax.swing.JTextField naamTextField;
     private javax.swing.JRadioButton neeButton;
