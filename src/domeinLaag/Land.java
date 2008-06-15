@@ -1,13 +1,17 @@
 
 package domeinLaag;
 
+//Imports
 import java.util.HashSet;
 import java.util.TreeMap;
 
 public class Land
 {
+	// Attributen
 	private String naam;
 	private int code;
+	
+	// Relaties
 	/** Alle luchthavens binnen het land */
 	private HashSet<Luchthaven> luchthavens;
 	private static HashSet<Land> alleLanden = new HashSet<Land>();
@@ -32,20 +36,29 @@ public class Land
 	/**
 	@return int
 	 */
-	public int geefCode ()
+	public int getCode ()
 	{
 		return code;
-	}
-
-	public static HashSet geefAlleLandenAlsHashSet ()
-	{
-		return alleLanden;
 	}
 
 	/**
 	@return java.util.TreeMap een TreeMap met naam als key en een referentie naar het land als value.
 	 */
-	public static TreeMap<String, Land> geefAlleLanden ()
+	public TreeMap<String, Luchthaven> getLuchthavens ()
+	{
+		TreeMap<String, Luchthaven> luchthavenMap = new TreeMap<String, Luchthaven>();
+		for (Luchthaven l : luchthavens)
+		{
+			String nm = l.geefNaam();
+			luchthavenMap.put(nm, l);
+		}
+		return luchthavenMap;
+	}	
+	
+	/**
+	@return java.util.TreeMap een TreeMap met naam als key en een referentie naar het land als value.
+	 */
+	public static TreeMap<String, Land> getAlleLanden ()
 	{
 		TreeMap<String, Land> landMap = new TreeMap<String, Land>();
 		for (Land l : alleLanden)
@@ -60,20 +73,6 @@ public class Land
 	public void addLuchthaven (Luchthaven lhvn)
 	{
 		luchthavens.add(lhvn);
-	}
-
-	/**
-	@return java.util.TreeMap een TreeMap met naam als key en een referentie naar het land als value.
-	 */
-	public TreeMap<String, Luchthaven> geefLuchthavens ()
-	{
-		TreeMap<String, Luchthaven> luchthavenMap = new TreeMap<String, Luchthaven>();
-		for (Luchthaven l : luchthavens)
-		{
-			String nm = l.geefNaam();
-			luchthavenMap.put(nm, l);
-		}
-		return luchthavenMap;
 	}
 }
 

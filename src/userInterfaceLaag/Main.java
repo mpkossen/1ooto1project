@@ -11,10 +11,10 @@ public class Main {
 	Fabrikant f1 = new Fabrikant("Airbus", "G. Dejenelle");
 	Fabrikant f2 = new Fabrikant("Fokker", "A.J. Berger");
 
-	VliegtuigType vtt1 = f1.creeerVliegtuigType("A-200", 60, 80);
-	VliegtuigType vtt2 = f1.creeerVliegtuigType("A-201", 65, 88);
-	VliegtuigType vtt3 = f2.creeerVliegtuigType("F-100", 37, 70);
-	VliegtuigType vtt4 = f2.creeerVliegtuigType("F-101", 45, 82);
+	VliegtuigType vtt1 = f1.createVliegtuigType("A-200", 60, 80);
+	VliegtuigType vtt2 = f1.createVliegtuigType("A-201", 65, 88);
+	VliegtuigType vtt3 = f2.createVliegtuigType("F-100", 37, 70);
+	VliegtuigType vtt4 = f2.createVliegtuigType("F-101", 45, 82);
 
 	Calendar datum = Calendar.getInstance();
 	datum.set(2000, 01, 01);

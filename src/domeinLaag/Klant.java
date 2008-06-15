@@ -10,10 +10,13 @@ import java.util.TreeMap;
  */
 public class Klant
 {
+	// Attributen
     private String naam;
     private String straat;
     private String plaats;
     private int huisNr;
+	
+	// Relaties
     private static HashSet alleKlanten = new HashSet();
 
     // Constructors
@@ -67,7 +70,7 @@ public class Klant
         return huisNr;
     }
     
-    public static TreeMap<String, Klant> geefAlle ()
+    public static TreeMap<String, Klant> getAlleKlanten ()
     {
 		TreeMap<String, Klant> klanten = new TreeMap<String, Klant>();
 		
@@ -79,16 +82,17 @@ public class Klant
 		}
         return klanten;
     }
-	    
-	public static boolean bestaatAl (Klant klant)
+
+	// Overige Methodes
+	public static boolean bestaatAl (Klant kl)
 	{
-		for (Iterator it = geefAlle().values().iterator(); it.hasNext();)
+		for (Iterator it = getAlleKlanten().values().iterator(); it.hasNext();)
 		{
 			Klant andereKlant = (Klant)it.next();
-			if (andereKlant.getNaam().equals(klant.getNaam())		&&
-				andereKlant.getStraat().equals(klant.getStraat())	&&
-				andereKlant.getHuisNr() == klant.getHuisNr()		&&
-				andereKlant.getPlaats().equals(klant.getHuisNr())
+			if (andereKlant.getNaam().equals(kl.getNaam())		&&
+				andereKlant.getStraat().equals(kl.getStraat())	&&
+				andereKlant.getHuisNr() == kl.getHuisNr()		&&
+				andereKlant.getPlaats().equals(kl.getHuisNr())
 			)
 			{
 			return true;

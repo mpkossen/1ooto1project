@@ -90,7 +90,7 @@ public class OverzVliegtuigenFrame extends javax.swing.JFrame
 			VliegtuigType vtt = vliegtuig.geefVliegtuigType();
 			String vttCode = vtt.geefCode();
 			Fabrikant fb = vtt.geefFabrikant();
-			String fbNaam = fb.geefNaam();
+			String fbNaam = fb.getNaam();
 			int[] cp = vliegtuig.geefCapaciteit();
 			String cap = "R " + cp[0] + " NR " + cp[1];
 			TextArea.append(

@@ -21,7 +21,7 @@ public class RegLuchthavenContr
 	public RegLuchthavenContr ()
 	{
 		luchthaven = new Luchthaven();
-		TreeMap<String, Land> alleLanden = Land.geefAlleLanden();
+		TreeMap<String, Land> alleLanden = Land.getAlleLanden();
 		this.land = alleLanden.firstEntry().getValue();
 		myFrame = new RegLuchthavenFrame(this, alleLanden);
 		myFrame.setVisible(true);
@@ -36,7 +36,7 @@ public class RegLuchthavenContr
 	public int land (Land land)
 	{
 		luchthaven.zetLand(land);
-		return land.geefCode();
+		return land.getCode();
 	}
 
 	/**
