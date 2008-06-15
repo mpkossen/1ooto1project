@@ -35,37 +35,37 @@ public class RegLuchthavenContr
 	 */
 	public int land (Land land)
 	{
-		luchthaven.zetLand(land);
+		luchthaven.setLand(land);
 		return land.getCode();
 	}
 
 	/**
-	Roep lhv.zetNaam().
+	Roep lhv.setNaam().
 	Geef de exception door aan het frame, als die optreedt.
 	@param naam
 	@throws java.lang.LuchthavenException
 	 */
 	public void naam (String nm) throws LuchthavenException
 	{
-		luchthaven.zetNaam(nm);
+		luchthaven.setNaam(nm);
 	}
 
 	/**
-	Roep lhv.zetCode().
+	Roep lhv.setCode().
 	@param code
 	 */
 	public void code (String code) throws LuchthavenException
 	{
-		luchthaven.zetCode(code);
+		luchthaven.setCode(code);
 	}
 
 	/**
-	Roep lhv.zetWerkPlaats().
+	Roep lhv.setWerkPlaats().
 	@param wp
 	 */
 	public void werkPlaats (boolean wp) throws LuchthavenException
 	{
-		luchthaven.zetWerkPlaats(wp);
+		luchthaven.setWerkPlaats(wp);
 	}
 
 	/**

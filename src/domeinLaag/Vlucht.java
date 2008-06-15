@@ -247,7 +247,7 @@ public class Vlucht
      */
     public String getBestemming()
     {
-        return bestemming.geefNaam();
+        return bestemming.getNaam();
     }
     
     public static HashSet<Vlucht> vertrekpEnbestemm (Luchthaven vertrek, Luchthaven aankomst)

@@ -33,8 +33,8 @@ public class RegVluchtController
    public RegVluchtController(LuchtvaartMaatschappij lvm)
    {
    	this.lvm = lvm;
-   	vt = lvm.geefVliegtuigen();
-   	lh = Luchthaven.geefAlle();
+   	vt = lvm.getVliegtuigen();
+   	lh = Luchthaven.getAlleLuchthavens();
 
    	myFrame = new RegVluchtJFrame(vt.keySet(), lh.keySet(), this);
    	myFrame.setVisible(true);
@@ -51,7 +51,7 @@ public class RegVluchtController
    public int[] vliegtuig(String naam)
    {
    	hetVliegtuig = (Vliegtuig) vt.get(naam);
-   	int[] cap = hetVliegtuig.geefCapaciteit();
+   	int[] cap = hetVliegtuig.getCapaciteit();
    	return cap;
    	//todo toon capaciteit
 

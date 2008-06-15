@@ -64,7 +64,7 @@ public class RegVliegtuigController {
    {
 	//Zoek (de link naar) het vliegtuigtype-object, op basis van de naam.
    	vtt = vliegtuigTypen.get(vttcd);
-	vt.zetVliegtuigType(vtt);
+	vt.setVliegtuigType(vtt);
 	int[] cap= this.vtt.geefCapaciteit();
 	return cap;
    }
@@ -75,7 +75,7 @@ public class RegVliegtuigController {
     */
    public void naam(String naam) throws IllegalArgumentException
    {
-	vt.zetNaam(naam);
+	vt.setNaam(naam);
    }
 
    /**
@@ -84,7 +84,7 @@ public class RegVliegtuigController {
     */
    public void inGebruik(Calendar inGebruik) throws IllegalArgumentException
    {
-    vt.zetInGebruik(inGebruik);
+    vt.setInGebruik(inGebruik);
    }
 
    public void ok() throws IllegalStateException
