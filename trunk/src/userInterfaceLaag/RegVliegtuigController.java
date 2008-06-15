@@ -28,7 +28,7 @@ public class RegVliegtuigController {
 	this.lvm = lvm;
 	vt = new Vliegtuig(lvm);
 	//Vraag alle fabrikanten op en maak een (gesorteerde) Set met hun namen voor het frame.
-	fabrMap = Fabrikant.geefAlle();
+	fabrMap = Fabrikant.getAlleFabrikanten();
 	Set<String> fabrSet = fabrMap.keySet();
 	rvf = new RegVliegtuigFrame(this, fabrSet);
 	rvf.setVisible(true);
@@ -46,10 +46,10 @@ public class RegVliegtuigController {
    	Vector<String> v = new Vector<String>() ;
    	//Zoek (de link naar) het fabrikant-object, op basis van de naam.
    	this.fbr = fabrMap.get(fbrn);
-   	String cp = this.fbr.geefContactpersoon();
+   	String cp = this.fbr.getContactpersoon();
    	v.add(cp);
 	//Vraag alle vliegtuigtypen op en maak een (gesorteerde) Set met hun namen voor het frame.
-	vliegtuigTypen = fbr.geefVliegtuigTypen();
+	vliegtuigTypen = fbr.getVliegtuigTypen();
 	Set<String> vttSetc = vliegtuigTypen.keySet();
 	for(String s : vttSetc)
    		v.add(s);

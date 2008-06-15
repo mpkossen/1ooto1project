@@ -48,7 +48,7 @@ public class Luchthaven
 	 */
 	public void zetNaam (String nm) throws IllegalArgumentException
 	{
-		if (land.geefLuchthavens().get(nm.trim()) != null)
+		if (land.getLuchthavens().get(nm.trim()) != null)
 		{
 			throw new IllegalArgumentException("Naam bestaat al!");
 		}
