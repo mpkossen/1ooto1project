@@ -1,97 +1,89 @@
+
 package userInterfaceLaag;
+
 import domeinLaag.*;
 import java.util.*;
 
-
 public class RegLuchthavenContr
 {
-   private Land land;
-   private Luchthaven lh;
-   private TreeMap<String, Land> alleLanden;
-   private RegLuchthavenFrame rlFrame;
+	private Land land;
+	private Luchthaven luchthaven;
+	private RegLuchthavenFrame myFrame;
 
+	/**
+	Constructor, waarin tevens:
+	- Een lijst van alle landen wordt opgevraagd.
+	- De constructor van  RegLuchthavenFrame wordt aangeroepen, waarbij een
+	lijst van alleen de namen van alle landen wordt meegegeven.
+	- De constructor van Luchthaven wordt aangeroepen. De link naar deze
+	nieuwe luchthaven wordt vastgelegd.
+	 */
+	public RegLuchthavenContr ()
+	{
+		luchthaven = new Luchthaven();
+		TreeMap<String, Land> alleLanden = Land.geefAlleLanden();
+		this.land = alleLanden.firstEntry().getValue();
+		myFrame = new RegLuchthavenFrame(this, alleLanden);
+		myFrame.setVisible(true);
+	}
 
-   /**
-   Constructor, waarin tevens:
-   - Een lijst van alle landen wordt opgevraagd.
-   - De constructor van  RegLuchthavenFrame wordt aangeroepen, waarbij een
-   		lijst van alleen de namen van alle landen wordt meegegeven.
-   - De constructor van Luchthaven wordt aangeroepen. De link naar deze
-   		nieuwe luchthaven wordt vastgelegd.
-    */
-   public RegLuchthavenContr()
-   {
-	   lh = new Luchthaven();      
-	   alleLanden = Land.geefAlleLanden();
-	   Set<String> landNamen = alleLanden.keySet();
-	   rlFrame = new RegLuchthavenFrame(this, landNamen);
-	   rlFrame.setVisible(true);
-   }
+	/**
+	Legt de link naar het geselecteerde land vast en geeft die door aan de nieuwe luchthaven.
+	Vraagt land.code op en returned dit.
+	@param land
+	@return int
+	 */
+	public int land (Land land)
+	{
+		luchthaven.zetLand(land);
+		return land.geefCode();
+	}
 
-   /**
-   Zoekt op basis van de naam de bijbehorende land-link op.
-   Legt de link naar het geselecteerde land vast en geeft die door aan de nieuwe luchthaven.
-   Vraagt land.code op en returned dit.
-
-   @param naam
-   @return int
-    */
-   public int land(String naam)
-   {
-    land = alleLanden.get(naam);
-    lh.zetLand(land);
-    int code = land.geefCode();
-    return code;
-   }
-
-   	/**
+	/**
 	Roep lhv.zetNaam().
 	Geef de exception door aan het frame, als die optreedt.
-
 	@param naam
 	@throws java.lang.LuchthavenException
-    */
-	public void naam(String naam) throws LuchthavenException
+	 */
+	public void naam (String nm) throws LuchthavenException
 	{
-	   lh.zetNaam(naam);
+		luchthaven.zetNaam(nm);
 	}
 
 	/**
 	Roep lhv.zetCode().
-
 	@param code
-    */
-	public void code(String code) throws LuchthavenException
+	 */
+	public void code (String code) throws LuchthavenException
 	{
-		lh.zetCode(code);
+		luchthaven.zetCode(code);
 	}
 
 	/**
 	Roep lhv.zetWerkPlaats().
 	@param wp
-    */
-	public void werkPlaats(boolean wp) throws LuchthavenException
+	 */
+	public void werkPlaats (boolean wp) throws LuchthavenException
 	{
-		lh.zetWerkPlaats(wp);
+		luchthaven.zetWerkPlaats(wp);
 	}
 
-   /**
-   Roep lhv.bewaar().
-   Geef de exception door aan het frame, als die optreedt.
+	/**
+	Roep lhv.bewaar().
+	Geef de exception door aan het frame, als die optreedt.
+	@throws java.lang.IllegalStateException
+	 */
+	public void ok () throws IllegalStateException
+	{
+		luchthaven.bewaar();
+		myFrame.dispose();
+	}
 
-   @throws java.lang.IllegalStateException
-    */
-   public void ok() throws IllegalStateException
-   {
-	   lh.bewaar();
-	   rlFrame.dispose();
-   }
-
-   /**
-   Sluit functie af.
-    */
-   public void cancel()
-   {
-	   rlFrame.dispose();
-   }
+	/**
+	Sluit functie af.
+	 */
+	public void cancel ()
+	{
+		myFrame.dispose();
+	}
 }
