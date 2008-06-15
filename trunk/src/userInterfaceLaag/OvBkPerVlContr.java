@@ -5,6 +5,7 @@ import domeinLaag.Boeking;
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.Vector;
 
@@ -54,7 +55,7 @@ public class OvBkPerVlContr
 	public Object[][] vlucht (Vlucht vl)
 	{
 		this.vlucht = vl;
-		Vector<Boeking> alleBoekingen = vlucht.getAlleBoekingen();
+		HashSet<Boeking> alleBoekingen = vlucht.getAlleBoekingen();
 		int size = alleBoekingen.size();
 		Object[][] boekingen = new Object[size][4];
 
