@@ -12,7 +12,7 @@ public class Vlucht
     private Calendar vertrekTijd;
     private Calendar aankomstTijd;
     private Calendar duur;
-    private Vector<Boeking> boekingen;
+    private HashSet<Boeking> boekingen;
 
 	//Constructors
     /**
@@ -25,7 +25,7 @@ public class Vlucht
     {
         this.vliegtuig = vt;
         this.vertrekpunt = vertrekp;
-		this.boekingen = new Vector<Boeking>();
+		this.boekingen = new HashSet<Boeking>();
     }
 
     /**
@@ -38,7 +38,7 @@ public class Vlucht
         this.bestemming = best;
         this.vertrekTijd = (Calendar) vertrek.clone();
         this.aankomstTijd = (Calendar) aankomst.clone();
-		this.boekingen = new Vector<Boeking>();
+		this.boekingen = new HashSet<Boeking>();
         alleVluchten.add(this);
     }	
 	
@@ -178,12 +178,12 @@ public class Vlucht
         return vliegtuig;
     }
     
-    public Vector geefBoeking()
+    public HashSet<Boeking> geefBoekingen()
     {
 	return boekingen;
     }
     
-    public Vector<Boeking> getAlleBoekingen ()
+    public HashSet<Boeking> getAlleBoekingen ()
     {
         return boekingen;
     }

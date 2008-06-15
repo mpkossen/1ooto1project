@@ -1,7 +1,7 @@
 
 package domeinLaag;
 
-import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Hierin worden boekingen geregeld. 
@@ -11,18 +11,12 @@ public class Boeking
 	// Attributen
 	private boolean roken;
 	private int aantalPlaatsen;
+
 	// Relaties
 	private Klant klant;
 	private Vlucht vlucht;
 
 	//Constructors
-	/**
-	 * Maakt een klanten vector aan.
-	 */
-	public Boeking ()
-	{
-	}
-
 	public Boeking (Vlucht vl, int ap, boolean rkn, Klant kl)
 	{
 		this.vlucht = vl;
@@ -31,23 +25,45 @@ public class Boeking
 		this.klant = kl;
 	}
 	
-	/**
-	 * 
-	 * @param rkn is roken als het true is en niet roken als het false is.
-	 */
+	public Boeking ()
+	{
+	}
+
 	// Setters
+	/**
+	 *	@param rkn is roken als het true is en niet roken als het false is.
+	 */
 	public void setRoken (Boolean rkn)
 	{
 		this.roken = rkn;
 	}
 
 	/**
-	 * Deze methode controleert het aantal plaatsen en Roken/Niet roken en geeft vervolgens aan of het kan ja of nee.
+	 *	Deze methode controleert het aantal plaatsen en Roken/Niet roken en geeft vervolgens aan of het kan ja of nee.
 	 */
-	//T.L. Deze Methode moet nog een Roken Check krijgen en een Aantal plaatsen Check
-	public void setPlaatsen (int ap)
+	//TL: Deze Methode moet nog een Roken Check krijgen en een Aantal plaatsen Check
+	//FM: Voor zover ik kan zien is dat nu gefixed.
+	public void setPlaatsen (int ap) throws BoekingException
 	{
-		this.aantalPlaatsen = ap;
+		int[] capaciteit = vlucht.getVliegtuig().geefCapaciteit();
+		int[] plaatsen = new int[2];
+		for (Iterator it = vlucht.geefBoekingen().iterator();  it.hasNext(); )
+		{
+			Boeking bk = (Boeking)it.next();
+			if (bk.getRoken())	plaatsen[0] += bk.getAantalPlaatsen();
+			else				plaatsen[1] += bk.getAantalPlaatsen();
+		}
+			
+		if (roken)
+		{
+			if (capaciteit[0] > (plaatsen[0] + ap))	this.aantalPlaatsen = ap;
+			else									throw new BoekingException("Onvoldoende Capaciteit");
+		}
+		else
+		{
+			if (capaciteit[1] > (plaatsen[1]+ ap))	this.aantalPlaatsen = ap;
+			else									throw new BoekingException("Onvoldoende Capaciteit");
+		}
 	}
 
 	public void setKlant (Klant kl)
@@ -81,6 +97,7 @@ public class Boeking
 		return klant;
 	}
 
+	// Overige Methodes
 	public void bewaar () throws BoekingException, KlantException, KlantBestaatAlException
 	{
 		if (vlucht == null)
