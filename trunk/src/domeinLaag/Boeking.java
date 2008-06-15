@@ -45,7 +45,7 @@ public class Boeking
 	//FM: Voor zover ik kan zien is dat nu gefixed.
 	public void setPlaatsen (int ap) throws BoekingException
 	{
-		int[] capaciteit = vlucht.getVliegtuig().geefCapaciteit();
+		int[] capaciteit = vlucht.getVliegtuig().getCapaciteit();
 		int[] plaatsen = new int[2];
 		for (Iterator it = vlucht.geefBoekingen().iterator();  it.hasNext(); )
 		{

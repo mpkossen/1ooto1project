@@ -1,33 +1,33 @@
 
 package domeinLaag;
 
+// Imports
 import java.util.*;
 
 public class Luchthaven
 {
+	// Attributes
 	private String naam = "";
 	private String code = "";
 	private boolean werkPlaats = false;
+	
+	// Relaties
 	private Land land;
 	private static HashSet<Luchthaven> alleLuchthavens = new HashSet<Luchthaven>();
 
-	public static HashSet geefAlleLuchthavensAlsHashSet ()
-	{
-		return alleLuchthavens;
-	}
-
+	// Constructors
 	/**
 	 * Constructor bedoelt om in main() test-objecten mee aan te maken.
 	 * @param naam
 	 * @param code
 	 * @param werkplaats
 	 */
-	public Luchthaven (String naam, String code, boolean werkplaats, Land land)
+	public Luchthaven (String nm, String cd, boolean wp, Land ln)
 	{
-		this.naam = naam;
-		this.code = code;
-		this.werkPlaats = werkplaats;
-		this.land = land;
+		this.naam = nm;
+		this.code = cd;
+		this.werkPlaats = wp;
+		this.land = ln;
 		alleLuchthavens.add(this);
 	}
 
@@ -37,8 +37,9 @@ public class Luchthaven
 	 */
 	public Luchthaven ()
 	{
-	}
-
+	}	
+	
+	// Setters
 	/**
 	Controleer of de naam uniek is binnen het land.
 	Zo ja, leg naam vast.
@@ -46,7 +47,7 @@ public class Luchthaven
 	@param naam de naam van de nieuwe luchthaven.
 	@throws java.lang.IllegalArgumentException indien de naam al bestaat binnen het land.
 	 */
-	public void zetNaam (String nm) throws IllegalArgumentException
+	public void setNaam (String nm) throws IllegalArgumentException
 	{
 		if (land.getLuchthavens().get(nm.trim()) != null)
 		{
@@ -63,9 +64,34 @@ public class Luchthaven
 	}
 
 	/**
+	 * @param code
+	 */	
+	public void setCode (String code)
+	{
+		this.code = code;
+	}
+
+	/**
+	 * @param land
+	 */
+	public void setLand (Land land)
+	{
+		this.land = land;
+	}	
+	
+	/**
+	 * @param wp
+	 */
+	public void setWerkPlaats (boolean wp)
+	{
+		werkPlaats = wp;
+	}	
+	
+	// Getters
+	/**
 	 * @return java.lang.String
 	 */
-	public String geefNaam ()
+	public String getNaam ()
 	{
 		return naam;
 	}
@@ -73,42 +99,43 @@ public class Luchthaven
 	/**
 	 * @param code
 	 */
-	public String geefCode ()
+	public String getCode ()
 	{
 		return this.code;
 	}
 
-	public void zetCode (String code)
-	{
-		this.code = code;
-	}
-
 	/**
-	@param wp
+	 * @return boolean
 	 */
-	public void zetWerkPlaats (boolean wp)
-	{
-		werkPlaats = wp;
-	}
-
-	public boolean geefWerkPlaats ()
+	public boolean getWerkPlaats ()
 	{
 		return werkPlaats;
 	}
 
-	public Land geefLand ()
+	/**
+	 * 
+	 * @return Land
+	 */
+	public Land getLand ()
 	{
 		return land;
 	}
-
+	
 	/**
-	@param land
+	 * @return java.util.TreeMap
 	 */
-	public void zetLand (Land land)
+	public static TreeMap<String, Luchthaven> getAlleLuchthavens ()
 	{
-		this.land = land;
-	}
+		TreeMap<String, Luchthaven> alleLh = new TreeMap<String, Luchthaven>();
+		for (Iterator<Luchthaven> i = alleLuchthavens.iterator(); i.hasNext();)
+		{
+			Luchthaven lh = i.next();
+			alleLh.put(lh.naam, lh);
+		}
+		return alleLh;
+	}		
 
+	// Overige Methodes
 	/**
 	Controleer of alle attributen een waarde hebben (alles verplicht).
 	Zo ja: roep Land.addLuchthaven().
@@ -136,18 +163,4 @@ public class Luchthaven
 			land.addLuchthaven(this);
 		}
 	}
-	
-	/**
-	 * @return java.util.TreeMap
-	 */
-	public static TreeMap<String, Luchthaven> geefAlle ()
-	{
-		TreeMap<String, Luchthaven> alleLh = new TreeMap<String, Luchthaven>();
-		for (Iterator<Luchthaven> i = alleLuchthavens.iterator(); i.hasNext();)
-		{
-			Luchthaven lh = i.next();
-			alleLh.put(lh.naam, lh);
-		}
-		return alleLh;
-	}	
 }

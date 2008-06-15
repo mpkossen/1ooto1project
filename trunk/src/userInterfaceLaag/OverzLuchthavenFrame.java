@@ -22,24 +22,24 @@ import java.util.HashSet;
  */
 public class OverzLuchthavenFrame extends javax.swing.JFrame {
 
-    HashSet<Luchthaven> alleLuchtHavens;
+    HashSet<Luchthaven> alleLuchthavens;
     Object[][] tableInformatie;
 
     /** Creates new form OverzLuchthavenFrame */
     public OverzLuchthavenFrame() {
 	initComponents();
-	alleLuchtHavens = (HashSet<Luchthaven>) Luchthaven.geefAlleLuchthavensAlsHashSet();
-	tableInformatie = new Object[alleLuchtHavens.size()][4];
+	alleLuchthavens = (HashSet<Luchthaven>)Luchthaven.getAlleLuchthavens().values();
+	tableInformatie = new Object[alleLuchthavens.size()][4];
 	int i = 0;
-	for (Luchthaven lh : alleLuchtHavens) {
-	    tableInformatie[i][0] = new String(lh.geefNaam());
-	    tableInformatie[i][1] = new String(lh.geefCode());
-	    if (lh.geefWerkPlaats()) {
+	for (Luchthaven lh : alleLuchthavens) {
+	    tableInformatie[i][0] = new String(lh.getNaam());
+	    tableInformatie[i][1] = new String(lh.getCode());
+	    if (lh.getWerkPlaats()) {
 		tableInformatie[i][2] = new String("Ja");
 	    } else {
 		tableInformatie[i][2] = new String("Nee");
 	    }
-	    tableInformatie[i][3] = new String(lh.geefLand().geefNaam());
+	    tableInformatie[i][3] = new String(lh.getLand().geefNaam());
 	    i++;
 	}
 

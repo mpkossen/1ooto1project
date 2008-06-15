@@ -18,9 +18,9 @@ public class OvBkPerVlContr
 
 	public OvBkPerVlContr ()
 	{
-		this.vertrekpunt = Luchthaven.geefAlle().firstEntry().getValue();
-		this.aankomstpunt = Luchthaven.geefAlle().firstEntry().getValue();
-		TreeMap<String, Luchthaven> luchthavens = Luchthaven.geefAlle();
+		this.vertrekpunt = Luchthaven.getAlleLuchthavens().firstEntry().getValue();
+		this.aankomstpunt = Luchthaven.getAlleLuchthavens().firstEntry().getValue();
+		TreeMap<String, Luchthaven> luchthavens = Luchthaven.getAlleLuchthavens();
 
 		myFrame = new OvBkPerVlFrame(luchthavens, this);
 		myFrame.setVisible(true);
