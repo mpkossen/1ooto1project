@@ -81,17 +81,17 @@ public class OverzVliegtuigenFrame extends javax.swing.JFrame
 		TextArea.setText("VLIEGTUIG	FABRIKANT	TYPE	CAPACITEIT \n");
 		TextArea.append(" \n");
 
-		TreeMap<String, Vliegtuig> vliegtuigen = lvm.geefVliegtuigen();
+		TreeMap<String, Vliegtuig> vliegtuigen = lvm.getVliegtuigen();
 		Set<String> vSet = vliegtuigen.keySet();
 		for (String vNaam : vSet)
 		{
 
 			Vliegtuig vliegtuig = vliegtuigen.get(vNaam);
-			VliegtuigType vtt = vliegtuig.geefVliegtuigType();
+			VliegtuigType vtt = vliegtuig.getVliegtuigType();
 			String vttCode = vtt.geefCode();
 			Fabrikant fb = vtt.geefFabrikant();
 			String fbNaam = fb.getNaam();
-			int[] cp = vliegtuig.geefCapaciteit();
+			int[] cp = vliegtuig.getCapaciteit();
 			String cap = "R " + cp[0] + " NR " + cp[1];
 			TextArea.append(
 				vNaam + "	" + fbNaam + "	" + vttCode + "	" + cap + "\n");

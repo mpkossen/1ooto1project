@@ -26,7 +26,7 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 	public BoekVluchtFrame (BoekVluchtContr bvc)
 	{
 		this.myController = bvc;
-		this.luchthavens = Luchthaven.geefAlle();
+		this.luchthavens = Luchthaven.getAlleLuchthavens();
 		this.vluchten = new TreeMap<String, Vlucht>();
 		
 		initComponents();

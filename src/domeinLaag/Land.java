@@ -49,7 +49,7 @@ public class Land
 		TreeMap<String, Luchthaven> luchthavenMap = new TreeMap<String, Luchthaven>();
 		for (Luchthaven l : luchthavens)
 		{
-			String nm = l.geefNaam();
+			String nm = l.getNaam();
 			luchthavenMap.put(nm, l);
 		}
 		return luchthavenMap;
