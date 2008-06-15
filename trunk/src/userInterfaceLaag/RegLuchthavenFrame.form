@@ -87,15 +87,15 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="landComboBox">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel(landen.keySet().toArray())" type="code"/>
         </Property>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="naamTextField"/>
         </Property>
       </Properties>
       <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Land waarin de te registreren luchthaven zich bevindt"/>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
       </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="landComboBoxActionPerformed"/>
@@ -117,9 +117,6 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Code van het geselecteerde land"/>
       </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="landCodeTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="nieuweLuchthavenPanel">
       <Properties>
@@ -211,6 +208,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="luchthavenCodeTextField">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jaButton"/>
             </Property>
