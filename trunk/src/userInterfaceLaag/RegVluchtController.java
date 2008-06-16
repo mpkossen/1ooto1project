@@ -78,7 +78,7 @@ public class RegVluchtController
    public void bestemming(String naam)
    {
     Luchthaven eenLuchthaven = (Luchthaven)lh.get(naam);
-    deVlucht.zetBestemming(eenLuchthaven);
+    deVlucht.setBestemming(eenLuchthaven);
    }
 
    /**
@@ -89,7 +89,7 @@ public class RegVluchtController
     */
    public void vertrektijd(Calendar vertrektijd) throws VluchtException
    {
-    deVlucht.zetVertrekTijd(vertrektijd);
+    deVlucht.setVertrekTijd(vertrektijd);
    }
 
    /**
@@ -100,7 +100,7 @@ public class RegVluchtController
     */
    public void aankomstTijd(Calendar tijd) throws VluchtException
    {
-    deVlucht.zetAankomstTijd(tijd);
+    deVlucht.setAankomstTijd(tijd);
    }
 
    /**

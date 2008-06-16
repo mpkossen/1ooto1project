@@ -228,7 +228,7 @@ private void bestemmingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
 	vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
 			
 	SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
-	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
 		
 	Object[][] data = myController.vlucht(vluchten.firstEntry().getValue());
 	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
@@ -247,7 +247,7 @@ private void vertrekpuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) 
 	vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
 			
 	SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
-	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
 		
 	Object[][] data = myController.vlucht(vluchten.firstEntry().getValue());
 	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};

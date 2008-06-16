@@ -65,7 +65,7 @@ public class RegVliegtuigController {
 	//Zoek (de link naar) het vliegtuigtype-object, op basis van de naam.
    	vtt = vliegtuigTypen.get(vttcd);
 	vt.setVliegtuigType(vtt);
-	int[] cap= this.vtt.geefCapaciteit();
+	int[] cap= this.vtt.getCapaciteit();
 	return cap;
    }
 

@@ -88,8 +88,8 @@ public class OverzVliegtuigenFrame extends javax.swing.JFrame
 
 			Vliegtuig vliegtuig = vliegtuigen.get(vNaam);
 			VliegtuigType vtt = vliegtuig.getVliegtuigType();
-			String vttCode = vtt.geefCode();
-			Fabrikant fb = vtt.geefFabrikant();
+			String vttCode = vtt.getCode();
+			Fabrikant fb = vtt.getFabrikant();
 			String fbNaam = fb.getNaam();
 			int[] cp = vliegtuig.getCapaciteit();
 			String cap = "R " + cp[0] + " NR " + cp[1];
