@@ -4,6 +4,8 @@ package userInterfaceLaag;
 import domeinLaag.Land;
 import domeinLaag.LuchthavenException;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 public class RegLuchthavenFrame extends JFrame
@@ -260,31 +262,19 @@ private void neeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 }//GEN-LAST:event_neeButtonActionPerformed
 
 private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-	myController.land(landen.get((String)landComboBox.getSelectedItem()));
-	try
-	{
-		myController.naam(naamTextField.getText());
-	}
-	catch (LuchthavenException lhe)
-	{	
-	}
-	try
-	{
-		myController.code(luchthavenCodeTextField.getText());
-	}
-	catch (LuchthavenException lhe)
-	{	
-	}
-	try
-	{
-		myController.werkPlaats(jaButton.isSelected());
-	}
-	catch (LuchthavenException lhe)
-	{	
-	}
-	okButton.requestFocusInWindow();	
-	myController.ok();
-}//GEN-LAST:event_okButtonActionPerformed
+		try
+		{
+			myController.land(landen.get((String) landComboBox.getSelectedItem()));
+			myController.naam(naamTextField.getText());
+			myController.code(luchthavenCodeTextField.getText());
+			myController.werkPlaats(jaButton.isSelected());
+			myController.ok();//GEN-LAST:event_okButtonActionPerformed
+		}
+		catch (LuchthavenException ex)
+		{
+			Logger.getLogger(RegLuchthavenFrame.class.getName()).log(Level.SEVERE, null, ex);
+		}
+}                                        
 
 private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
 	myController.cancel();

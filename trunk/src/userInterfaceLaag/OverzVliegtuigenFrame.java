@@ -97,6 +97,8 @@ public class OverzVliegtuigenFrame extends javax.swing.JFrame
 				vNaam + "	" + fbNaam + "	" + vttCode + "	" + cap + "\n");
 		}
 		this.setVisible(true);
+		
+		Ok.requestFocusInWindow();	// Om ook meteen weer uit dat window te kunnen komen.
 	}
 
 	/** Auto-generated event handler method */
