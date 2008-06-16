@@ -1,47 +1,53 @@
+
 package domeinLaag;
 
-
-public class VliegtuigType 
+public class VliegtuigType
 {
-   private Fabrikant fb;
-   private String code;   
-   private int capaciteitRoken;
-   private int capaciteitNietRoken;
-   
-   /**
-   @param code
-   @param capR
-   @param capNR
-   @param fabr
-    */
-   public VliegtuigType(Fabrikant fb, String code, int capR, int capNR) 
-   {
-   	this.fb = fb;
-    this.code = code;
-    this.capaciteitRoken = capR;
-    this.capaciteitNietRoken = capNR;
-   }
-   
-   /**
-   @return java.lang.String
-    */
-   public String geefCode() 
-   {
-    return code;
-   }
-   
-   public Fabrikant geefFabrikant() {
-   	return fb;   	
-   }
-   
-   /**
-   @return int[]
-    */
-   public int[] geefCapaciteit() 
-   {
-    int[] cap = new int[2];
-    cap[0]=capaciteitRoken;
-    cap[1]=capaciteitNietRoken;
-    return cap;
-   }
+	// Attributen
+	private String code;
+	private int capaciteitRoken;
+	private int capaciteitNietRoken;
+	
+	// Relaties
+	private Fabrikant fabrikant;
+
+	// Constructors
+	/**
+	@param cd
+	@param capR
+	@param capNR
+	@param fabr
+	 */
+	public VliegtuigType (Fabrikant fb, String cd, int cr, int cnr)
+	{
+		this.fabrikant = fb;
+		this.code = cd;
+		this.capaciteitRoken = cr;
+		this.capaciteitNietRoken = cnr;
+	}
+
+	// Getters
+	/**
+	@return java.lang.String
+	 */
+	public String getCode ()
+	{
+		return code;
+	}
+
+	public Fabrikant getFabrikant ()
+	{
+		return fabrikant;
+	}
+
+	/**
+	@return int[]
+	 */
+	public int[] getCapaciteit ()
+	{
+		int[] cap = new int[2];
+		cap[0] = capaciteitRoken;
+		cap[1] = capaciteitNietRoken;
+		return cap;
+	}
 }

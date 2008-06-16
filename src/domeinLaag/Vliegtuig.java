@@ -126,6 +126,6 @@ public class Vliegtuig
 
 	public int[] getCapaciteit ()
 	{
-		return vliegtuigType.geefCapaciteit();
+		return vliegtuigType.getCapaciteit();
 	}
 }
