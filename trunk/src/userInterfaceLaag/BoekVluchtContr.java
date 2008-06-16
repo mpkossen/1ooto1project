@@ -89,18 +89,14 @@ public class BoekVluchtContr
 	
 	public void ok ()
 	{
-		System.out.println("Naam: " + naam);
-		System.out.println("Straat: " + straat);
-		System.out.println("HuisNr: " + huisNr);			
-		System.out.println("Plaats: " + plaats);
 		Klant klant = new Klant(naam, straat, huisNr, plaats);
 		Boeking boeking = new Boeking();
-		boeking.setVlucht(vlucht);
-		boeking.setKlant(klant);
-		boeking.setPlaatsen(aantalPlaatsen);
-		boeking.setRoken(roken);
 		try
 		{
+			boeking.setVlucht(vlucht);
+			boeking.setKlant(klant);
+			boeking.setPlaatsen(aantalPlaatsen);
+			boeking.setRoken(roken);			
 			boeking.bewaar();
 			myFrame.dispose();
 		}

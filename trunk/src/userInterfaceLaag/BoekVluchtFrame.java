@@ -1,27 +1,21 @@
-/*
- * BoekVluchtFrame.java
- *
- * Created on June 12, 2008, 5:09 PM
- */
 
 package userInterfaceLaag;
 
+// Imports
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
 import java.util.TreeMap;
 import java.text.SimpleDateFormat;
 import javax.swing.*;
 
-/**
- *
- * @author  Frank
- */
 public class BoekVluchtFrame extends javax.swing.JFrame
 {
+	// Relaties
 	private BoekVluchtContr myController;
 	private TreeMap<String, Luchthaven> luchthavens;
 	private TreeMap<String, Vlucht> vluchten;
 	
+	// Constructors
 	/** Creates new form BoekVluchtFrame */
 	public BoekVluchtFrame (BoekVluchtContr bvc)
 	{
@@ -32,6 +26,7 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 		initComponents();
 	}
 
+	// Overige Methodes
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -209,7 +204,6 @@ public class BoekVluchtFrame extends javax.swing.JFrame
         });
 
         huisNummerTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        huisNummerTextField.setText("1");
         huisNummerTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 huisNummerTextFieldActionPerformed(evt);
@@ -346,6 +340,8 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+	// ActionListeners
 	private void vertrekpuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertrekpuntComboBoxActionPerformed
 		Luchthaven vertrekpunt = luchthavens.get((String)vertrekpuntComboBox.getSelectedItem());
 		Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
@@ -368,7 +364,6 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 		
 		vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
 		aankomstTextField.setText(vluchten.firstEntry().getKey());
-		
 		
 		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
 		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
@@ -429,9 +424,18 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 	}//GEN-LAST:event_stoelenTextFieldActionPerformed
 
 	private void naamTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_naamTextFieldFocusLost
+		String huisNummer;	// Om verderop een NaN error te voorkomen bij Integer.parseInt();
+		if (huisNummerTextField.getText().isEmpty())
+		{
+			huisNummer = "999";
+		}
+		else
+		{
+			huisNummer = huisNummerTextField.getText();
+		}
 		try
 		{
-			myController.klant(naamTextField.getText(), straatTextField.getText(), huisNummerTextField.getText(), plaatsTextField.getText());
+			myController.klant(naamTextField.getText(), straatTextField.getText(), huisNummer, plaatsTextField.getText());
 		}
 		catch (NumberFormatException nfe)
 		{
@@ -440,6 +444,15 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 	}//GEN-LAST:event_naamTextFieldFocusLost
 
 	private void straatTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_straatTextFieldFocusLost
+		String huisNummer;	// Om verderop een NaN error te voorkomen bij Integer.parseInt();
+		if (huisNummerTextField.getText().isEmpty())
+		{
+			huisNummer = "999";
+		}
+		else
+		{
+			huisNummer = huisNummerTextField.getText();
+		}
 		try
 		{
 			myController.klant(naamTextField.getText(), straatTextField.getText(), huisNummerTextField.getText(), plaatsTextField.getText());
@@ -462,6 +475,15 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 	}//GEN-LAST:event_huisNummerTextFieldFocusLost
 
 	private void plaatsTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_plaatsTextFieldFocusLost
+		String huisNummer;	// Om verderop een NaN error te voorkomen bij Integer.parseInt();
+		if (huisNummerTextField.getText().isEmpty())
+		{
+			huisNummer = "999";
+		}
+		else
+		{
+			huisNummer = huisNummerTextField.getText();
+		}
 		try
 		{
 			myController.klant(naamTextField.getText(), straatTextField.getText(), huisNummerTextField.getText(), plaatsTextField.getText());
