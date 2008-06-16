@@ -1,6 +1,7 @@
 
 package userInterfaceLaag;
 
+// Imports
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -14,16 +15,18 @@ import javax.swing.SwingConstants;
 
 public class MenuFrame extends javax.swing.JFrame
 {
+	// Attributen
 	private JTextField Keuze;
 	private JLabel Label;
 	private JTextArea TextArea;
 	private JButton Ok;
-	//Zelf gedefinieerde!
-	private domeinLaag.LuchtvaartMaatschappij lvm;
+	
+	// Relaties
+	private domeinLaag.LuchtvaartMaatschappij luchtvaarMaatschappij;
 
 	public MenuFrame (domeinLaag.LuchtvaartMaatschappij lvm)
 	{
-		this.lvm = lvm;
+		this.luchtvaarMaatschappij = lvm;
 		initGUI();
 	}
 
@@ -147,6 +150,12 @@ public class MenuFrame extends javax.swing.JFrame
 	{
 		ok();
 	}
+	
+	/** Auto-generated event handler method */
+	protected void KeuzeActionPerformed (ActionEvent evt)
+	{
+		this.ok();
+	}	
 
 	/** Zelf geschreven */
 	private void ok ()
@@ -160,14 +169,14 @@ public class MenuFrame extends javax.swing.JFrame
 		catch (NumberFormatException e)
 		{
 		}
-		
+
 		switch (keuzeNr)
 		{
 			case 1:
-				RegVliegtuigController rvtc = new RegVliegtuigController(lvm);
+				RegVliegtuigController rvtc = new RegVliegtuigController(luchtvaarMaatschappij);
 				break;
 			case 2:
-				OverzVliegtuigenFrame ovf = new OverzVliegtuigenFrame(lvm);
+				OverzVliegtuigenFrame ovf = new OverzVliegtuigenFrame(luchtvaarMaatschappij);
 				break;
 			case 3:
 				RegLuchthavenContr rlhnc = new RegLuchthavenContr();
@@ -176,7 +185,7 @@ public class MenuFrame extends javax.swing.JFrame
 				OverzLuchthavenFrame olf = new OverzLuchthavenFrame();
 				break;
 			case 5:
-				RegVluchtController rvc = new RegVluchtController(lvm);
+				RegVluchtController rvc = new RegVluchtController(luchtvaarMaatschappij);
 				break;
 			case 6:
 				// Deze Usecase hoeft niet (denk ik), mag wel.
@@ -190,13 +199,7 @@ public class MenuFrame extends javax.swing.JFrame
 		}
 
 		Keuze.setText("");
-//		Keuze.requestFocus();
-
-	}
-
-	/** Auto-generated event handler method */
-	protected void KeuzeActionPerformed (ActionEvent evt)
-	{
-		Ok.requestFocus();
+		Keuze.requestFocusInWindow();	// Beter dan onderstaande omdat dit de focus niet van het geselecteerde JFrame ontneemt.
+		// Keuze.requestFocus();		Aangepast omdat het de focus aan de JFrame van het geselecteerde menu ontneemt.
 	}
 }

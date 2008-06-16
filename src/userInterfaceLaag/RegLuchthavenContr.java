@@ -73,7 +73,7 @@ public class RegLuchthavenContr
 	Geef de exception door aan het frame, als die optreedt.
 	@throws java.lang.IllegalStateException
 	 */
-	public void ok () throws IllegalStateException
+	public void ok () throws LuchthavenException
 	{
 		luchthaven.bewaar();
 		myFrame.dispose();
