@@ -39,14 +39,14 @@ public class BoekVluchtContr
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
 		TreeMap<String, Vlucht> vluchten = new TreeMap<String, Vlucht>();
 		int i = 0;
-        for (Vlucht vl : Vlucht.geefAlleVluchten())
+        for (Vlucht vl : Vlucht.getAlleVluchten())
         {
 			i++;
-            if (vl.geefVertrekpunt().equals(vertrekpunt))
+            if (vl.getVertrekpunt().equals(vertrekpunt))
             {
-                if (vl.geefBestemming().equals(bestemming))
+                if (vl.getBestemming().equals(bestemming))
                 {
-                    String datumtijd = formatter.format(vl.geefVertrekTijd().getTime());
+                    String datumtijd = formatter.format(vl.getVertrekTijd().getTime());
 					vluchten.put(datumtijd, vl);
                 }
             }
