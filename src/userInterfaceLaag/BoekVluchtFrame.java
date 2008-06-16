@@ -355,7 +355,7 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 		aankomstTextField.setText(vluchten.firstEntry().getKey());
 		
 		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
-		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
 		aankomstTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
 		
 		bestemmingComboBox.requestFocusInWindow();
@@ -371,7 +371,7 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 		
 		
 		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
-		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
 		aankomstTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
 		
 		myController.vlucht(vluchten.firstEntry().getValue());
@@ -386,7 +386,7 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 		aankomstTextField.setText(dagFormatter.format(vlucht.getAankomstTijd().getTime()));
 		
 		SimpleDateFormat tijdFormatter = new SimpleDateFormat("HH:mm");
-		vertrekTijdTextField.setText(tijdFormatter.format(vluchten.firstEntry().getValue().geefVertrekTijd().getTime()));
+		vertrekTijdTextField.setText(tijdFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
 		aankomstTijdTextField.setText(tijdFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
 		
 		naamTextField.requestFocusInWindow();

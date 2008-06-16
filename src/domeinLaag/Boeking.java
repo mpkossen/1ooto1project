@@ -47,7 +47,7 @@ public class Boeking
 	{
 		int[] capaciteit = vlucht.getVliegtuig().getCapaciteit();
 		int[] plaatsen = new int[2];
-		for (Iterator it = vlucht.geefBoekingen().iterator();  it.hasNext(); )
+		for (Iterator it = vlucht.getAlleBoekingen().iterator();  it.hasNext(); )
 		{
 			Boeking bk = (Boeking)it.next();
 			if (bk.getRoken())	plaatsen[0] += bk.getAantalPlaatsen();

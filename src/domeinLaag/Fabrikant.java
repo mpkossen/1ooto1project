@@ -67,7 +67,7 @@ public class Fabrikant
 		TreeMap<String, VliegtuigType> alleVliegtuigTypen = new TreeMap<String, VliegtuigType>();
 		for (VliegtuigType vliegtuigType : vliegtuigTypen)
 		{
-			String code = vliegtuigType.geefCode();
+			String code = vliegtuigType.getCode();
 			alleVliegtuigTypen.put(code, vliegtuigType);
 		}
 		return alleVliegtuigTypen;
