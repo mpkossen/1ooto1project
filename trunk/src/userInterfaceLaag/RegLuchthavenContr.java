@@ -1,22 +1,23 @@
 
 package userInterfaceLaag;
 
+// Imports
 import domeinLaag.*;
 import java.util.*;
 
 public class RegLuchthavenContr
 {
+	// Relaties
 	private Land land;
 	private Luchthaven luchthaven;
 	private RegLuchthavenFrame myFrame;
 
+	// Constructors
 	/**
-	Constructor, waarin tevens:
-	- Een lijst van alle landen wordt opgevraagd.
-	- De constructor van  RegLuchthavenFrame wordt aangeroepen, waarbij een
-	lijst van alleen de namen van alle landen wordt meegegeven.
-	- De constructor van Luchthaven wordt aangeroepen. De link naar deze
-	nieuwe luchthaven wordt vastgelegd.
+	 * Constructor, waarin tevens:
+	 * - Een lijst van alle landen wordt opgevraagd.
+	 * - De constructor van  RegLuchthavenFrame wordt aangeroepen, waarbij een lijst van alleen de namen van alle landen wordt meegegeven.
+	 * - De constructor van Luchthaven wordt aangeroepen. De link naar deze nieuwe luchthaven wordt vastgelegd.
 	 */
 	public RegLuchthavenContr ()
 	{
@@ -28,10 +29,10 @@ public class RegLuchthavenContr
 	}
 
 	/**
-	Legt de link naar het geselecteerde land vast en geeft die door aan de nieuwe luchthaven.
-	Vraagt land.code op en returned dit.
-	@param land
-	@return int
+	 * Legt de link naar het geselecteerde land vast en geeft die door aan de nieuwe luchthaven.
+	 * Vraagt land.code op en returned dit.
+	 * @param land
+	 * @return int
 	 */
 	public int land (Land land)
 	{
@@ -40,10 +41,10 @@ public class RegLuchthavenContr
 	}
 
 	/**
-	Roep lhv.setNaam().
-	Geef de exception door aan het frame, als die optreedt.
-	@param naam
-	@throws java.lang.LuchthavenException
+	 * Roep lhv.setNaam().
+	 * Geef de exception door aan het frame, als die optreedt.
+	 * @param naam
+	 * @throws java.lang.LuchthavenException
 	 */
 	public void naam (String nm) throws LuchthavenException
 	{
@@ -51,8 +52,8 @@ public class RegLuchthavenContr
 	}
 
 	/**
-	Roep lhv.setCode().
-	@param code
+	 * Roep lhv.setCode().
+	 * @param code
 	 */
 	public void code (String code) throws LuchthavenException
 	{
@@ -60,8 +61,8 @@ public class RegLuchthavenContr
 	}
 
 	/**
-	Roep lhv.setWerkPlaats().
-	@param wp
+	 * Roep lhv.setWerkPlaats().
+	 * @param wp
 	 */
 	public void werkPlaats (boolean wp) throws LuchthavenException
 	{
@@ -69,9 +70,9 @@ public class RegLuchthavenContr
 	}
 
 	/**
-	Roep lhv.bewaar().
-	Geef de exception door aan het frame, als die optreedt.
-	@throws java.lang.IllegalStateException
+	 * Roep lhv.bewaar().
+	 * Geef de exception door aan het frame, als die optreedt.
+	 * @throws java.lang.IllegalStateException
 	 */
 	public void ok () throws LuchthavenException
 	{
@@ -80,7 +81,7 @@ public class RegLuchthavenContr
 	}
 
 	/**
-	Sluit functie af.
+	 * Sluit functie af.
 	 */
 	public void cancel ()
 	{

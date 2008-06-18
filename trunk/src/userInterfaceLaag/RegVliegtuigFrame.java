@@ -17,23 +17,27 @@ import java.util.*;
 public class RegVliegtuigFrame extends JFrame
 {
 	// Attributen
-	private RegVliegtuigController myController;
-	private boolean Geinitialiseerd = false;
+	private boolean geinitialiseerd = false;
 	private Calendar inGebruik = Calendar.getInstance();
 	private Set<String> fabrikanten;
-
-	public RegVliegtuigFrame ()
-	{
-		initGUI();
-	}
-
+	
+	// Relaties
+	private RegVliegtuigController myController;
+	
+	// Constructors
 	public RegVliegtuigFrame (RegVliegtuigController rvc, Set<String> fabrSet)
 	{
 		this.myController = rvc;
 		fabrikanten = fabrSet;
 		initGUI();
 	}
+	
+	public RegVliegtuigFrame ()
+	{
+		initGUI();
+	}
 
+	// Overige Methoden
 	/**
 	 * Initializes the GUI.
 	 * Auto-generated code - any changes you make will disappear.
@@ -237,7 +241,7 @@ public class RegVliegtuigFrame extends JFrame
 		{
 			FabrikantCombo.addItem(s);
 		}
-		Geinitialiseerd = true;
+		geinitialiseerd = true;
 	/** Voorkomt dat de ItemStateChanged-event van FabrikantCombo iedere keer
 	 * getriggerd wordt als er een add() wordt gedaan. */
 	}
@@ -245,7 +249,7 @@ public class RegVliegtuigFrame extends JFrame
 	/** Auto-generated event handler method */
 	protected void FabrikantComboItemStateChanged (ItemEvent evt)
 	{
-		if (Geinitialiseerd)
+		if (geinitialiseerd)
 		{
 			String fabrnm = (String) FabrikantCombo.getSelectedItem();
 			if (fabrnm != "")

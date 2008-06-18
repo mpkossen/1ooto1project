@@ -1,14 +1,19 @@
 
 package userInterfaceLaag;
 
+// Imports
 import domeinLaag.*;
 import java.util.TreeMap;
 
 public class OverzLuchthavenFrame extends javax.swing.JFrame
 {
-	TreeMap<String, Luchthaven> alleLuchthavens;
+	// Attributen
 	Object[][] tableInformatie;
+	
+	// Relaties
+	TreeMap<String, Luchthaven> alleLuchthavens;
 
+	// Constructors
 	/** Creates new form OverzLuchthavenFrame */
 	public OverzLuchthavenFrame ()
 	{
@@ -39,7 +44,7 @@ public class OverzLuchthavenFrame extends javax.swing.JFrame
 			"NAAM", "CODE", "WERKPLAATS", "LAND"
 		}));
 		this.setVisible(true);
-		
+
 		okButton.requestFocusInWindow();
 	}
 

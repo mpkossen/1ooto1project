@@ -63,8 +63,8 @@ public class RegVliegtuigController
 	}
 
 	/**
-	Zet vliegtuigtype bij het vliegtuig en toon capaciteit.
-	@param vttcd de code van een vliegtuigtype
+	 * Zet vliegtuigtype bij het vliegtuig en toon capaciteit.
+	 * @param vttcd de code van een vliegtuigtype
 	 */
 	public int[] type (String vttcd)
 	{
@@ -76,8 +76,8 @@ public class RegVliegtuigController
 	}
 
 	/**
-	Zet naam bij het vliegtuig.
-	@param naam
+	 * Zet naam bij het vliegtuig.
+	 * @param naam
 	 */
 	public void naam (String naam) throws IllegalArgumentException
 	{
@@ -85,8 +85,8 @@ public class RegVliegtuigController
 	}
 
 	/**
-	Zet datumInGebruik bij het vliegtuig.
-	@param inGebruik
+	 * Zet datumInGebruik bij het vliegtuig.
+	 * @param inGebruik
 	 */
 	public void inGebruik (Calendar inGebruik) throws IllegalArgumentException
 	{

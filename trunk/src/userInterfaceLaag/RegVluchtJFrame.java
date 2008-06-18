@@ -1,4 +1,7 @@
+
 package userInterfaceLaag;
+
+// Imports
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,57 +27,45 @@ import javax.swing.border.TitledBorder;
 import domeinLaag.VluchtException;
 
 /**
-* This code was generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a
-* for-profit company or business) then you should purchase
-* a license - please visit www.cloudgarden.com for details.
-*/
-public class RegVluchtJFrame extends javax.swing.JFrame {
-
-	private JTextField vertrekDatumVeld;
-	private JButton oKButton;
-	private JButton cancelButton;
-	private JTextField aankomstDatumVeld;
-	private JTextField vertrekTijdVeld;
-	private JTextField aankomstTijdVeld;
-	private JComboBox vertrekPuntenBox;
-	private JComboBox bestemmingenBox;
-	private JLabel jLabel10;
-	private JLabel jLabel9;
-	private JLabel jLabel8;
-	private JLabel jLabel7;
-	private JPanel jPanel1;
-	private JLabel jLabel6;
-	private JLabel jLabel5;
-	private JLabel jLabel4;
-	private JLabel jLabel3;
-	private JLabel jLabel2;
-	private JComboBox vliegtuigBox;
-	private JLabel jLabel1;
-	//volgende velden zijn toegevoegd door j.zuurbier
+ * This code was generated using CloudGarden's Jigloo
+ * SWT/Swing GUI Builder, which is free for non-commercial
+ * use. If Jigloo is being used commercially (ie, by a
+ * for-profit company or business) then you should purchase
+ * a license - please visit www.cloudgarden.com for details.
+ */
+public class RegVluchtJFrame extends javax.swing.JFrame
+{
+	// Attributen
+	Calendar aankomstTijd;
+	Calendar vertrekTijd;
+		
+	// Relaties
 	Set<String> vliegtuigen;
 	Set<String> luchthavens;
-	RegVluchtController controller;
-	Calendar vertrekTijd, aankomstTijd;
+	RegVluchtController myController;
+	
 
-	public RegVluchtJFrame() {
+	public RegVluchtJFrame ()
+	{
 		initGUI();
 	}
 
-	public RegVluchtJFrame(Set<String> vt, Set<String> lh, RegVluchtController rvc) {
+	public RegVluchtJFrame (Set<String> vt, Set<String> lh, RegVluchtController rvc)
+	{
 		this.vliegtuigen = vt;
 		this.luchthavens = lh;
-		this.controller = rvc;
+		this.myController = rvc;
 		initGUI();
 	}
 
 	/**
-		* Initializes the GUI.
-		* Auto-generated code - any changes you make will disappear.
-		*/
-	public void initGUI() {
-		try {
+	 * Initializes the GUI.
+	 * Auto-generated code - any changes you make will disappear.
+	 */
+	public void initGUI ()
+	{
+		try
+		{
 			preInitGUI();
 			cancelButton = new JButton();
 			jPanel1 = new JPanel();
@@ -107,8 +98,10 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			cancelButton.setName("");
 			cancelButton.setBounds(new java.awt.Rectangle(301, 295, 75, 25));
 			this.getContentPane().add(cancelButton);
-			cancelButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent evt) {
+			cancelButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed (ActionEvent evt)
+				{
 					cancelButtonActionPerformed(evt);
 				}
 			});
@@ -117,12 +110,12 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			jPanel1.setPreferredSize(new java.awt.Dimension(380, 145));
 			jPanel1.setBorder(
 				new TitledBorder(
-					null,
-					"Nieuwe Vlucht",
-					TitledBorder.LEADING,
-					TitledBorder.TOP,
-					new java.awt.Font("Dialog", 1, 12),
-					new java.awt.Color(0, 0, 0)));
+				null,
+				"Nieuwe Vlucht",
+				TitledBorder.LEADING,
+				TitledBorder.TOP,
+				new java.awt.Font("Dialog", 1, 12),
+				new java.awt.Color(0, 0, 0)));
 			jPanel1.setOpaque(true);
 			jPanel1.setName("Nieuwe Vlucht");
 			jPanel1.setBounds(new java.awt.Rectangle(31, 131, 380, 145));
@@ -132,8 +125,10 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			vertrekTijdVeld.setPreferredSize(new java.awt.Dimension(80, 20));
 			vertrekTijdVeld.setBounds(new java.awt.Rectangle(232, 81, 80, 20));
 			jPanel1.add(vertrekTijdVeld);
-			vertrekTijdVeld.addFocusListener(new FocusAdapter() {
-				public void focusLost(FocusEvent evt) {
+			vertrekTijdVeld.addFocusListener(new FocusAdapter()
+			{
+				public void focusLost (FocusEvent evt)
+				{
 					vertrekTijdVeldFocusLost(evt);
 				}
 			});
@@ -142,8 +137,10 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			aankomstTijdVeld.setBounds(
 				new java.awt.Rectangle(234, 110, 80, 20));
 			jPanel1.add(aankomstTijdVeld);
-			aankomstTijdVeld.addFocusListener(new FocusAdapter() {
-				public void focusLost(FocusEvent evt) {
+			aankomstTijdVeld.addFocusListener(new FocusAdapter()
+			{
+				public void focusLost (FocusEvent evt)
+				{
 					aankomstTijdVeldFocusLost(evt);
 				}
 			});
@@ -151,8 +148,10 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			bestemmingenBox.setPreferredSize(new java.awt.Dimension(130, 20));
 			bestemmingenBox.setBounds(new java.awt.Rectangle(120, 50, 130, 20));
 			jPanel1.add(bestemmingenBox);
-			bestemmingenBox.addItemListener(new ItemListener() {
-				public void itemStateChanged(ItemEvent evt) {
+			bestemmingenBox.addItemListener(new ItemListener()
+			{
+				public void itemStateChanged (ItemEvent evt)
+				{
 					bestemmingenBoxItemStateChanged(evt);
 				}
 			});
@@ -181,8 +180,10 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			vertrekPuntenBox.setBounds(
 				new java.awt.Rectangle(121, 20, 130, 20));
 			jPanel1.add(vertrekPuntenBox);
-			vertrekPuntenBox.addItemListener(new ItemListener() {
-				public void itemStateChanged(ItemEvent evt) {
+			vertrekPuntenBox.addItemListener(new ItemListener()
+			{
+				public void itemStateChanged (ItemEvent evt)
+				{
 					vertrekPuntenBoxItemStateChanged(evt);
 				}
 			});
@@ -221,8 +222,10 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			vliegtuigBox.setName("vliegtuigBox");
 			vliegtuigBox.setBounds(new java.awt.Rectangle(140, 30, 145, 20));
 			this.getContentPane().add(vliegtuigBox);
-			vliegtuigBox.addItemListener(new ItemListener() {
-				public void itemStateChanged(ItemEvent evt) {
+			vliegtuigBox.addItemListener(new ItemListener()
+			{
+				public void itemStateChanged (ItemEvent evt)
+				{
 					vliegtuigBoxItemStateChanged(evt);
 				}
 			});
@@ -258,56 +261,72 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			oKButton.setPreferredSize(new java.awt.Dimension(60, 25));
 			oKButton.setBounds(new java.awt.Rectangle(230, 296, 60, 25));
 			this.getContentPane().add(oKButton);
-			oKButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent evt) {
-					oKButtonActionPerformed(evt);
+			oKButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed (ActionEvent evt)
+				{
+					okButtonActionPerformed(evt);
 				}
 			});
 			postInitGUI();
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
+
 	/** Add your pre-init code in here 	*/
-	public void preInitGUI() {
+	public void preInitGUI ()
+	{
 	}
 
 	/** Add your post-init code in here 	*/
-	public void postInitGUI() {
+	public void postInitGUI ()
+	{
 		String leeg = "";
 		vliegtuigBox.addItem(leeg);
-		for (String s : vliegtuigen) {
+		for (String s : vliegtuigen)
+		{
 			vliegtuigBox.addItem(s);
 		}
 		vertrekPuntenBox.addItem(leeg);
-		for (String s : luchthavens) {
+		for (String s : luchthavens)
+		{
 			vertrekPuntenBox.addItem(s);
 		}
 		bestemmingenBox.addItem(leeg);
-		for (String s : luchthavens) {
+		for (String s : luchthavens)
+		{
 			bestemmingenBox.addItem(s);
 		}
-		setAktief(false);
+		setActief(false);
 	}
 
 	/** Auto-generated main method */
-	public static void main(String[] args) {
+	public static void main (String[] args)
+	{
 		showGUI();
 	}
 
 	/**
-	* Auto-generated code - any changes you make will disappear!!!
-	* This static method creates a new instance of this class and shows
-	* it inside a new JFrame, (unless it is already a JFrame).
-	*/
-	public static void showGUI() {
-		try {
+	 * Auto-generated code - any changes you make will disappear!!!
+	 * This static method creates a new instance of this class and shows
+	 * it inside a new JFrame, (unless it is already a JFrame).
+	 */
+	public static void showGUI ()
+	{
+		try
+		{
 			RegVluchtJFrame inst = new RegVluchtJFrame();
 			inst.setVisible(true);
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * gemaakt door J.Zuurbier
 	 * indien er geen vliegtuig is geselecteerd wordt een deel
@@ -315,7 +334,8 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 	 * worden ingevuld.
 	 * @param b
 	 */
-	private void setAktief(boolean b) {
+	private void setActief (boolean b)
+	{
 		oKButton.setEnabled(b);
 		//cancelButton.setEnabled(b);
 		aankomstDatumVeld.setEnabled(b);
@@ -325,39 +345,52 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 		vertrekPuntenBox.setEnabled(b);
 		bestemmingenBox.setEnabled(b);
 	}
-	/** Auto-generated event handler method */
-	protected void vliegtuigBoxItemStateChanged(ItemEvent evt) {
 
-		if (evt.getStateChange() == ItemEvent.SELECTED) {
+	/** Auto-generated event handler method */
+	protected void vliegtuigBoxItemStateChanged (ItemEvent evt)
+	{
+
+		if (evt.getStateChange() == ItemEvent.SELECTED)
+		{
 			String s = (String) evt.getItem();
-			if (!s.equals("")) {
-				int[] cap = controller.vliegtuig(s);
+			if (!s.equals(""))
+			{
+				int[] cap = myController.vliegtuig(s);
 				jLabel3.setText("" + cap[0]);
 				jLabel5.setText("" + cap[1]);
-				setAktief(true);
-			} else {
+				setActief(true);
+			}
+			else
+			{
 				jLabel3.setText("0");
 				jLabel5.setText("0");
-				setAktief(false);
+				setActief(false);
 			}
 		}
 
 	}
 
 	/** Auto-generated event handler method */
-	protected void vertrekPuntenBoxItemStateChanged(ItemEvent evt) {
-		try {
-			if (evt.getStateChange() == ItemEvent.SELECTED) {
+	protected void vertrekPuntenBoxItemStateChanged (ItemEvent evt)
+	{
+		try
+		{
+			if (evt.getStateChange() == ItemEvent.SELECTED)
+			{
 				String s = (String) evt.getItem();
-				if (!s.equals("")) {
-					controller.vertrekpunt(s);
+				if (!s.equals(""))
+				{
+					myController.vertrekpunt(s);
 				}
 				s = (String) bestemmingenBox.getSelectedItem();
-				if (s != null && !s.equals("")) {
-					controller.bestemming(s);
+				if (s != null && !s.equals(""))
+				{
+					myController.bestemming(s);
 				}
 			}
-		} catch (IllegalArgumentException e) {
+		}
+		catch (VluchtException e)
+		{
 			JOptionPane.showMessageDialog(
 				this,
 				e.getMessage(),
@@ -367,16 +400,22 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 	}
 
 	/** Auto-generated event handler method */
-	protected void bestemmingenBoxItemStateChanged(ItemEvent evt) {
-		try {
+	protected void bestemmingenBoxItemStateChanged (ItemEvent evt)
+	{
+		try
+		{
 
-			if (evt.getStateChange() == ItemEvent.SELECTED) {
+			if (evt.getStateChange() == ItemEvent.SELECTED)
+			{
 				String s = (String) evt.getItem();
-				if (!s.equals("")) {
-					controller.bestemming(s);
+				if (!s.equals(""))
+				{
+					myController.bestemming(s);
 				}
 			}
-		} catch (IllegalArgumentException e) {
+		}
+		catch (VluchtException e)
+		{
 			JOptionPane.showMessageDialog(
 				this,
 				e.getMessage(),
@@ -386,13 +425,17 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 	}
 
 	/** Auto-generated event handler method */
-	protected void oKButtonActionPerformed(ActionEvent evt) {
-		try {
+	protected void okButtonActionPerformed (ActionEvent evt)
+	{
+		try
+		{
 
-			controller.ok();
+			myController.ok();
 			//System.out.println("vlucht geregistreerd.");
 			dispose();
-		} catch (VluchtException e) {
+		}
+		catch (VluchtException e)
+		{
 			JOptionPane.showMessageDialog(
 				this,
 				e.getMessage(),
@@ -403,13 +446,16 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 	}
 
 	/** Auto-generated event handler method */
-	protected void cancelButtonActionPerformed(ActionEvent evt) {
+	protected void cancelButtonActionPerformed (ActionEvent evt)
+	{
 		dispose();
 	}
 
 	/** Auto-generated event handler method */
-	protected void vertrekTijdVeldFocusLost(FocusEvent evt) {
-		try {
+	protected void vertrekTijdVeldFocusLost (FocusEvent evt)
+	{
+		try
+		{
 			String s = vertrekDatumVeld.getText();
 			StringTokenizer st = new StringTokenizer(s, "-. ");
 			int dag = Integer.parseInt(st.nextToken());
@@ -421,11 +467,13 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			int min = Integer.parseInt(st.nextToken());
 			Calendar c = Calendar.getInstance();
 			c.set(jaar, maand, dag, uur, min);
-			controller.vertrektijd(c);
+			myController.vertrektijd(c);
 			vertrekTijdVeld.setBackground(new java.awt.Color(255, 255, 255));
 			vertrekDatumVeld.setBackground(new java.awt.Color(255, 255, 255));
 
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e)
+		{
 			vertrekTijdVeld.setBackground(new java.awt.Color(255, 0, 128));
 			vertrekDatumVeld.setBackground(new java.awt.Color(255, 0, 128));
 			JOptionPane.showMessageDialog(
@@ -433,7 +481,9 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 				e.getMessage(),
 				"Fout!!! ",
 				JOptionPane.ERROR_MESSAGE);
-		} catch (NoSuchElementException e) {
+		}
+		catch (NoSuchElementException e)
+		{
 			vertrekTijdVeld.setBackground(new java.awt.Color(255, 0, 128));
 			vertrekDatumVeld.setBackground(new java.awt.Color(255, 0, 128));
 			JOptionPane.showMessageDialog(
@@ -441,7 +491,9 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 				"geef datum als dd-mm-yyyy\ntijd in de vorm hh:mm",
 				"Fout!!! ",
 				JOptionPane.ERROR_MESSAGE);
-		} catch (VluchtException e) {
+		}
+		catch (VluchtException e)
+		{
 			vertrekTijdVeld.setBackground(new java.awt.Color(255, 0, 128));
 			vertrekDatumVeld.setBackground(new java.awt.Color(255, 0, 128));
 			JOptionPane.showMessageDialog(
@@ -454,8 +506,10 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 	}
 
 	/** Auto-generated event handler method */
-	protected void aankomstTijdVeldFocusLost(FocusEvent evt) {
-		try {
+	protected void aankomstTijdVeldFocusLost (FocusEvent evt)
+	{
+		try
+		{
 			String s = aankomstDatumVeld.getText();
 			StringTokenizer st = new StringTokenizer(s, "-. ");
 			int dag = Integer.parseInt(st.nextToken());
@@ -467,11 +521,13 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 			int min = Integer.parseInt(st.nextToken());
 			Calendar c = Calendar.getInstance();
 			c.set(jaar, maand, dag, uur, min);
-			controller.aankomstTijd(c);
+			myController.aankomstTijd(c);
 			aankomstTijdVeld.setBackground(new java.awt.Color(255, 255, 255));
 			aankomstDatumVeld.setBackground(new java.awt.Color(255, 255, 255));
 
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e)
+		{
 			aankomstTijdVeld.setBackground(new java.awt.Color(255, 0, 128));
 			aankomstDatumVeld.setBackground(new java.awt.Color(255, 0, 128));
 			JOptionPane.showMessageDialog(
@@ -479,7 +535,9 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 				e.getMessage(),
 				"Fout!!! ",
 				JOptionPane.ERROR_MESSAGE);
-		} catch (NoSuchElementException e) {
+		}
+		catch (NoSuchElementException e)
+		{
 			aankomstTijdVeld.setBackground(new java.awt.Color(255, 0, 128));
 			aankomstDatumVeld.setBackground(new java.awt.Color(255, 0, 128));
 			JOptionPane.showMessageDialog(
@@ -487,7 +545,9 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 				"geef datum als dd-mm-yyyy\ntijd in de vorm hh:mm",
 				"Fout!!! ",
 				JOptionPane.ERROR_MESSAGE);
-		} catch (VluchtException e) {
+		}
+		catch (VluchtException e)
+		{
 			aankomstTijdVeld.setBackground(new java.awt.Color(255, 0, 128));
 			aankomstDatumVeld.setBackground(new java.awt.Color(255, 0, 128));
 			JOptionPane.showMessageDialog(
@@ -497,4 +557,25 @@ public class RegVluchtJFrame extends javax.swing.JFrame {
 				JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	private JTextField vertrekDatumVeld;
+	private JButton oKButton;
+	private JButton cancelButton;
+	private JTextField aankomstDatumVeld;
+	private JTextField vertrekTijdVeld;
+	private JTextField aankomstTijdVeld;
+	private JComboBox vertrekPuntenBox;
+	private JComboBox bestemmingenBox;
+	private JLabel jLabel10;
+	private JLabel jLabel9;
+	private JLabel jLabel8;
+	private JLabel jLabel7;
+	private JPanel jPanel1;
+	private JLabel jLabel6;
+	private JLabel jLabel5;
+	private JLabel jLabel4;
+	private JLabel jLabel3;
+	private JLabel jLabel2;
+	private JComboBox vliegtuigBox;
+	private JLabel jLabel1;
 }

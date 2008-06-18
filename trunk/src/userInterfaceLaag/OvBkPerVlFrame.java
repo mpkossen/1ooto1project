@@ -1,28 +1,21 @@
-/*
- * OvBkPerVlFrame.java
- *
- * Zie  http://www.idevelopment.info/data/Programming/java/date/CalendarExample.java
- * 
- * Created on 11 juni 2008, 15:30
- */
+
 package userInterfaceLaag;
 
+// Imports
 import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.TreeMap;
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
 
-/** 
- *
- * @author  Bami
- */
 public class OvBkPerVlFrame extends javax.swing.JFrame
 {
+	// Relaties
     private OvBkPerVlContr myController;
     private TreeMap<String, Luchthaven> luchthavens;
     private TreeMap<String, Vlucht> vluchten;
 
+	// Constructors
     /** Creates new form OvBkPerVlFrame */
     public OvBkPerVlFrame(TreeMap<String, Luchthaven> lhvns, OvBkPerVlContr obpvctl)
     {
