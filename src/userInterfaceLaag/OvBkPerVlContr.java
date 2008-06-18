@@ -1,21 +1,23 @@
 
 package userInterfaceLaag;
 
+// Imports
 import domeinLaag.Boeking;
 import domeinLaag.Luchthaven;
 import domeinLaag.Vlucht;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.TreeMap;
-import java.util.Vector;
 
 public class OvBkPerVlContr
 {
+	// Relaties
 	private OvBkPerVlFrame myFrame;
 	private Luchthaven vertrekpunt;
 	private Luchthaven aankomstpunt;
 	private Vlucht vlucht;
 
+	// Constructors
 	public OvBkPerVlContr ()
 	{
 		this.vertrekpunt = Luchthaven.getAlleLuchthavens().firstEntry().getValue();

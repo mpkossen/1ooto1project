@@ -1,6 +1,7 @@
 
 package userInterfaceLaag;
 
+// Imports
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -12,17 +13,17 @@ import java.util.*;
 
 public class OverzVliegtuigenFrame extends javax.swing.JFrame
 {
-	private JButton Ok;
-	private JTextArea TextArea;
-	//volgende velden zijn handmatig toegevoegd
-	LuchtvaartMaatschappij lvm;
+	// Relaties
+	LuchtvaartMaatschappij luchtvaartMaatschappij;
 
+	// Constructors
 	public OverzVliegtuigenFrame (LuchtvaartMaatschappij lvm)
 	{
-		this.lvm = lvm;
+		this.luchtvaartMaatschappij = lvm;
 		initGUI();
 	}
 
+	// Overige Methodes
 	/**
 	 * Initializes the GUI.
 	 * Auto-generated code - any changes you make will disappear.
@@ -81,7 +82,7 @@ public class OverzVliegtuigenFrame extends javax.swing.JFrame
 		TextArea.setText("VLIEGTUIG	FABRIKANT	TYPE	CAPACITEIT \n");
 		TextArea.append(" \n");
 
-		TreeMap<String, Vliegtuig> vliegtuigen = lvm.getVliegtuigen();
+		TreeMap<String, Vliegtuig> vliegtuigen = luchtvaartMaatschappij.getVliegtuigen();
 		Set<String> vSet = vliegtuigen.keySet();
 		for (String vNaam : vSet)
 		{
@@ -101,9 +102,13 @@ public class OverzVliegtuigenFrame extends javax.swing.JFrame
 		Ok.requestFocusInWindow();	// Om ook meteen weer uit dat window te kunnen komen.
 	}
 
+	// ActionListeners
 	/** Auto-generated event handler method */
 	protected void OkActionPerformed (ActionEvent evt)
 	{
 		dispose();
 	}
+	
+	private JButton Ok;
+	private JTextArea TextArea;
 }
