@@ -7,7 +7,10 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
- * Een object van deze klasse representeert één luchthaven
+ * Een object van deze klasse representeert één luchthaven.
+ * Een Luchthaven heeft een naam en een code (afkorting).
+ * Eventueel heeft de luchthaven ook een werkplaats.
+ * Tot slot ligt de luchthaven in een land.
  */
 public class Luchthaven
 {
@@ -24,10 +27,10 @@ public class Luchthaven
 	/**
 	 * Constructor voor het aanmaken van een Luchthaven. Wordt gebruikt door Main om de boel even te vullen.
 	 * Dit zodat er ook wat te testen valt.
-	 * @param nm is de naam van de luchthaven.
-	 * @param cd is de code (afkorting) van de luchthaven.
-	 * @param wp is true als de luchthaven een werkplaats heeft, anders false.
-	 * @param ln is het land waar de luchthaven in ligt.
+	 * @param nm	de naam van de luchthaven
+	 * @param cd	de code (afkorting) van de luchthaven
+	 * @param wp	true als de luchthaven een werkplaats heeft, anders false
+	 * @param ln	het land waar de luchthaven in ligt
 	 */
 	public Luchthaven (String nm, String cd, boolean wp, Land ln)
 	{
@@ -49,9 +52,9 @@ public class Luchthaven
 	// Setters
 	/**
 	 * Deze methode zet de naam van het Luchthaven.
-	 * @param nm is de naam van de Luchthaven.
+	 * @param nm	de naam van de Luchthaven
 	 * @throws java.lang.IllegalArgumentException als de naam al bestaat in dat land
-	 * of als de naam geen geldige waarde heeft.
+	 * of als de naam geen geldige waarde heeft
 	 */
 	public void setNaam (String nm) throws IllegalArgumentException
 	{
@@ -71,7 +74,7 @@ public class Luchthaven
 
 	/**
 	 * Deze methode zet de code (afkorting) van de Luchthaven.
-	 * @param code is de code (afkorting) van de Luchthaven.
+	 * @param code	de code (afkorting) van de Luchthaven
 	 */
 	public void setCode (String code)
 	{
@@ -83,18 +86,18 @@ public class Luchthaven
 	 * Hiertoe moet ook een aanpassing gedaan worden in het land.
 	 * Eerst moet de luchthaven namelijk uit het oude land verwijderd worden.
 	 * Het toevoegen aan het nieuwe land (en het verwijderen uit het oude) hoeft
-	 * alleen te gebeuren als de luchthaven al aan alleLuchthavens is toegevoegd.
-	 * Zo niet, dan is deze luchthaven namelijk nog nooit bewaard.
-	 * @param land is het land waar de Luchthaven in ligt.
+	 * alleen te gebeuren als de luchthaven al aan alleLuchthavens	toegevoegd.
+	 * Zo niet, dan	deze luchthaven namelijk nog nooit bewaard.
+	 * @param land	het land waar de Luchthaven in ligt
 	 */
 	public void setLand (Land land)
 	{
-		if (alleLuchthavens.contains(this))		// Indien true is het land al eens bewaard.
+		if (alleLuchthavens.contains(this))		// Indien true	het land al eens bewaard.
 		{
 			this.land.removeLuchthaven(this);	// Eerst de luchthaven verwijderen uit het oude land.
 		}
 		this.land = land;						// Vervolgens het land veranderen.
-		if (alleLuchthavens.contains(this))		// Indien true is het land al eens bewaard.
+		if (alleLuchthavens.contains(this))		// Indien true	het land al eens bewaard.
 		{
 			this.land.addLuchthaven(this);		// Tot slot de luchthaven toevoegen aan het nieuwe land.
 		}
@@ -102,7 +105,7 @@ public class Luchthaven
 	
 	/**
 	 * Deze methode zet of de Luchthaven een werkplaats heeft of niet.
-	 * @param wp is true als de Luchthaven een werkplaats heeft en anders false.
+	 * @param wp	true als de Luchthaven een werkplaats heeft en anders false
 	 */
 	public void setWerkPlaats (boolean wp)
 	{
@@ -112,7 +115,7 @@ public class Luchthaven
 	// Getters
 	/**
 	 * Deze methode geeft de naam van de Luchthaven.
-	 * @return is de naam van de Luchthaven.
+	 * @return	de naam van de Luchthaven
 	 */
 	public String getNaam ()
 	{
@@ -121,7 +124,7 @@ public class Luchthaven
 
 	/**
 	 * Deze methode geeft de code van de Luchthaven.
-	 * @return is de code (afkorting) van de Luchthaven.
+	 * @return	de code (afkorting) van de Luchthaven
 	 */
 	public String getCode ()
 	{
@@ -130,7 +133,7 @@ public class Luchthaven
 
 	/**
 	 * Deze methode geeft true als er een werkplaats is en anders false.
-	 * @return is true als er een werkplaats is op de Luchthaven.
+	 * @return	true als er een werkplaats is op de Luchthaven
 	 */
 	public boolean getWerkPlaats ()
 	{
@@ -139,7 +142,7 @@ public class Luchthaven
 
 	/**
 	 * Deze methode geeft het Land waar de Luchthaven ligt.
-	 * @return is het Land waar de Luchthaven ligt.
+	 * @return	het Land waar de Luchthaven ligt
 	 */
 	public Land getLand ()
 	{
@@ -148,7 +151,7 @@ public class Luchthaven
 	
 	/**
 	 * Deze statische methode geeft alle luchthavennamen en Luchthavens terug.
-	 * @return is een TreeMap van luchthavennamen en Luchthavens.
+	 * @return	een TreeMap van luchthavennamen en Luchthavens
 	 */
 	public static TreeMap<String, Luchthaven> getAlleLuchthavens ()
 	{
@@ -164,7 +167,7 @@ public class Luchthaven
 	// Overige Methodes
 	/**
 	 * Deze methode bewaart deze Luchthaven door hem toe te voegen aan de Luchthavens van het land en alleLuchthavens.
-	 * @throws domeinLaag.LuchthavenException als nog niet alle attributen een waarde hebben.
+	 * @throws domeinLaag.LuchthavenException	als nog niet alle attributen een waarde hebben
 	 */
 	public void bewaar () throws LuchthavenException
 	{
