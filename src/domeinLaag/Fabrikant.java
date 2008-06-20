@@ -23,8 +23,8 @@ public class Fabrikant
 	/**
 	 * Constructor voor het aanmaken van een Fabrikant. Wordt momenteel alleen in Main gebruikt om de boel te vullen.
 	 * Er zijn geen Use Cases die objecten van deze klasse aanmaken of bewerken.
-	 * @param nm is de naam van de fabrikant.
-	 * @param cp is de naam van de contactpersoon.
+	 * @param nm	de naam van de fabrikant
+	 * @param cp	de naam van de contactpersoon
 	 */
 	public Fabrikant (String nm, String cp)
 	{
@@ -37,7 +37,7 @@ public class Fabrikant
 	// Setters
 	/**
 	 * Deze methode zet de naam van de fabrikant.
-	 * @param nm is de naam van de fabrikant.
+	 * @param nm	de naam van de fabrikant
 	 */
 	public void setNaam (String nm)
 	{
@@ -46,7 +46,7 @@ public class Fabrikant
 	
 	/**
 	 * Deze methode zet de naam van de contactpersoon.
-	 * @param cp is de naam van de contactpersoon.
+	 * @param cp	de naam van de contactpersoon
 	 */
 	public void setContactPersoon (String cp)
 	{
@@ -56,7 +56,7 @@ public class Fabrikant
 	// Getters
 	/**
 	 * Deze methode geeft de naam van de fabrikant.
-	 * @return is de naam van de fabrikant.
+	 * @return	de naam van de fabrikant
 	 */
 	public String getNaam ()
 	{
@@ -65,7 +65,7 @@ public class Fabrikant
 
 	/**
 	 * Deze methode geeft de naam van de contactpersoon.
-	 * @return is de naam van de contactpersoon.
+	 * @return	de naam van de contactpersoon
 	 */
 	public String getContactpersoon ()
 	{
@@ -74,7 +74,7 @@ public class Fabrikant
 
 	/**
 	 * Deze methode geeft een TreeMap met alle vliegtuigtypen die deze fabrikant levert.
-	 * @return is een TreeMap van de naam van het vliegtuigtype en het vliegtuigtype-object.
+	 * @return	een TreeMap van de naam van het vliegtuigtype en het vliegtuigtype-object
 	 */
 	public TreeMap<String, VliegtuigType> getVliegtuigTypen ()
 	{
@@ -89,7 +89,7 @@ public class Fabrikant
 
 	/**
 	 * Deze statische methode geeft een TreeMap met alle fabrikanten.
-	 * @return is een TreeMap van de naam van de fabrikant en het fabrikant-object.
+	 * @return	een TreeMap van de naam van de fabrikant en het fabrikant-object
 	 */
 	public static TreeMap<String, Fabrikant> getAlleFabrikanten ()
 	{
@@ -105,10 +105,10 @@ public class Fabrikant
 	// Creators
 	/**
 	 * Deze methode creëert een nieuw vliegtuigtype en voegt het toe aan deze fabrikant.
-	 * @param code is de code waarmee dit type toestel aangeduid wordt.
-	 * @param capR is de roken-capaciteit van het vliegtuigtype.
-	 * @param capNR is de niet-roken-capaciteit van het vliegtuigtype.
-	 * @return is het aangemaakte vliegtuigtype-object.
+	 * @param code		de code waarmee dit type toestel aangeduid wordt
+	 * @param capR		de roken-capaciteit van het vliegtuigtype
+	 * @param capNR		de niet-roken-capaciteit van het vliegtuigtype
+	 * @return			het aangemaakte vliegtuigtype-object
 	 */
 	public VliegtuigType createVliegtuigType (String code, int capR, int capNR)
 	{
