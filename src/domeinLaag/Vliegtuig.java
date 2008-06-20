@@ -24,7 +24,6 @@ public class Vliegtuig
 	// Constructors
 	/**
 	 * Constructor voor het aanmaken van een Vliegtuig. Wordt momenteel alleen in Main gebruikt om de boel te vullen.
-	 * Er zijn geen Use Cases die objecten van deze klasse aanmaken of bewerken.
 	 * @param lvm	de LuchtvaartMaatschappij die eigenaar is van het vliegtuig
 	 * @param vtt	het VliegtuigType van het vliegtuig
 	 * @param nm	de naam van het vliegtuig
