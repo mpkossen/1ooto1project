@@ -9,12 +9,12 @@ package domeinLaag;
 public class VliegtuigType
 {
 	// Attributen
-	private String code;
-	private int capaciteitRoken;
-	private int capaciteitNietRoken;
+	private String code;				// De code voor dit type vliegtuig.
+	private int capaciteitRoken;		// Het aantal zitplaatsen voor rokers.
+	private int capaciteitNietRoken;	// Het aantal zitplaatsen voor niet-rokers.
 	
 	// Relaties
-	private Fabrikant fabrikant;
+	private Fabrikant fabrikant;		// De fabrikant van dit type.
 
 	// Constructors
 	/**
