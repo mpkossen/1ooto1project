@@ -34,7 +34,7 @@ public class OverzLuchthavenFrame extends javax.swing.JFrame
 			{
 				tableInformatie[i][2] = new String("Nee");
 			}
-			tableInformatie[i][3] = new String(lh.getLand().geefNaam());
+			tableInformatie[i][3] = new String(lh.getLand().getNaam());
 			i++;
 		}
 
