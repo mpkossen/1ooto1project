@@ -8,17 +8,19 @@ import java.util.TreeMap;
 public class Land
 {
 	// Attributen
-	private String naam;
-	private int code;
+	private String naam;	// De naam van het land.
+	private int code;		// De landcode van het land.
 	
 	// Relaties
-	/** Alle luchthavens binnen het land */
-	private HashSet<Luchthaven> luchthavens;
-	private static HashSet<Land> alleLanden = new HashSet<Land>();
+	private HashSet<Luchthaven> luchthavens;	// Een HashSet van alle luchthavens in het land.
+	private static HashSet<Land> alleLanden = new HashSet<Land>();	// Een static HashSet van alle landen.
 
+	// Constructors
 	/**
-	@param naam
-	@param code
+	 * Constructor voor het aanmaken van een Land. Wordt momenteel alleen in Main gebruikt om de boel te vullen.
+	 * Er zijn geen Use Cases die objecten van deze klasse aanmaken of bewerken.
+	 * @param nm is de naam van het land.
+	 * @param cd is de landcode van het land.
 	 */
 	public Land (String nm, int cd)
 	{
@@ -28,13 +30,38 @@ public class Land
 		alleLanden.add(this);
 	}
 
-	public String geefNaam ()
+	// Setters
+	/**
+	 * Deze methode zet de naam van het land.
+	 * @param nm is de naam van het land.
+	 */
+	public void setNaam (String nm)
+	{
+		this.naam = nm;
+	}
+	
+	/**
+	 * Deze methode zet de landcode van het land.
+	 * @param cd is de landcode van het land.
+	 */
+	public void setCode (int cd)
+	{
+		this.code = cd;
+	}
+	
+	// Setters
+	/**
+	 * Deze methode geeft de naam van het land.
+	 * @return is de naam van het land.
+	 */
+	public String getNaam ()
 	{
 		return naam;
 	}
 
 	/**
-	@return int
+	 * Deze methode geeft de landcode van het land.
+	 * @return is de landcode van het land.
 	 */
 	public int getCode ()
 	{
@@ -42,7 +69,8 @@ public class Land
 	}
 
 	/**
-	@return java.util.TreeMap een TreeMap met naam als key en een referentie naar het land als value.
+	 * Deze methode geeft alle luchthavens in het land.
+	 * @return is een TreeMap van de luchthavennamen en de luchthavens van het land.
 	 */
 	public TreeMap<String, Luchthaven> getLuchthavens ()
 	{
@@ -56,20 +84,24 @@ public class Land
 	}	
 	
 	/**
-	@return java.util.TreeMap een TreeMap met naam als key en een referentie naar het land als value.
+	 * Deze static methode geeft alle luchthavens van alle landen.
+	 * @return is een TreeMap van alle luchthavennamen en alle luchthavens.
 	 */
 	public static TreeMap<String, Land> getAlleLanden ()
 	{
 		TreeMap<String, Land> landMap = new TreeMap<String, Land>();
 		for (Land l : alleLanden)
 		{
-			String nm = l.geefNaam();
+			String nm = l.getNaam();
 			landMap.put(nm, l);
 		}
 		return landMap;
 	}
 
-	/** Voegt een Luchthaven toe aan lh. */
+	/**
+	 * Deze methode voegt een luchthaven toe aan een land.
+	 * @param lhvn is de luchthaven die toegevoegd moet worden aan het land.
+	 */
 	public void addLuchthaven (Luchthaven lhvn)
 	{
 		luchthavens.add(lhvn);
