@@ -8,7 +8,8 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
- * In deze klasse worden Klanten aangemaakt en opgeslagen.
+ * Een object van deze klasse representeert één klant.
+ * Bijgehouden wordt de naam van de klant en zijn adres.
  */
 public class Klant
 {

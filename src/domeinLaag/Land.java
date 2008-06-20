@@ -5,6 +5,10 @@ package domeinLaag;
 import java.util.HashSet;
 import java.util.TreeMap;
 
+/**
+ * Een object van deze klasse representeert één land en houdt bij welke luchthavens zich er bevinden.
+ * Ook wordt bijgehouden hoe het land heet en wat de landcode is.
+ */
 public class Land
 {
 	// Attributen
@@ -105,6 +109,15 @@ public class Land
 	public void addLuchthaven (Luchthaven lhvn)
 	{
 		luchthavens.add(lhvn);
+	}
+	
+	/**
+	 * Deze methode verwijdert een luchthaven van een land.
+	 * @param lhvn is de luchthaven die verwijdert moet worden.
+	 */
+	public void removeLuchthaven (Luchthaven lhvn)
+	{
+		luchthavens.remove(lhvn);
 	}
 }
 
