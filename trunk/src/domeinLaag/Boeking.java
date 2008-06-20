@@ -23,10 +23,10 @@ public class Boeking
 	/**
 	 * Constructor voor klasse Boeking. Wordt gebruikt door Main om de boel even te vullen.
 	 * Dit zodat er ook wat te testen valt.
-	 * @param vl is de vlucht waarvoor deze boeking is.
-	 * @param ap is het aantal geboekte plaatsen op de vlucht.
-	 * @param rkn is true als het om "roken" gaat en false als het om "niet-roken" gaat.
-	 * @param kl is de klant die de boeking gedaan heeft.
+	 * @param vl	de vlucht waarvoor deze boeking is
+	 * @param ap	het aantal geboekte plaatsen op de vlucht
+	 * @param rkn	true als het om "roken" gaat en false als het om "niet-roken" gaat
+	 * @param kl	de klant die de boeking gedaan heeft
 	 */
 	public Boeking (Vlucht vl, int ap, boolean rkn, Klant kl)
 	{
@@ -46,7 +46,7 @@ public class Boeking
 	// Setters
 	/**
 	 * Deze methode zet in de boeking of het om roken- of niet-roken-plaatsen gaat.
-	 *	@param rkn is roken als het true is en niet roken als het false is.
+	 *	@param rkn	roken als het true is en niet roken als het false is
 	 */
 	public void setRoken (boolean rkn)
 	{
@@ -62,8 +62,8 @@ public class Boeking
 	 * gezet. Indien er onvoldoende plaatsen van het juiste type beschikbaar zijn wordt een
 	 * BoekingException gegooit. Uiteraard worden, in geval van succes, de benodigde plaatsen op
 	 * niet-beschikbaar gezet.
-	 * @param ap is het aantal gewenste plaatsen voor deze Boeking.
-	 * @throws domeinLaag.BoekingException als er onvoldoende, juiste plaatsen beschikbaar zijn.
+	 * @param ap	het aantal gewenste plaatsen voor deze Boeking
+	 * @throws domeinLaag.BoekingException	als er onvoldoende, juiste plaatsen beschikbaar zijn
 	 */
 	public void setPlaatsen (int ap) throws BoekingException
 	{
@@ -90,7 +90,7 @@ public class Boeking
 
 	/**
 	 * Deze methode zet de klant van deze boeking naar het klant argument.
-	 * @param kl is de klant die deze boeking gedaan heeft.
+	 * @param kl	de klant die deze boeking gedaan heeft
 	 */
 	public void setKlant (Klant kl)
 	{
@@ -99,7 +99,7 @@ public class Boeking
 
 	/**
 	 * Deze methode zet de vlucht van deze boeking naar het vlucht argument.
-	 * @param vl is de vlucht waar deze boeking over gaat.
+	 * @param vl	de vlucht waar deze boeking over gaat
 	 */
 	public void setVlucht (Vlucht vl)
 	{
@@ -109,7 +109,7 @@ public class Boeking
 	// Getters
 	/**
 	 * Deze methode returned of de Boeking om roken/niet-roken plaatsen gaat.
-	 * @return is true als het om "Roken" gaat en false als het om "Niet Roken" gaat.
+	 * @return	true als het om "Roken" gaat en false als het om "Niet Roken" gaat
 	 */
 	public boolean getRoken ()
 	{
@@ -118,7 +118,7 @@ public class Boeking
 
 	/**
 	 * Deze methode returned het aantal plaatsen op de vlucht.
-	 * @return is het aantal plaatsen dat deze boeking op de vlucht heeft.
+	 * @return	het aantal plaatsen dat deze boeking op de vlucht heeft
 	 */
 	public int getAantalPlaatsen ()
 	{
@@ -127,7 +127,7 @@ public class Boeking
 
 	/**
 	 * Deze methode returned de vlucht waar deze boeking voor is.
-	 * @return is de vlucht waar deze boeking voor is.
+	 * @return	de vlucht waar deze boeking voor is
 	 */
 	public Vlucht getVlucht ()
 	{
@@ -136,7 +136,7 @@ public class Boeking
 
 	/**
 	 * Deze methode returned de klant die deze boeking gedaan heeft.
-	 * @return is de klant die deze boeking gedaan heeft.
+	 * @return	de klant die deze boeking gedaan heeft
 	 */
 	public Klant getKlant ()
 	{
@@ -146,9 +146,9 @@ public class Boeking
 	// Overige Methodes
 	/**
 	 * Deze methode bewaart alle ingevoerde gegevens door dit object te registreren bij de centraler gelegen klassen.
-	 * @throws domeinLaag.BoekingException als gegevens ontbreken of ongeldig zijn.
-	 * @throws domeinLaag.KlantException als er iets mis is met de klantgegevens.
-	 * @throws domeinLaag.KlantBestaatAlException als de klant al bleek te bestaan.
+	 * @throws domeinLaag.BoekingException			als gegevens ontbreken of ongeldig zijn
+	 * @throws domeinLaag.KlantException			als er iets mis is met de klantgegevens
+	 * @throws domeinLaag.KlantBestaatAlException	als de klant al bleek te bestaan
 	 */
 	public void bewaar () throws BoekingException, KlantException, KlantBestaatAlException
 	{

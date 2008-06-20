@@ -27,10 +27,10 @@ public class Klant
 	 * Constructor voor klasse Boeking. Wordt gebruikt door Main om de boel even te vullen.
 	 * Dit zodat er ook wat te testen valt. Wordt ook gebruik in BoekVluchtContr om een klant
 	 * aan te maken en op te slaan indien die nog niet bestaat.
-	 * @param nm is de naam van de klant.
-	 * @param str is de straat van de klant.
-	 * @param hnr is het huisnummer van de klant.
-	 * @param pl is de woonplaats van de klant.
+	 * @param nm	de naam van de klant
+	 * @param str	de straat van de klant
+	 * @param hnr	het huisnummer van de klant
+	 * @param pl	de woonplaats van de klant
 	 */
     public Klant(String nm, String str, int hnr, String pl)
     {
@@ -42,7 +42,7 @@ public class Klant
 
     /**
 	 * Deze methode zet de naam van de klant.
-	 * @param nm is de naam van de klant.
+	 * @param nm	de naam van de klant
 	 */
     public void setNaam(String nm)
     {
@@ -51,7 +51,7 @@ public class Klant
 
 	/**
 	 * Deze methode zet de straat van de klant.
-	 * @param st is de straat van de klant.
+	 * @param st	de straat van de klant
 	 */
     public void setStraat(String st)
     {
@@ -60,7 +60,7 @@ public class Klant
 
 	/**
 	 * Deze methode zet de woonplaats van de klant.
-	 * @param pl is de woonplaats van de klant.
+	 * @param pl	de woonplaats van de klant
 	 */
     public void setPlaats(String pl)
     {
@@ -69,7 +69,7 @@ public class Klant
 
 	/**
 	 * Deze methode zet het huisnummer van de klant.
-	 * @param hn is het huisnummer van de klant.
+	 * @param hn	het huisnummer van de klant
 	 */
     public void setHuisNr(int hn)
     {
@@ -79,7 +79,7 @@ public class Klant
     // Getters
 	/**
 	 * Deze methode returned de naam van de klant.
-	 * @return is de naam van de klant.
+	 * @return	de naam van de klant
 	 */
     public String getNaam()
     {
@@ -88,7 +88,7 @@ public class Klant
     
 	/**
 	 * Deze methode returned de straat van de klant.
-	 * @return is de straat van de klant.
+	 * @return	de straat van de klant.
 	 */
     public String getStraat ()
     {
@@ -97,7 +97,7 @@ public class Klant
     
 	/**
 	 * Deze methode returned de woonplaats van de klant.
-	 * @return is de woonplaats van de klant.
+	 * @return	de woonplaats van de klant
 	 */
     public String getPlaats ()
     {
@@ -106,7 +106,7 @@ public class Klant
     
 	/**
 	 * Deze methode returned het huisnummer van de klant.
-	 * @return is het huisnummer van de klant.
+	 * @return	het huisnummer van de klant
 	 */
     public int getHuisNr ()
     {
@@ -115,7 +115,7 @@ public class Klant
     
 	/**
 	 * Deze static methode returned alle klanten.
-	 * @return is een TreeMap van klantnamen en Klanten.
+	 * @return	een TreeMap van klantnamen en Klanten
 	 */
     public static TreeMap<String, Klant> getAlleKlanten ()
     {
@@ -135,8 +135,8 @@ public class Klant
 	 * Deze static methode controleert of een klant al bestaat. Er wordt gecontroleert
 	 * door te kijken of de naam en het gehele adres overeen komen. Als ook maar iets
 	 * afwijkt wordt het geaccepteert als een andere klant.
-	 * @param kl is de klant die je wil testen.
-	 * @return is true als de klant al bestaat en false als dat niet zo is.
+	 * @param kl	de klant die je wil testen
+	 * @return		true als de klant al bestaat en false als dat niet zo is
 	 */
 	public static boolean bestaatAl (Klant kl)
 	{
@@ -160,8 +160,8 @@ public class Klant
 	 * Als de klant wel al bestaat (zie methode bestaatAl), dan wordt een
 	 * KlantBestaatAlException gegooid die de gebruiker dit laat weten. De
 	 * verdere afhandeling gebeurt dan in de controller.
-	 * @throws domeinLaag.KlantException als er ongeldige gegevens ingevoegd zijn.
-	 * @throws domeinLaag.KlantBestaatAlException als de klant al bestond.
+	 * @throws domeinLaag.KlantException			als er ongeldige gegevens ingevoegd zijn
+	 * @throws domeinLaag.KlantBestaatAlException	als de klant al bestond
 	 */
     public void bewaar() throws KlantException, KlantBestaatAlException
     {
