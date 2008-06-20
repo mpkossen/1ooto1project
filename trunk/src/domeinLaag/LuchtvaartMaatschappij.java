@@ -5,26 +5,35 @@ package domeinLaag;
 import java.util.HashSet;
 import java.util.TreeMap;
 
+/**
+ * Een object van deze klasse representeert één luchtvaartmaatschappij.
+ * De luchtvaartmaatschappij heeft een naam en een aantal vliegtuigen.
+ * Normaliter bestaat er maar één object van deze klasse.
+ */
 public class LuchtvaartMaatschappij
 {
 	// Attributen
-	private String naam;
+	private String naam;	// De naam van de luchtvaartmaatschappij
 	
 	// Relaties
-	private HashSet<Vliegtuig> vliegtuigen = new HashSet<Vliegtuig>();
+	private HashSet<Vliegtuig> vliegtuigen = new HashSet<Vliegtuig>();	// De Vliegtuigen van de luchtvaartmaatschappij.
 
 	// Constructors
 	/**
-	 * @param naam
+	 * Constructor voor het aanmaken van een Luchtvaartmaatschappij.
+	 * Wordt momenteel alleen in Main gebruikt om de boel te vullen.
+	 * Er zijn geen Use Cases die objecten van deze klasse aanmaken of bewerken.
+	 * @param nm is de naam van de luchtvaartmaatschappij.
 	 */
-	public LuchtvaartMaatschappij (String naam)
+	public LuchtvaartMaatschappij (String nm)
 	{
-		this.naam = naam;
+		this.naam = nm;
 	}
 
 	// Getters
 	/**
-	 * @return TreeMap met key = naam en value = een referentie naar het vliegtuig-object
+	 * Deze methode geeft alle vliegtuigen van de luchtvaartmaatschappij.
+	 * @return is een TreeMap van vliegtuignamen en Vliegtuigen.
 	 */
 	public TreeMap<String, Vliegtuig> getVliegtuigen ()
 	{
@@ -39,7 +48,8 @@ public class LuchtvaartMaatschappij
 	
 	// Adders
 	/**
-	 * @param vt
+	 * Deze methode voegt een Vliegtuig toe aan de luchtvaartmaatschappij.
+	 * @param vt is het toe te voegen Vliegtuig.
 	 */
 	public void addVliegtuig (Vliegtuig vt)
 	{
@@ -48,7 +58,8 @@ public class LuchtvaartMaatschappij
 	
 	// Removers
 	/**
-	 * @param vt
+	 * Deze methode verwijdert een Vliegtuig van een luchtvaartmaatschappij.
+	 * @param vt is het te verwijderen Vliegtuig.
 	 */
 	public void removeVliegtuig (Vliegtuig vt)
 	{
