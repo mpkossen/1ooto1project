@@ -23,8 +23,8 @@ public class Land
 	/**
 	 * Constructor voor het aanmaken van een Land. Wordt momenteel alleen in Main gebruikt om de boel te vullen.
 	 * Er zijn geen Use Cases die objecten van deze klasse aanmaken of bewerken.
-	 * @param nm is de naam van het land.
-	 * @param cd is de landcode van het land.
+	 * @param nm	de naam van het land
+	 * @param cd	de landcode van het land
 	 */
 	public Land (String nm, int cd)
 	{
@@ -37,7 +37,7 @@ public class Land
 	// Setters
 	/**
 	 * Deze methode zet de naam van het land.
-	 * @param nm is de naam van het land.
+	 * @param nm	de naam van het land
 	 */
 	public void setNaam (String nm)
 	{
@@ -46,7 +46,7 @@ public class Land
 	
 	/**
 	 * Deze methode zet de landcode van het land.
-	 * @param cd is de landcode van het land.
+	 * @param cd	de landcode van het land.
 	 */
 	public void setCode (int cd)
 	{
@@ -56,7 +56,7 @@ public class Land
 	// Setters
 	/**
 	 * Deze methode geeft de naam van het land.
-	 * @return is de naam van het land.
+	 * @return	de naam van het land
 	 */
 	public String getNaam ()
 	{
@@ -65,7 +65,7 @@ public class Land
 
 	/**
 	 * Deze methode geeft de landcode van het land.
-	 * @return is de landcode van het land.
+	 * @return	de landcode van het land
 	 */
 	public int getCode ()
 	{
@@ -74,7 +74,7 @@ public class Land
 
 	/**
 	 * Deze methode geeft alle luchthavens in het land.
-	 * @return is een TreeMap van de luchthavennamen en de luchthavens van het land.
+	 * @return	een TreeMap van de luchthavennamen en de luchthavens van het land
 	 */
 	public TreeMap<String, Luchthaven> getLuchthavens ()
 	{
@@ -89,7 +89,7 @@ public class Land
 	
 	/**
 	 * Deze static methode geeft alle luchthavens van alle landen.
-	 * @return is een TreeMap van alle luchthavennamen en alle luchthavens.
+	 * @return	een TreeMap van alle luchthavennamen en alle luchthavens
 	 */
 	public static TreeMap<String, Land> getAlleLanden ()
 	{
@@ -104,7 +104,7 @@ public class Land
 
 	/**
 	 * Deze methode voegt een luchthaven toe aan een land.
-	 * @param lhvn is de luchthaven die toegevoegd moet worden aan het land.
+	 * @param lhvn	de luchthaven die toegevoegd moet worden aan het land
 	 */
 	public void addLuchthaven (Luchthaven lhvn)
 	{
@@ -113,7 +113,7 @@ public class Land
 	
 	/**
 	 * Deze methode verwijdert een luchthaven van een land.
-	 * @param lhvn is de luchthaven die verwijdert moet worden.
+	 * @param lhvn	de luchthaven die verwijdert moet worden
 	 */
 	public void removeLuchthaven (Luchthaven lhvn)
 	{

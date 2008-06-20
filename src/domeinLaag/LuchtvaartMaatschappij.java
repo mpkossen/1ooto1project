@@ -23,7 +23,7 @@ public class LuchtvaartMaatschappij
 	 * Constructor voor het aanmaken van een Luchtvaartmaatschappij.
 	 * Wordt momenteel alleen in Main gebruikt om de boel te vullen.
 	 * Er zijn geen Use Cases die objecten van deze klasse aanmaken of bewerken.
-	 * @param nm is de naam van de luchtvaartmaatschappij.
+	 * @param nm	de naam van de luchtvaartmaatschappij
 	 */
 	public LuchtvaartMaatschappij (String nm)
 	{
@@ -33,7 +33,7 @@ public class LuchtvaartMaatschappij
 	// Getters
 	/**
 	 * Deze methode geeft alle vliegtuigen van de luchtvaartmaatschappij.
-	 * @return is een TreeMap van vliegtuignamen en Vliegtuigen.
+	 * @return	een TreeMap van vliegtuignamen en Vliegtuigen
 	 */
 	public TreeMap<String, Vliegtuig> getVliegtuigen ()
 	{
@@ -49,7 +49,7 @@ public class LuchtvaartMaatschappij
 	// Adders
 	/**
 	 * Deze methode voegt een Vliegtuig toe aan de luchtvaartmaatschappij.
-	 * @param vt is het toe te voegen Vliegtuig.
+	 * @param vt	het toe te voegen Vliegtuig
 	 */
 	public void addVliegtuig (Vliegtuig vt)
 	{
@@ -59,7 +59,7 @@ public class LuchtvaartMaatschappij
 	// Removers
 	/**
 	 * Deze methode verwijdert een Vliegtuig van een luchtvaartmaatschappij.
-	 * @param vt is het te verwijderen Vliegtuig.
+	 * @param vt	het te verwijderen Vliegtuig
 	 */
 	public void removeVliegtuig (Vliegtuig vt)
 	{
