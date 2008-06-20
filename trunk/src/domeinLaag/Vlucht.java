@@ -4,27 +4,33 @@ package domeinLaag;
 // Imports
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.HashSet;
+import java.util.Iterator;
 
+/**
+ * Een object van deze klasse representeert één vlucht van één vliegtuig.
+ * Een vlucht heeft een vertrekpunt en een bestemming. Ook heeft het een
+ * vluchtnummer en momenten van vertrek. Lokaal wordt ook de verwachte
+ * vluchtduur bijgehouden en tot slot worden alle boekingen bijgehouden.
+ */
 public class Vlucht
 {
 	//Attributen
-	private int vluchtNummer;
-	private Calendar vertrekTijd;
-	private Calendar aankomstTijd;
-	private Calendar duur;
+	private int vluchtNummer;		// Het vluchtnummer van de vlucht.
+	private Calendar vertrekTijd;	// Datum en Tijd van gepland vertrek.
+	private Calendar aankomstTijd;	// Datum en Tijd van geplande aankomst.
+	private Calendar duur;			// Geplande vluchtduur.
 
 	// Relaties
-	private Vliegtuig vliegtuig;
-	private Luchthaven bestemming;
-	private Luchthaven vertrekpunt;
-	private HashSet<Boeking> boekingen;
-	private static HashSet<Vlucht> alleVluchten = new HashSet<Vlucht>();
+	private Vliegtuig vliegtuig;		// Vliegtuig voor deze vlucht.
+	private Luchthaven vertrekpunt;		// Luchthaven van vertrek.
+	private Luchthaven bestemming;		// Luchthaven van bestemming.
+	private HashSet<Boeking> boekingen;	// Boekingen voor deze vlucht.
+	private static HashSet<Vlucht> alleVluchten = new HashSet<Vlucht>();	// Alle vluchten.
 
 	//Constructors
 	/**
-	 * Constructor bedoelt om test-objecten mee aan te maken.
+	 * Constructor voor het aanmaken van een Vlucht. Wordt momenteel alleen in Main gebruikt om de boel te vullen.
 	 */
 	public Vlucht (Vliegtuig vlt, Luchthaven vtp, Luchthaven bst, Calendar vertrek, Calendar aankomst)
 	{
@@ -38,10 +44,11 @@ public class Vlucht
 	}
 
 	/**
-	 * Constructor bedoeld om in RegVluchtController te gebruiken.
-	 * de overige attributen worden dat met de zetmethoden gevuld.
-	 * @param vlt
-	 * @param vtp
+	 * Constructor voor het aanmaken van een Vlucht. Alle overige attributen
+	 * en relaties worden later door de RegVluchtController gezet middels
+	 * de setters.
+	 * @param vlt	vliegtuig voor deze vlucht
+	 * @param vtp	luchthaven van vertrek
 	 */
 	public Vlucht (Vliegtuig vlt, Luchthaven vtp)
 	{
@@ -52,8 +59,10 @@ public class Vlucht
 
 	// Setters
 	/**
-	 * Controleer dat de vertrektijd niet overlapt met een andere vlucht van het toestel.
-	 * @param tijd
+	 * Deze methode zet de vertrektijd. Dit na controle of het vliegtuig wel
+	 * beschikbaar is en of de vertrektijd wel geldig is.
+	 * @param tijd	de geplande tijd van vertrek
+	 * @throws domeinLaag.VluchtException	als het vliegtuig reeds bezet is of de vertrektijd ongeldig is
 	 */
 	public void setVertrekTijd (Calendar tijd) throws VluchtException
 	{
@@ -78,8 +87,10 @@ public class Vlucht
 	}
 	
 	/**
-	 * Controleer dat aankomstTijd > vertrekTijd.
-	 * @param tijd
+	 * Deze methode zet de aankomsttijd. Dit na controle de aankomsttijd wel
+	 * geldig is en wel later is dan de vertrektijd.
+	 * @param tijd	de geplande tijd van aankomst
+	 * @throws domeinLaag.VluchtException	als de aankomsttijd eerder is dan het vertrek of de vertrektijd ongeldig is
 	 */
 	public void setAankomstTijd (Calendar tijd) throws VluchtException
 	{
@@ -103,14 +114,19 @@ public class Vlucht
 		}
 	}
 	
+	/**
+	 * Deze methode zet het vliegtuig voor deze vlucht.
+	 * @param vlt	het Vliegtuig dat gebruikt wordt voor deze Vlucht
+	 */
 	public void setVliegtuig (Vliegtuig vlt)
 	{
 		this.vliegtuig = vlt;
 	}
 
 	/**
-	 * Controleer dat bestemming <> vertrekpunt.
-	 * @param bestemming
+	 * Deze methode zet de luchthaven van bestemming.
+	 * @param bestemming	de Luchthaven van bestemming voor de Vlucht
+	 * @throws domeinLaag.VluchtException	als vertrekpunt en bestemming gelijk zijn
 	 */
 	public void setBestemming (Luchthaven bestemming) throws VluchtException
 	{
@@ -125,39 +141,63 @@ public class Vlucht
 	}	
 	
 	// Getters
+	/**
+	 * Deze methode geeft de vertrektijd.
+	 * @return	de datum en tijd van vertrek
+	 */
 	public Calendar getVertrekTijd ()
 	{
 		return vertrekTijd;
 	}
 
+	/**
+	 * Deze methode geeft de aankomsttijd.
+	 * @return	de datum en tijd van aankomst
+	 */
 	public Calendar getAankomstTijd ()
 	{
 		return aankomstTijd;
 	}
 
+	/**
+	 * Deze methode geeft het vliegtuig voor deze vlucht.
+	 * @return	het Vliegtuig voor deze Vlucht
+	 */
 	public Vliegtuig getVliegtuig ()
 	{
 		return vliegtuig;
 	}
 	
+	/**
+	 * Deze methode geeft het vertrekpunt van deze vlucht.
+	 * @return	de Luchthaven van vertrek
+	 */
 	public Luchthaven getVertrekpunt ()
 	{
 		return vertrekpunt;
 	}
 
+	/**
+	 * Deze methode geeft de bestemming van deze vlucht.
+	 * @return	de Luchthaven van bestemming
+	 */
 	public Luchthaven getBestemming ()
 	{
 		return bestemming;
 	}
 
+	/**
+	 * Deze methode geeft alle boekingen voor deze vlucht.
+	 * @return	een HashSet van alle boekingen voor deze vlucht.
+	 */
 	public HashSet<Boeking> getAlleBoekingen ()
 	{
 		return boekingen;
 	}
 
 	/**
-	 * @return java.util.HashSet
-	 * Ik weet niet of dit zo klopt.
+	 * Deze statische methode geeft alle vluchten.
+	 * @return	een HashSet van alle Vluchten
 	 */
 	public static HashSet<Vlucht> getAlleVluchten ()
 	{
@@ -171,12 +211,20 @@ public class Vlucht
 	}	
 	
 	// Adders
+	/**
+	 * Deze methode voegt een boeking toe aan de vlucht.
+	 * @param bk	de Boeking om toe te voegen aan de Vlucht
+	 */
 	public void addBoeking (Boeking bk)
 	{
 		boekingen.add(bk);
 	}
 
 	// Removers
+	/**
+	 * Deze methode verwijdert een boeking van de vlucht.
+	 * @param bk	de Boeking om te verwijderen van de Vlucht
+	 */
 	public void removeBoeking (Boeking bk)
 	{
 		boekingen.remove(bk);
@@ -184,7 +232,9 @@ public class Vlucht
 
 	// Overige Methodes
 	/**
-	 * Controleer of alle gegevens gezet zijn. Zo ja, bewaar de vluchtgegevens.
+	 * Deze methode bewaart alle gegevens mits de gegevens geldig zijn.
+	 * Dit bewaren wordt gedaan door deze Vlucht toe te voegen aan alleVluchten.
+	 * @throws domeinLaag.VluchtException	als de plaats of tijd van vertrek of aankomst ongeldig is
 	 */
 	public void bewaar () throws VluchtException
 	{
@@ -210,6 +260,13 @@ public class Vlucht
 		}
 	}
 
+	/**
+	 * Deze methode geeft alle vluchten voor de gegeven combinatie van vertrekpunt
+	 * en bestemming.
+	 * @param vtk	de Luchthaven van vertrek
+	 * @param bst	de Luchthaven van bestemming
+	 * @return		een HashSet van alle vluchten voor deze combinatie
+	 */
 	public static HashSet<Vlucht> vertrekpuntEnBestemming (Luchthaven vtk, Luchthaven bst)
 	{
 		HashSet<Vlucht> vluchtenPerLuchthavenCombi = new HashSet();
@@ -229,8 +286,11 @@ public class Vlucht
 		return vluchtenPerLuchthavenCombi;
 	}
 
-	/** Controleert of het vliegtuig op het meegegeven tijdstip al een vlucht heeft.
-	 * @return true, als vliegtuig bezet. Anders false.
+	/**
+	 * Deze methode controlleert of een vliegtuig niet al bezet is voor een andere vlucht.
+	 * @param vliegtuig	het vliegtuig wat mogelijk al bezet is
+	 * @param d			de datum en tijd waartegen gecontroleerd moet worden
+	 * @return			true als bezet, false als beschikbaar
 	 */
 	private static boolean isBezet (Vliegtuig vliegtuig, Calendar d)
 	{
