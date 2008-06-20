@@ -1,6 +1,11 @@
 
 package domeinLaag;
 
+/**
+ * Een object van deze klasse representeert een type of model vliegtuigen.
+ * Er wordt behouden wat de code is voor het type en wat de capaciteiten zijn
+ * qua roken en niet-roken. Ook wordt bijgehouden wie de fabrikant is.
+ */
 public class VliegtuigType
 {
 	// Attributen
@@ -13,10 +18,13 @@ public class VliegtuigType
 
 	// Constructors
 	/**
-	@param cd
-	@param capR
-	@param capNR
-	@param fabr
+	 * Constructor voor het aanmaken van een VliegtuigType. Wordt momenteel
+	 * alleen in Fabrikant (vanuit Main) gebruikt om de boel te vullen.
+	 * Er zijn geen Use Cases die objecten van deze klasse aanmaken of bewerken.
+	 * @param fb	de fabrikant van het type
+	 * @param cd	de code voor het type
+	 * @param cr	de capaciteit qua zitplaatsen roken
+	 * @param cnr	de capaciteit qua zitplaatsen niet-roken
 	 */
 	public VliegtuigType (Fabrikant fb, String cd, int cr, int cnr)
 	{
@@ -28,20 +36,28 @@ public class VliegtuigType
 
 	// Getters
 	/**
-	@return java.lang.String
+	 * Deze methode geeft de code voor van dit type vliegtuig.
+	 * @return	de code van dit vliegtuigType
 	 */
 	public String getCode ()
 	{
 		return code;
 	}
 
+	/**
+	 * Deze methode geeft de fabrikant van dit type vliegtuig.
+	 * @return	de Fabrikant van dit vliegtuigType
+	 */
 	public Fabrikant getFabrikant ()
 	{
 		return fabrikant;
 	}
 
 	/**
-	@return int[]
+	 * Deze methode geeft de capaciteit (zitplaatsen) van dit type vliegtuig.
+	 * @return	een één-dimensionale array met twee elementen.
+	 * Het eerste element is het aantal rokers plaatsen.
+	 * Het tweede element is het aantal niet-rokers plaatsen.
 	 */
 	public int[] getCapaciteit ()
 	{
