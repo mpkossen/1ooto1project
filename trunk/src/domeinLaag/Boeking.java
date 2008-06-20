@@ -6,6 +6,8 @@ import java.util.Iterator;
 
 /**
  * Een object van deze klasse representeert één boeking voor één vlucht van één klant. 
+ * Er wordt bijgehouden hoeveel plaatsen de klant heeft geboekt en of dat roken of
+ * niet-roken plaatsen zijn.
  */
 public class Boeking
 {
