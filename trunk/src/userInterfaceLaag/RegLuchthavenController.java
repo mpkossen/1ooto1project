@@ -5,12 +5,17 @@ package userInterfaceLaag;
 import domeinLaag.*;
 import java.util.*;
 
+/**
+ * Deze Controller Klasse handelt het registreren van een nieuwe Luchthaven af.
+ * Naast het starten van de bijbehorende GUI beschikt de klasse ook
+ * over een aantal methoden die aangeroepen worden door ActionListeners.
+ */
 public class RegLuchthavenController
 {
 	// Relaties
-	private Land land;
-	private Luchthaven luchthaven;
-	private RegLuchthavenFrame myFrame;
+	private Land land;					// Het land waar de Luchthaven ligt.
+	private Luchthaven luchthaven;		// De te registreren Luchthaven.
+	private RegLuchthavenFrame myFrame;	// GUI voor deze Controller.
 
 	// Constructors
 	/**
@@ -29,10 +34,11 @@ public class RegLuchthavenController
 	}
 
 	/**
+	 * Deze methode wordt aangeroepen door de ActionHandler van het land veld.
 	 * Legt de link naar het geselecteerde land vast en geeft die door aan de nieuwe luchthaven.
 	 * Vraagt land.code op en returned dit.
-	 * @param land
-	 * @return int
+	 * @param land	het Land waar de Luchthaven zich bevindt
+	 * @return		de landcode van het Land
 	 */
 	public int land (Land land)
 	{
@@ -41,19 +47,28 @@ public class RegLuchthavenController
 	}
 
 	/**
-	 * Roep lhv.setNaam().
-	 * Geef de exception door aan het frame, als die optreedt.
-	 * @param naam
-	 * @throws java.lang.LuchthavenException
+	 * Deze methode wordt aangeroepen door de ActionHandler van het naam veld.
+	 * Roept lhv.setNaam(). Geef de exception door aan het frame, als die
+	 * optreedt.
+	 * @param naam	de naam van de Luchthaven
+	 * @throws java.lang.LuchthavenException	als de naam al bezet is of ongeldig
 	 */
 	public void naam (String nm) throws LuchthavenException
 	{
-		luchthaven.setNaam(nm);
+		try
+		{
+			luchthaven.setNaam(nm);
+		}
+		catch (IllegalArgumentException e)
+		{
+			throw new LuchthavenException(e.getMessage());
+		}
 	}
 
 	/**
-	 * Roep lhv.setCode().
-	 * @param code
+	 * Deze methode wordt aangeroepen door de ActionHandler van het code veld.
+	 * Roept lhv.setCode().
+	 * @param code	de code (afkorting) waarmee deze Luchthaven aangeduid wordt.
 	 */
 	public void code (String code) throws LuchthavenException
 	{
@@ -61,8 +76,9 @@ public class RegLuchthavenController
 	}
 
 	/**
-	 * Roep lhv.setWerkPlaats().
-	 * @param wp
+	 * Deze methode wordt aangeroepen door de ActionHandler van het werkplaats
+	 * veld. Roept lhv.setWerkPlaats().
+	 * @param wp	true als er een werkplaats is, anders false.
 	 */
 	public void werkPlaats (boolean wp) throws LuchthavenException
 	{
@@ -70,18 +86,27 @@ public class RegLuchthavenController
 	}
 
 	/**
-	 * Roep lhv.bewaar().
-	 * Geef de exception door aan het frame, als die optreedt.
-	 * @throws java.lang.IllegalStateException
+	 * Deze methode wordt aangeroepen door de ActionHandler van de OK button
+	 * Roept lhv.bewaar() aan en sluit het scherm. Geeft de exception door aan
+	 * het frame, als die optreedt.
+	 * @throws java.lang.LuchthavenException	als er bij het bewaren een
+	 * IllegalArgumentException optreedt bij het bewaren.
 	 */
 	public void ok () throws LuchthavenException
 	{
-		luchthaven.bewaar();
-		myFrame.dispose();
+		try
+		{
+			luchthaven.bewaar();
+			myFrame.dispose();
+		}
+		catch (IllegalArgumentException e)
+		{
+			throw new LuchthavenException(e.getMessage());
+		}
 	}
 
 	/**
-	 * Sluit functie af.
+	 * Deze methode sluit de GUI.
 	 */
 	public void cancel ()
 	{
