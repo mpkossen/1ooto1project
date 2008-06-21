@@ -9,15 +9,24 @@ import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.TreeMap;
 
+/**
+ * Deze Controller Klasse handelt het boekingsoverzicht per vlucht af.
+ * Naast het starten van de bijbehorende GUI beschikt de klasse ook
+ * over een aantal methoden die aangeroepen worden door ActionListeners.
+ */
 public class OvBkPerVlController
 {
 	// Relaties
-	private OvBkPerVlFrame myFrame;
-	private Luchthaven vertrekpunt;
-	private Luchthaven aankomstpunt;
-	private Vlucht vlucht;
+	private OvBkPerVlFrame myFrame;		// GUI voor deze Controller.
+	private Luchthaven vertrekpunt;		// de Luchthaven van vertrek.
+	private Luchthaven aankomstpunt;	// de Luchthaven van bestemming.
+	private Vlucht vlucht;	// De geselecteerde vlucht voor het overzicht.
 
 	// Constructors
+	/**
+	 * Constructor voor deze Controller. De constructor maakt OvBkPerVlFrame
+	 * aan. Deze wordt voorzien van gegevens over alle Luchthavens.
+	 */
 	public OvBkPerVlController ()
 	{
 		this.vertrekpunt = Luchthaven.getAlleLuchthavens().firstEntry().getValue();
@@ -28,11 +37,15 @@ public class OvBkPerVlController
 		myFrame.setVisible(true);
 	}
 
-	/*  Dit wordt aangeroepen door de ActionHandler van het vertrek veld.
-	 *  Als dit vertrek punt gezet wordt, moet de inhoud van de mogelijke
-	 *  Vertrek momenten veranderen gebaseerd op de Vertrek- en Aankomstpunten.
-	 *  Deze Vertrek momenten worden dan terug gegeven zodat de GUI die weer
-	 *  kan geven.
+	/**
+	 * Deze methode wordt aangeroepen door de ActionHandler van het vertrek- en
+	 * bestemmingveld. Als een van deze gezet wordt, moet de inhoud van de
+	 * mogelijke vertrek momenten veranderen gebaseerd op de Vertrek- en
+	 * Aankomstpunten. Deze Vertrek momenten worden dan terug gegeven zodat de
+	 * GUI die weer kan geven.
+	 * @param vertrekpunt	de Luchthaven van vertrek
+	 * @param bestemming	de Luchthaven van bestemming
+	 * @return				een TreeMap van vertrektijden (datum+tijd) en Vluchten
 	 */
 	public TreeMap<String, Vlucht> vertrekpuntEnBestemming (Luchthaven vertrekpunt, Luchthaven bestemming)
 	{
@@ -54,6 +67,13 @@ public class OvBkPerVlController
 		return vluchten;
 	}
 
+	/**
+	 * Deze methode wordt aangeroepen door de ActionHandler van het vlucht veld.
+	 * Als deze gezet wordt, worden alle boekingen van de vlucht opgehaald en
+	 * terug gegeven als een array.
+	 * @param vl	de geselecteerde Vlucht
+	 * @return		een twee-dimensionale array met boekingsgegevens
+	 */
 	public Object[][] vlucht (Vlucht vl)
 	{
 		this.vlucht = vl;
@@ -80,11 +100,17 @@ public class OvBkPerVlController
 		return boekingen;
 	}
 
+	/**
+	 * Deze methode sluit de GUI.
+	 */
 	public void cancel ()
 	{
 		myFrame.dispose();
 	}
 
+	/**
+	 * Deze methode sluit de GUI.
+	 */
 	public void ok ()
 	{
 		myFrame.dispose();
