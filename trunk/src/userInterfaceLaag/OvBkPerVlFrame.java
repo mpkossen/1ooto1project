@@ -11,13 +11,13 @@ import domeinLaag.Vlucht;
 public class OvBkPerVlFrame extends javax.swing.JFrame
 {
 	// Relaties
-    private OvBkPerVlContr myController;
+    private OvBkPerVlController myController;
     private TreeMap<String, Luchthaven> luchthavens;
     private TreeMap<String, Vlucht> vluchten;
 
 	// Constructors
     /** Creates new form OvBkPerVlFrame */
-    public OvBkPerVlFrame(TreeMap<String, Luchthaven> lhvns, OvBkPerVlContr obpvctl)
+    public OvBkPerVlFrame(TreeMap<String, Luchthaven> lhvns, OvBkPerVlController obpvctl)
     {
         this.luchthavens = lhvns;
         this.myController = obpvctl;

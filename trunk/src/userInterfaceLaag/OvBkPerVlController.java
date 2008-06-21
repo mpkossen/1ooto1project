@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.TreeMap;
 
-public class OvBkPerVlContr
+public class OvBkPerVlController
 {
 	// Relaties
 	private OvBkPerVlFrame myFrame;
@@ -18,7 +18,7 @@ public class OvBkPerVlContr
 	private Vlucht vlucht;
 
 	// Constructors
-	public OvBkPerVlContr ()
+	public OvBkPerVlController ()
 	{
 		this.vertrekpunt = Luchthaven.getAlleLuchthavens().firstEntry().getValue();
 		this.aankomstpunt = Luchthaven.getAlleLuchthavens().firstEntry().getValue();

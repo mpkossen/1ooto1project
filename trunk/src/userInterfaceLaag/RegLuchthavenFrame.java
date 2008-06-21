@@ -12,12 +12,12 @@ import javax.swing.JFrame;
 public class RegLuchthavenFrame extends JFrame
 {
 	// Relaties
-	private RegLuchthavenContr myController;
+	private RegLuchthavenController myController;
 	private TreeMap<String, Land> landen;
 
 	// Constructors
 	/** Creates new form RegLuchthavenFrame */
-	public RegLuchthavenFrame (RegLuchthavenContr ctrl, TreeMap<String, Land> ln)
+	public RegLuchthavenFrame (RegLuchthavenController ctrl, TreeMap<String, Land> ln)
 	{
 		this.myController = ctrl;
 		this.landen = ln;

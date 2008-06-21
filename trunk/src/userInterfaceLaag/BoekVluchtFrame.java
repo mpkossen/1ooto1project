@@ -11,13 +11,13 @@ import javax.swing.*;
 public class BoekVluchtFrame extends javax.swing.JFrame
 {
 	// Relaties
-	private BoekVluchtContr myController;
+	private BoekVluchtController myController;
 	private TreeMap<String, Luchthaven> luchthavens;
 	private TreeMap<String, Vlucht> vluchten;
 	
 	// Constructors
 	/** Creates new form BoekVluchtFrame */
-	public BoekVluchtFrame (BoekVluchtContr bvc)
+	public BoekVluchtFrame (BoekVluchtController bvc)
 	{
 		this.myController = bvc;
 		this.luchthavens = Luchthaven.getAlleLuchthavens();
