@@ -19,29 +19,29 @@ import java.util.Vector;
  */
 public class RegVliegtuigController
 {
-	private LuchtvaartMaatschappij lvm;
-	private VliegtuigType vtt;
-	private Vliegtuig vt;
-	private Fabrikant fbr;
-	private RegVliegtuigFrame rvf;
-	private TreeMap<String, Fabrikant> fabrMap;
+	private LuchtvaartMaatschappij luchtvaartMaatschappij;
+	private VliegtuigType vliegtuigType;
+	private Vliegtuig vliegtuig;
+	private Fabrikant fabrikant;
+	private RegVliegtuigFrame myFrame;
+	private TreeMap<String, Fabrikant> alleFabrikanten;
 	private TreeMap<String, VliegtuigType> vliegtuigTypen;
 
 	// Constructors
 	/**
 	 * Deze constructor geeft een gesorteerde lijst (Set) van alle Fabrikanten
 	 * en maakt daar een RegVliegtuigFrame mee aan.
-	 * @param lvm	de LuchtvaartMaatschappij waar het Vliegtuig toe gaat behoren.
+	 * @param luchtvaartMaatschappij	de LuchtvaartMaatschappij waar het Vliegtuig toe gaat behoren.
 	 */
 	public RegVliegtuigController (LuchtvaartMaatschappij lvm)
 	{
-		this.lvm = lvm;
-		vt = new Vliegtuig(lvm);
+		this.luchtvaartMaatschappij = lvm;
+		vliegtuig = new Vliegtuig(lvm);
 		//Vraag alle fabrikanten op en maak een (gesorteerde) Set met hun namen voor het frame.
-		fabrMap = Fabrikant.getAlleFabrikanten();
-		Set<String> fabrSet = fabrMap.keySet();
-		rvf = new RegVliegtuigFrame(this, fabrSet);
-		rvf.setVisible(true);
+		alleFabrikanten = Fabrikant.getAlleFabrikanten();
+		Set<String> fabrSet = alleFabrikanten.keySet();
+		myFrame = new RegVliegtuigFrame(this, fabrSet);
+		myFrame.setVisible(true);
 	}
 
 	// Overige Methodes
@@ -60,11 +60,11 @@ public class RegVliegtuigController
 	{
 		Vector<String> v = new Vector<String>();
 		//Zoek (de link naar) het fabrikant-object, op basis van de naam.
-		this.fbr = fabrMap.get(fbrn);
-		String cp = this.fbr.getContactpersoon();
+		this.fabrikant = alleFabrikanten.get(fbrn);
+		String cp = this.fabrikant.getContactpersoon();
 		v.add(cp);
 		//Vraag alle vliegtuigtypen op en maak een (gesorteerde) Set met hun namen voor het frame.
-		vliegtuigTypen = fbr.getVliegtuigTypen();
+		vliegtuigTypen = fabrikant.getVliegtuigTypen();
 		Set<String> vttSetc = vliegtuigTypen.keySet();
 		for (String s : vttSetc)
 		{
@@ -84,9 +84,9 @@ public class RegVliegtuigController
 	public int[] type (String vttcd)
 	{
 		//Zoek (de link naar) het vliegtuigtype-object, op basis van de naam.
-		vtt = vliegtuigTypen.get(vttcd);
-		vt.setVliegtuigType(vtt);
-		int[] cap = this.vtt.getCapaciteit();
+		vliegtuigType = vliegtuigTypen.get(vttcd);
+		vliegtuig.setVliegtuigType(vliegtuigType);
+		int[] cap = this.vliegtuigType.getCapaciteit();
 		return cap;
 	}
 
@@ -99,7 +99,7 @@ public class RegVliegtuigController
 	 */
 	public void naam (String naam) throws IllegalArgumentException
 	{
-		vt.setNaam(naam);
+		vliegtuig.setNaam(naam);
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class RegVliegtuigController
 	 */
 	public void inGebruik (Calendar inGebruik) throws IllegalArgumentException
 	{
-		vt.setInGebruik(inGebruik);
+		vliegtuig.setInGebruik(inGebruik);
 	}
 
 	/**
@@ -122,8 +122,8 @@ public class RegVliegtuigController
 	 */
 	public void ok () throws IllegalStateException
 	{
-		vt.bewaar();
-		rvf.dispose();
+		vliegtuig.bewaar();
+		myFrame.dispose();
 	}
 
 	/**
@@ -131,6 +131,6 @@ public class RegVliegtuigController
 	 */	
 	public void cancel ()
 	{
-		rvf.dispose();
+		myFrame.dispose();
 	}
 }
