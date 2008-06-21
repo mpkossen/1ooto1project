@@ -33,7 +33,7 @@ import domeinLaag.VluchtException;
  * for-profit company or business) then you should purchase
  * a license - please visit www.cloudgarden.com for details.
  */
-public class RegVluchtJFrame extends javax.swing.JFrame
+public class RegVluchtFrame extends javax.swing.JFrame
 {
 	// Attributen
 	Calendar aankomstTijd;
@@ -45,12 +45,12 @@ public class RegVluchtJFrame extends javax.swing.JFrame
 	RegVluchtController myController;
 	
 
-	public RegVluchtJFrame ()
+	public RegVluchtFrame ()
 	{
 		initGUI();
 	}
 
-	public RegVluchtJFrame (Set<String> vt, Set<String> lh, RegVluchtController rvc)
+	public RegVluchtFrame (Set<String> vt, Set<String> lh, RegVluchtController rvc)
 	{
 		this.vliegtuigen = vt;
 		this.luchthavens = lh;
@@ -318,7 +318,7 @@ public class RegVluchtJFrame extends javax.swing.JFrame
 	{
 		try
 		{
-			RegVluchtJFrame inst = new RegVluchtJFrame();
+			RegVluchtFrame inst = new RegVluchtFrame();
 			inst.setVisible(true);
 		}
 		catch (Exception e)

@@ -2,35 +2,44 @@
 package userInterfaceLaag;
 
 // Imports
-import java.util.*;
 import domeinLaag.Luchthaven;
 import domeinLaag.LuchtvaartMaatschappij;
 import domeinLaag.Vliegtuig;
 import domeinLaag.Vlucht;
 import domeinLaag.VluchtException;
+import java.util.Calendar;
+import java.util.TreeMap;
 
+/**
+ * Deze Controller Klasse handelt het registreren van een nieuwe Vlucht af.
+ * Naast het starten van de bijbehorende GUI beschikt de klasse ook
+ * over een aantal methoden die aangeroepen worden door ActionListeners.
+ */
 public class RegVluchtController
 {
 	// Relaties
-	private TreeMap<String, Vliegtuig> vt;
-	private Vliegtuig hetVliegtuig;
-	private LuchtvaartMaatschappij lvm;
-	private TreeMap<String, Luchthaven> lh;
-	private Vlucht deVlucht;
-	private RegVluchtJFrame myFrame;
-
+	private LuchtvaartMaatschappij luchtvaartMaatschappij;	// De LuchtvaartMaatschappij.
+	private Vliegtuig vliegtuig;							// Het Vliegtuig dat de Vlucht uit gaat voeren.
+	private Vlucht vlucht;									// De nieuwe Vlucht.
+	private TreeMap<String, Vliegtuig> alleVliegtuigen;		// Alle Vliegtuigen van de luchtvaartMaatschappij.
+	private TreeMap<String, Luchthaven> alleLuchthavens;	// Alle Luchthavens.
+	private RegVluchtFrame myFrame;						// GUI voor deze Controller.
+	
 	// Constructors
 	/**
+	 * Deze constructor geeft een gesorteerde lijst (TreeMap) van alle Luchthavens
+	 * en alle Vliegtuigen van deze LuchtvaartMaatschappij en maakt daar een
+	 * RegVluchtFrame mee aan.
 	 * Toon frame met alle fabrikanten.
 	 * @param lvm
 	 */
 	public RegVluchtController (LuchtvaartMaatschappij lvm)
 	{
-		this.lvm = lvm;
-		vt = lvm.getVliegtuigen();
-		lh = Luchthaven.getAlleLuchthavens();
+		this.luchtvaartMaatschappij = lvm;
+		alleVliegtuigen = lvm.getVliegtuigen();
+		alleLuchthavens = Luchthaven.getAlleLuchthavens();
 
-		myFrame = new RegVluchtJFrame(vt.keySet(), lh.keySet(), this);
+		myFrame = new RegVluchtFrame(alleVliegtuigen.keySet(), alleLuchthavens.keySet(), this);
 		myFrame.setVisible(true);
 	}	
 
@@ -40,8 +49,8 @@ public class RegVluchtController
 	 */
 	public int[] vliegtuig (String naam)
 	{
-		hetVliegtuig = (Vliegtuig) vt.get(naam);
-		int[] cap = hetVliegtuig.getCapaciteit();
+		vliegtuig = (Vliegtuig) alleVliegtuigen.get(naam);
+		int[] cap = vliegtuig.getCapaciteit();
 		return cap;
 		//todo toon capaciteit
 	}
@@ -52,8 +61,8 @@ public class RegVluchtController
 	 */
 	public void vertrekpunt (String naam)
 	{
-		Luchthaven eenLuchthaven = lh.get(naam);
-		deVlucht = new Vlucht(hetVliegtuig, eenLuchthaven);
+		Luchthaven eenLuchthaven = alleLuchthavens.get(naam);
+		vlucht = new Vlucht(vliegtuig, eenLuchthaven);
 	}
 
 	/**
@@ -61,8 +70,8 @@ public class RegVluchtController
 	 */
 	public void bestemming (String naam) throws VluchtException
 	{
-		Luchthaven eenLuchthaven = (Luchthaven) lh.get(naam);
-		deVlucht.setBestemming(eenLuchthaven);
+		Luchthaven eenLuchthaven = (Luchthaven) alleLuchthavens.get(naam);
+		vlucht.setBestemming(eenLuchthaven);
 	}
 
 	/**
@@ -71,7 +80,7 @@ public class RegVluchtController
 	 */
 	public void vertrektijd (Calendar vertrektijd) throws VluchtException
 	{
-		deVlucht.setVertrekTijd(vertrektijd);
+		vlucht.setVertrekTijd(vertrektijd);
 	}
 
 	/**
@@ -80,7 +89,7 @@ public class RegVluchtController
 	 */
 	public void aankomstTijd (Calendar tijd) throws VluchtException
 	{
-		deVlucht.setAankomstTijd(tijd);
+		vlucht.setAankomstTijd(tijd);
 	}
 
 	/**
@@ -88,6 +97,6 @@ public class RegVluchtController
 	 */
 	public void ok () throws VluchtException
 	{
-		deVlucht.bewaar();
+		vlucht.bewaar();
 	}
 }
