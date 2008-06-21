@@ -19,13 +19,13 @@ import java.util.Vector;
  */
 public class RegVliegtuigController
 {
-	private LuchtvaartMaatschappij luchtvaartMaatschappij;
-	private VliegtuigType vliegtuigType;
-	private Vliegtuig vliegtuig;
-	private Fabrikant fabrikant;
-	private RegVliegtuigFrame myFrame;
-	private TreeMap<String, Fabrikant> alleFabrikanten;
-	private TreeMap<String, VliegtuigType> vliegtuigTypen;
+	private LuchtvaartMaatschappij luchtvaartMaatschappij;	// De LuchtvaartMaatschappij.
+	private VliegtuigType vliegtuigType;					// Het type Vliegtuig.
+	private Vliegtuig vliegtuig;							// Het Vliegtuig dat de Vlucht uit gaat voeren.
+	private Fabrikant fabrikant;							// De Fabrikant van het Vliegtuig.
+	private RegVliegtuigFrame myFrame;						// GUI voor deze Controller.
+	private TreeMap<String, Fabrikant> alleFabrikanten;		// Een TreeMap van alle namen van en alle Fabrikanten.
+	private TreeMap<String, VliegtuigType> vliegtuigTypen;	// Een TreeMap van alle namen van en alle vliegtuigTypen van de gekozen Fabrikant.
 
 	// Constructors
 	/**
