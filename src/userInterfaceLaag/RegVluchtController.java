@@ -23,15 +23,14 @@ public class RegVluchtController
 	private Vlucht vlucht;									// De nieuwe Vlucht.
 	private TreeMap<String, Vliegtuig> alleVliegtuigen;		// Alle Vliegtuigen van de luchtvaartMaatschappij.
 	private TreeMap<String, Luchthaven> alleLuchthavens;	// Alle Luchthavens.
-	private RegVluchtFrame myFrame;						// GUI voor deze Controller.
+	private RegVluchtFrame myFrame;							// GUI voor deze Controller.
 	
 	// Constructors
 	/**
-	 * Deze constructor geeft een gesorteerde lijst (TreeMap) van alle Luchthavens
-	 * en alle Vliegtuigen van deze LuchtvaartMaatschappij en maakt daar een
-	 * RegVluchtFrame mee aan.
-	 * Toon frame met alle fabrikanten.
-	 * @param lvm
+	 * Deze constructor maakt een gesorteerde lijst (TreeMap) van alle
+	 * Luchthavens en alle Vliegtuigen van deze LuchtvaartMaatschappij en maakt
+	 * daar een RegVluchtFrame mee aan.
+	 * @param lvm	de LuchtvaartMaatschappij
 	 */
 	public RegVluchtController (LuchtvaartMaatschappij lvm)
 	{
@@ -45,58 +44,77 @@ public class RegVluchtController
 
 	// Overige Methodes
 	/**
-	 * Onthoud het vliegtuig. En toon de capaciteit van het vliegtuig.
+	 * Deze methode zet de nm van het vliegtuig voor de vlucht en wordt
+	 * aangeroepen door de ActionListener van het vliegtuig veld.
+	 * @param nm	de nm van het vliegtuig
+	 * @return		een één-dimensionale array met de capaciteit van het Vliegtuig.
+	 * Twee velden, het eerste veld voor rokers, het tweede voor niet-rokers.
 	 */
-	public int[] vliegtuig (String naam)
+	public int[] vliegtuig (String nm)
 	{
-		vliegtuig = (Vliegtuig) alleVliegtuigen.get(naam);
+		vliegtuig = (Vliegtuig) alleVliegtuigen.get(nm);
 		int[] cap = vliegtuig.getCapaciteit();
 		return cap;
 		//todo toon capaciteit
 	}
 
 	/**
-	 * Creeer een nieuwe vlucht en geef de maatschappij, het vliegtuig en vertrekpunt
-	 * mee.
+	 * Deze methode zet het vertrekpunt (naam van de Luchthaven) van de vlucht
+	 * en wordt aangeroepen door de ActionListener van het vertrekpunt veld.
+	 * @param nm	de naam van het vertrekpunt
 	 */
-	public void vertrekpunt (String naam)
+	public void vertrekpunt (String nm)
 	{
-		Luchthaven eenLuchthaven = alleLuchthavens.get(naam);
+		Luchthaven eenLuchthaven = alleLuchthavens.get(nm);
 		vlucht = new Vlucht(vliegtuig, eenLuchthaven);
 	}
 
 	/**
-	 * Leg bestemming vast bij vlucht.
+	 * Deze methode zet de bestemming (naam van de Luchthaven) van de vlucht
+	 * en wordt aangeroepen door de ActionListener van het bestemming veld.
+	 * @param nm	de naam van de bestemming
+	 * @throws domeinLaag.VluchtException	als vertrekpunt en bestemming gelijk zijn
 	 */
-	public void bestemming (String naam) throws VluchtException
+	public void bestemming (String nm) throws VluchtException
 	{
-		Luchthaven eenLuchthaven = (Luchthaven) alleLuchthavens.get(naam);
+		Luchthaven eenLuchthaven = (Luchthaven) alleLuchthavens.get(nm);
 		vlucht.setBestemming(eenLuchthaven);
 	}
 
 	/**
-	 * Leg vertrektijd vast bij vlucht.
-	 * @param vertrektijd
+	 * Deze methode zet de vertrektijd van de vlucht en wordt aangeroepen door
+	 * de ActionListener van het vertrektijd veld.
+	 * @param vtt	het moment van vertrek voor deze vlucht
+	 * @throws domeinLaag.VluchtException	als de aankomsttijd voor de
+	 * vertrektijd ligt of de tijd ongeldig is
 	 */
-	public void vertrektijd (Calendar vertrektijd) throws VluchtException
+	public void vertrektijd (Calendar vtt) throws VluchtException
 	{
-		vlucht.setVertrekTijd(vertrektijd);
+		vlucht.setVertrekTijd(vtt);
 	}
 
 	/**
-	 * Leg aankomstTijd vast bij Vlucht.
-	 * @param tijd
+	 * Deze methode zet de aankomsttijd van de vlucht en wordt aangeroepen door
+	 * de ActionListener van het aankomsttijd veld.
+	 * @param att	het moment van aankomst van deze vlucht
+	 * @throws domeinLaag.VluchtException	als de aankomsttijd voor de
+	 * vertrektijd ligt of de tijd ongeldig is
 	 */
-	public void aankomstTijd (Calendar tijd) throws VluchtException
+	public void aankomstTijd (Calendar att) throws VluchtException
 	{
-		vlucht.setAankomstTijd(tijd);
+		vlucht.setAankomstTijd(att);
 	}
 
 	/**
-	 * Bewaar de vluchtgegegevens.
+	 * Deze methode wordt aangeroepen door de ActionHandler van de OK button
+	 * Roept vlucht.bewaar() aan en sluit het scherm. Geeft de exception door
+	 * aan het frame, als die optreedt.
+	 * @throws java.lang.VluchtException	als er bij het bewaren een
+	 * VluchtException optreedt bij het bewaren.
 	 */
 	public void ok () throws VluchtException
 	{
 		vlucht.bewaar();
+		myFrame.dispose();
 	}
 }
