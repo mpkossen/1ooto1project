@@ -31,7 +31,7 @@ public class RegVliegtuigController
 	/**
 	 * Deze constructor geeft een gesorteerde lijst (Set) van alle Fabrikanten
 	 * en maakt daar een RegVliegtuigFrame mee aan.
-	 * @param luchtvaartMaatschappij	de LuchtvaartMaatschappij waar het Vliegtuig toe gaat behoren.
+	 * @param lvm	de LuchtvaartMaatschappij waar het Vliegtuig toe gaat behoren.
 	 */
 	public RegVliegtuigController (LuchtvaartMaatschappij lvm)
 	{
