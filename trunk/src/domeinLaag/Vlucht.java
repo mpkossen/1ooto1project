@@ -110,7 +110,7 @@ public class Vlucht
 		}
 		else
 		{
-			throw new VluchtException("aankomsttijd voor vertrektijd");
+			throw new VluchtException("Aankomsttijd voor Vertrektijd");
 		}
 	}
 	
