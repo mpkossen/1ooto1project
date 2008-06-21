@@ -13,7 +13,7 @@ public class KlantBestaatAlException extends Exception
 {
 	/**
 	 * Deze methode maakt een MessageDialog met daarin een melding.
-	 * @param s de melding die weergegeven moet worden.
+	 * @param s	de melding die weergegeven moet worden
 	 */
 	public KlantBestaatAlException (String s)
 	{
@@ -22,7 +22,7 @@ public class KlantBestaatAlException extends Exception
 	}
 	
 	/**
-	 * Deze methode maakt een MessageDialog met "BoekingException".
+	 * Deze methode maakt een MessageDialog met "KlantBestaatAlException".
 	 */
 	public KlantBestaatAlException ()
 	{
