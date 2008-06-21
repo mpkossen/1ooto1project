@@ -2,16 +2,21 @@
 package userInterfaceLaag;
 
 // Imports
-import java.util.Calendar;
-import java.util.TreeMap;
-import java.util.Set;
-import java.util.Vector;
-
 import domeinLaag.Fabrikant;
 import domeinLaag.LuchtvaartMaatschappij;
 import domeinLaag.Vliegtuig;
 import domeinLaag.VliegtuigType;
 
+import java.util.Calendar;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.Vector;
+
+/**
+ * Deze Controller Klasse handelt het registreren van een nieuw Vliegtuig af.
+ * Naast het starten van de bijbehorende GUI beschikt de klasse ook
+ * over een aantal methoden die aangeroepen worden door ActionListeners.
+ */
 public class RegVliegtuigController
 {
 	private LuchtvaartMaatschappij lvm;
@@ -24,8 +29,9 @@ public class RegVliegtuigController
 
 	// Constructors
 	/**
-	Toon frame met alle fabrikanten.
-	@param lvm
+	 * Deze constructor geeft een gesorteerde lijst (Set) van alle Fabrikanten
+	 * en maakt daar een RegVliegtuigFrame mee aan.
+	 * @param lvm	de LuchtvaartMaatschappij waar het Vliegtuig toe gaat behoren.
 	 */
 	public RegVliegtuigController (LuchtvaartMaatschappij lvm)
 	{
@@ -39,11 +45,16 @@ public class RegVliegtuigController
 	}
 
 	// Overige Methodes
+
+	/* FM: TODO deze methode maakt gebruik van een Vector waar een HashSet of
+	 * TreeMap beter is. Dat moet dus aangepast worden.*/
+	
 	/**
-	Toon contactpersoon en de vliegtuigtypes van
-	deze fabrikant.
-	@param fbr de naam van de fabrikant
-	@return Vector<String> met de contactpersoon en vliegtuigtype-codes.
+	 * Deze methode zet de Fabrikant van het nieuwe Vliegtuig en geeft de door
+	 * die Fabrikant gemaakte VliegtuigTypen terug. Deze methode wordt
+	 * aangeroepen door de ActionListener van het fabrikant veld.
+	 * @param fbrn	de Fabrikant van het Vliegtuig
+	 * @return		een Vector met alle vliegtuigtypen van die Fabrikant
 	 */
 	public Vector<String> fabrikant (String fbrn)
 	{
@@ -63,8 +74,12 @@ public class RegVliegtuigController
 	}
 
 	/**
-	 * Zet vliegtuigtype bij het vliegtuig en toon capaciteit.
-	 * @param vttcd de code van een vliegtuigtype
+	 * Deze methode zet het vliegtuigtype van het nieuwe vliegtuig en
+	 * geeft de capaciteit terug. Wordt aangeroepen door de ActionListener van
+	 * het VliegtuigType veld.
+	 * @param	vttcd de code van het gekozen vliegtuigtype
+	 * @return	één-dimensionale array met twee elementen. De eerste voor het
+	 * aantal rokers plaatsen, de andere voor het aantal niet-rokers plaatsen.
 	 */
 	public int[] type (String vttcd)
 	{
@@ -76,8 +91,11 @@ public class RegVliegtuigController
 	}
 
 	/**
-	 * Zet naam bij het vliegtuig.
-	 * @param naam
+	 * Deze methode zet de naam van het nieuwe vliegtuig en wordt aangeroepen
+	 * door de ActionListener van het naam veld.
+	 * @param naam	is de naam van het nieuwe Vliegtuig
+	 * @throws java.lang.IllegalArgumentException	als de naam ongeldig is of
+	 * al bestaat
 	 */
 	public void naam (String naam) throws IllegalArgumentException
 	{
@@ -85,20 +103,32 @@ public class RegVliegtuigController
 	}
 
 	/**
-	 * Zet datumInGebruik bij het vliegtuig.
-	 * @param inGebruik
+	 * Deze methode zet de datum van ingebruikname van het nieuwe vliegtuig en
+	 * wordt aangeroepen door de ActionListener van het datum veld.
+	 * @param inGebruik	de datum van ingebruikname
+	 * @throws java.lang.IllegalArgumentException	als de datum ongeldig is
 	 */
 	public void inGebruik (Calendar inGebruik) throws IllegalArgumentException
 	{
 		vt.setInGebruik(inGebruik);
 	}
 
+	/**
+	 * Deze methode slaat alle eerder ingevoerde gegeven op. Indien een of meer
+	 * van de gegevens niet ok zijn dan wordt er in de domeinlaag een Exception
+	 * gegenereerd die doorgestuurd wordt. Wordt aangeroepen door de OK-button.
+	 * @throws java.lang.IllegalStateException	als een of meer van de gegevens
+	 * onjuist zijn
+	 */
 	public void ok () throws IllegalStateException
 	{
 		vt.bewaar();
-		rvf.dispose(); //Sluit het Jframe; afhankelijk van de ingestelde defaultCloseOperation.
+		rvf.dispose();
 	}
 
+	/**
+	 * Deze methode sluit de GUI.
+	 */	
 	public void cancel ()
 	{
 		rvf.dispose();
