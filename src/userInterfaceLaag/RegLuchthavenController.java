@@ -5,7 +5,7 @@ package userInterfaceLaag;
 import domeinLaag.*;
 import java.util.*;
 
-public class RegLuchthavenContr
+public class RegLuchthavenController
 {
 	// Relaties
 	private Land land;
@@ -19,7 +19,7 @@ public class RegLuchthavenContr
 	 * - De constructor van  RegLuchthavenFrame wordt aangeroepen, waarbij een lijst van alleen de namen van alle landen wordt meegegeven.
 	 * - De constructor van Luchthaven wordt aangeroepen. De link naar deze nieuwe luchthaven wordt vastgelegd.
 	 */
-	public RegLuchthavenContr ()
+	public RegLuchthavenController ()
 	{
 		luchthaven = new Luchthaven();
 		TreeMap<String, Land> alleLanden = Land.getAlleLanden();

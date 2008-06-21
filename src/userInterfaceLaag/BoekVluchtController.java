@@ -12,7 +12,7 @@ import domeinLaag.Vlucht;
 import java.text.SimpleDateFormat;
 import java.util.TreeMap;
 
-public class BoekVluchtContr
+public class BoekVluchtController
 {
 	// Attributen
 	private int aantalPlaatsen;
@@ -27,7 +27,7 @@ public class BoekVluchtContr
 	private Vlucht vlucht;
 
 	// Constructors
-	public BoekVluchtContr ()
+	public BoekVluchtController ()
 	{
 		this.myFrame = new BoekVluchtFrame(this);
 		myFrame.setVisible(true);

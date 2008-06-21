@@ -179,7 +179,7 @@ public class MenuFrame extends javax.swing.JFrame
 				OverzVliegtuigenFrame ovf = new OverzVliegtuigenFrame(luchtvaarMaatschappij);
 				break;
 			case 3:
-				RegLuchthavenContr rlhnc = new RegLuchthavenContr();
+				RegLuchthavenController rlhnc = new RegLuchthavenController();
 				break;
 			case 4:
 				OverzLuchthavenFrame olf = new OverzLuchthavenFrame();
@@ -191,10 +191,10 @@ public class MenuFrame extends javax.swing.JFrame
 				// Deze Usecase hoeft niet (denk ik), mag wel.
 				break;
 			case 7:
-				BoekVluchtContr bvc = new BoekVluchtContr();
+				BoekVluchtController bvc = new BoekVluchtController();
 				break;
 			case 8:
-				OvBkPerVlContr ovkpvc = new OvBkPerVlContr();
+				OvBkPerVlController ovkpvc = new OvBkPerVlController();
 				break;
 		}
 
