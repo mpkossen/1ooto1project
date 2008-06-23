@@ -54,11 +54,14 @@ public class OvBkPerVlController
 		int i = 0;
         for (Vlucht vl : Vlucht.getAlleVluchten())
         {
+			System.out.println("Vlucht gevonden");
 			i++;
             if (vl.getVertrekpunt().equals(vertrekpunt))
             {
+				System.out.println("Vertrekpunt gelijk");
                 if (vl.getBestemming().equals(bestemming))
                 {
+					System.out.println("Bestemming gelijk");
                     String datumtijd = formatter.format(vl.getVertrekTijd().getTime());
 					vluchten.put(datumtijd, vl);
                 }

@@ -209,6 +209,7 @@ public class OvBkPerVlFrame extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+	
 private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
 	myController.ok();
 }//GEN-LAST:event_OKButtonActionPerformed
@@ -219,13 +220,25 @@ private void bestemmingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
 	this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
 		
 	vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
-			
-	SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
-	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
-		
-	Object[][] data = myController.vlucht(vluchten.firstEntry().getValue());
-	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
-	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));		
+	
+	if (vluchten.size() > 0 )
+	{
+		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
+		vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
+
+		Object[][] data = myController.vlucht(vluchten.firstEntry().getValue());
+		String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
+		infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
+	}
+	else
+	{
+		Object[][] data = new String[1][4];
+		data[0][0] = new String("Geen");
+		data[0][1] = new String("vluchten");
+		data[0][2] = new String("gevonden");
+		String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
+		infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
+	}		
 }//GEN-LAST:event_bestemmingComboBoxActionPerformed
 
 private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -238,13 +251,25 @@ private void vertrekpuntComboBoxActionPerformed(java.awt.event.ActionEvent evt) 
 	this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
 		
 	vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
-			
-	SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
-	vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
+
+	if (vluchten.size()>0)
+	{
+		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
+		vertrekTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
 		
-	Object[][] data = myController.vlucht(vluchten.firstEntry().getValue());
-	String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
-	infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
+		Object[][] data = myController.vlucht(vluchten.firstEntry().getValue());
+		String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
+		infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
+	}
+	else
+	{
+		Object[][] data = new String[1][4];
+		data[0][0] = new String("Geen");
+		data[0][1] = new String("vluchten");
+		data[0][2] = new String("gevonden");
+		String[] labels = new String [] {"KLANT", "WOONPLAATS", "STOELEN", "ROKEN"};
+		infoTable.setModel(new javax.swing.table.DefaultTableModel(data, labels));
+	}
 }//GEN-LAST:event_vertrekpuntComboBoxActionPerformed
 
 private void vluchtComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vluchtComboBoxActionPerformed
