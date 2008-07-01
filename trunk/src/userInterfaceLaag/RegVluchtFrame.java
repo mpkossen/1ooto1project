@@ -233,7 +233,7 @@ public class RegVluchtFrame extends javax.swing.JFrame
 			jLabel2.setVisible(true);
 			jLabel2.setPreferredSize(new java.awt.Dimension(60, 20));
 			jLabel2.setBounds(new java.awt.Rectangle(30, 70, 60, 20));
-			jLabel2.setFocusable(true);
+			jLabel2.setFocusable(false);
 			this.getContentPane().add(jLabel2);
 			jLabel3.setText("0");
 			jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
