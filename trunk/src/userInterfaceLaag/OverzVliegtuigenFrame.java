@@ -2,14 +2,13 @@
 package userInterfaceLaag;
 
 // Imports
-import javax.swing.JTextArea;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 import domeinLaag.*;
-import javax.swing.WindowConstants;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.WindowConstants;
 
 public class OverzVliegtuigenFrame extends javax.swing.JFrame
 {
