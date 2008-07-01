@@ -100,6 +100,7 @@ public class RegVliegtuigFrame extends JFrame
 			NaamTextField.setBackground(new java.awt.Color(255, 255, 255));
 			NaamTextField.setPreferredSize(new java.awt.Dimension(140, 20));
 			NaamTextField.setBounds(new java.awt.Rectangle(120, 30, 140, 20));
+			NaamTextField.setNextFocusableComponent(InGebruikTextField);
 			NieuwVliegtuig.add(NaamTextField);
 			NaamTextField.addFocusListener(new FocusAdapter()
 			{
@@ -110,10 +111,9 @@ public class RegVliegtuigFrame extends JFrame
 			});
 			InGebruikTextField.setHorizontalAlignment(SwingConstants.CENTER);
 			InGebruikTextField.setColumns(10);
-			InGebruikTextField.setPreferredSize(
-				new java.awt.Dimension(141, 20));
-			InGebruikTextField.setBounds(
-				new java.awt.Rectangle(120, 60, 141, 20));
+			InGebruikTextField.setPreferredSize(new java.awt.Dimension(141, 20));
+			InGebruikTextField.setBounds(new java.awt.Rectangle(120, 60, 141, 20));
+			InGebruikTextField.setNextFocusableComponent(OK);
 			NieuwVliegtuig.add(InGebruikTextField);
 			InGebruikTextField.addFocusListener(new FocusAdapter()
 			{
@@ -172,6 +172,7 @@ public class RegVliegtuigFrame extends JFrame
 			FabrikantCombo.setVerifyInputWhenFocusTarget(false);
 			FabrikantCombo.setName("");
 			FabrikantCombo.setBounds(new java.awt.Rectangle(100, 30, 90, 20));
+			FabrikantCombo.setNextFocusableComponent(TypeCombo);
 			this.getContentPane().add(FabrikantCombo);
 			FabrikantCombo.addItemListener(new ItemListener()
 			{
@@ -182,6 +183,7 @@ public class RegVliegtuigFrame extends JFrame
 			});
 			TypeCombo.setPreferredSize(new java.awt.Dimension(90, 20));
 			TypeCombo.setBounds(new java.awt.Rectangle(100, 70, 90, 20));
+			TypeCombo.setNextFocusableComponent(NaamTextField);
 			this.getContentPane().add(TypeCombo);
 			TypeCombo.addItemListener(new ItemListener()
 			{
