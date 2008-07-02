@@ -4,13 +4,16 @@
  */
 package userInterfaceLaag;
 
+import domeinLaag.Boeking;
 import domeinLaag.Fabrikant;
+import domeinLaag.Klant;
 import domeinLaag.Land;
 import domeinLaag.Luchthaven;
 import domeinLaag.LuchtvaartMaatschappij;
 import domeinLaag.Vliegtuig;
 import domeinLaag.VliegtuigType;
 import domeinLaag.Vlucht;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TreeMap;
 import org.junit.After;
@@ -45,6 +48,19 @@ public class OvBkPerVlControllerTest
 	private Vlucht vl1;
 	private Vlucht vl2;
 	private Vlucht vl3;
+	private Vlucht vl4;
+	
+	private Klant kl1;
+	private Klant kl2;
+	
+	private Boeking bk1;
+	private Boeking bk2;
+	private Boeking bk3;
+	private Boeking bk4;
+	
+	private TreeMap<String, Vlucht> expResult1;
+	private TreeMap<String, Vlucht> expResult2;
+	private TreeMap<String, Vlucht> expResult3;
 			
 	public OvBkPerVlControllerTest()
 	{
@@ -67,9 +83,13 @@ public class OvBkPerVlControllerTest
 		Calendar t1 = Calendar.getInstance();
 		Calendar t2 = Calendar.getInstance();
 		Calendar t3 = Calendar.getInstance();
+		Calendar t4 = Calendar.getInstance();
 		t1.set(2008, 1, 1);
 		t2.set(2008, 1, 2);
 		t3.set(2008, 1, 3);
+		t4.set(2008, 1, 3);
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
 		
 		this.lvm = new LuchtvaartMaatschappij("Kalizec Airlines");
 		this.fab = new Fabrikant("Airbus", "Dalai Lama");
@@ -82,12 +102,32 @@ public class OvBkPerVlControllerTest
 		this.vt2 = new Vliegtuig(lvm, vtt, "Sukke", t2);
 		
 		this.lhvn1 = new Luchthaven("Schiphol", "AMS", true, ln1);
-		this.lhvn1 = new Luchthaven("Eindhoven Airport", "EHV", false, ln1);
+		this.lhvn2 = new Luchthaven("Eindhoven Airport", "EHV", false, ln1);
 		this.lhvn3 = new Luchthaven("Heathrow", "HTW", true, ln2);
 		
 		this.vl1 = new Vlucht(vt1, lhvn1, lhvn2, t1, t2);
 		this.vl2 = new Vlucht(vt1, lhvn2, lhvn1, t2, t3);
 		this.vl3 = new Vlucht(vt2, lhvn1, lhvn3, t2, t3);
+		this.vl4 = new Vlucht(vt2, lhvn3, lhvn1, t3, t4);
+		
+		this.kl1 = new Klant("F.Masolijn", "Eikeboom", 19, "Culemborg");
+		this.kl2 = new Klant("A. Becker", "Kalverstraat", 1, "Amsterdam");
+		
+		this.bk1 = new Boeking(vl1, 400, false, kl1);
+		this.bk2 = new Boeking(vl2, 400, false, kl1);
+		this.bk3 = new Boeking(vl3, 200, false, kl2);
+		this.bk4 = new Boeking(vl4, 200, false, kl2);
+		
+		this.expResult1 = new TreeMap<String, Vlucht>();
+		this.expResult1.put(formatter.format(vl1.getVertrekTijd().getTime()), vl1);
+		
+		this.expResult2 = new TreeMap<String, Vlucht>();
+		this.expResult2.put(formatter.format(vl2.getVertrekTijd().getTime()), vl2);
+		
+		this.expResult3 = new TreeMap<String, Vlucht>();
+		
+		System.out.println("Setup completed.");
+		System.out.println("Vluchten: " + domeinLaag.Vlucht.getAlleVluchten().size());
 	}
 
 	@After
@@ -101,15 +141,24 @@ public class OvBkPerVlControllerTest
 	@Test
 	public void vertrekpuntEnBestemming()
 	{
-		System.out.println("vertrekpuntEnBestemming");
-		Luchthaven vertrekpunt = null;
-		Luchthaven bestemming = null;
+		System.out.println("vertrekpuntEnBestemming - Test 1");
+		Luchthaven vertrekpunt = lhvn1;
+		Luchthaven bestemming = lhvn2;
 		OvBkPerVlController instance = new OvBkPerVlController();
-		TreeMap<String, Vlucht> expResult = null;
 		TreeMap<String, Vlucht> result = instance.vertrekpuntEnBestemming(vertrekpunt, bestemming);
-		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		assertEquals(expResult1, result);
+		
+		System.out.println("vertrekpuntEnBestemming - Test 2");
+		vertrekpunt = lhvn2;
+		bestemming = lhvn1;
+		result = instance.vertrekpuntEnBestemming(vertrekpunt, bestemming);
+		assertEquals(expResult2, result);
+
+		System.out.println("vertrekpuntEnBestemming - Test 3");
+		vertrekpunt = lhvn2;
+		bestemming = lhvn3;
+		result = instance.vertrekpuntEnBestemming(vertrekpunt, bestemming);
+		assertEquals(expResult3, result);
 	}
 
 	/**
