@@ -347,13 +347,15 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 		Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
 		this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
 		
-		vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
-		aankomstTextField.setText(vluchten.firstEntry().getKey());
+		if (vluchten.size()>0)
+		{
+			vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+			aankomstTextField.setText(vluchten.firstEntry().getKey());
 		
-		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
-		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
-		aankomstTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
-		
+			SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
+			vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
+			aankomstTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
+		}
 		bestemmingComboBox.requestFocusInWindow();
 	}//GEN-LAST:event_vertrekpuntComboBoxActionPerformed
 
@@ -361,16 +363,19 @@ public class BoekVluchtFrame extends javax.swing.JFrame
 		Luchthaven vertrekpunt = luchthavens.get((String)vertrekpuntComboBox.getSelectedItem());
 		Luchthaven bestemming = luchthavens.get((String)bestemmingComboBox.getSelectedItem());
 		this.vluchten = myController.vertrekpuntEnBestemming(vertrekpunt, bestemming);
+	
+		if (vluchten.size()>0)
+		{	
+			vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
+			aankomstTextField.setText(vluchten.firstEntry().getKey());
 		
-		vluchtComboBox.setModel(new javax.swing.DefaultComboBoxModel(vluchten.keySet().toArray()));
-		aankomstTextField.setText(vluchten.firstEntry().getKey());
+			SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
+			vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
+			aankomstTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
 		
-		SimpleDateFormat dagFormatter = new SimpleDateFormat("HH:mm");
-		vertrekTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getVertrekTijd().getTime()));
-		aankomstTijdTextField.setText(dagFormatter.format(vluchten.firstEntry().getValue().getAankomstTijd().getTime()));
-		
-		myController.vlucht(vluchten.firstEntry().getValue());
-		vluchtComboBox.requestFocusInWindow();
+			myController.vlucht(vluchten.firstEntry().getValue());
+			vluchtComboBox.requestFocusInWindow();
+		}
 	}//GEN-LAST:event_bestemmingComboBoxActionPerformed
 
 	private void vluchtComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vluchtComboBoxActionPerformed
