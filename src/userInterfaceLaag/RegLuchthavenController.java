@@ -50,7 +50,7 @@ public class RegLuchthavenController
 	 * Deze methode wordt aangeroepen door de ActionHandler van het naam veld.
 	 * Roept lhv.setNaam(). Geef de exception door aan het frame, als die
 	 * optreedt.
-	 * @param naam	de naam van de Luchthaven
+	 * @param nm	de naam van de Luchthaven
 	 * @throws java.lang.LuchthavenException	als de naam al bezet is of ongeldig
 	 */
 	public void naam (String nm) throws LuchthavenException
