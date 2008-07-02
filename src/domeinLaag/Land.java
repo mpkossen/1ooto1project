@@ -53,7 +53,7 @@ public class Land
 		this.code = cd;
 	}
 	
-	// Setters
+	// Getters
 	/**
 	 * Deze methode geeft de naam van het land.
 	 * @return	de naam van het land
