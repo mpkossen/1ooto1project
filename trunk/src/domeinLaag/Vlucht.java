@@ -31,6 +31,11 @@ public class Vlucht
 	//Constructors
 	/**
 	 * Constructor voor het aanmaken van een Vlucht. Wordt momenteel alleen in Main gebruikt om de boel te vullen.
+	 * @param vlt vliegtuig voor deze vlucht
+	 * @param vtp luchthaven van vertrek
+	 * @param bst luchthaven van bestemming
+	 * @param vertrek datum en tijd van vertrek
+	 * @param aankomst datum en tijd van aankomst
 	 */
 	public Vlucht (Vliegtuig vlt, Luchthaven vtp, Luchthaven bst, Calendar vertrek, Calendar aankomst)
 	{
