@@ -61,6 +61,9 @@ public class OvBkPerVlControllerTest
 	private TreeMap<String, Vlucht> expResult1;
 	private TreeMap<String, Vlucht> expResult2;
 	private TreeMap<String, Vlucht> expResult3;
+	
+	private Object[][] expResult4;
+	private Object[][] expResult5;
 			
 	public OvBkPerVlControllerTest()
 	{
@@ -115,16 +118,23 @@ public class OvBkPerVlControllerTest
 		
 		this.bk1 = new Boeking(vl1, 400, false, kl1);
 		this.bk2 = new Boeking(vl2, 400, false, kl1);
-		this.bk3 = new Boeking(vl3, 200, false, kl2);
-		this.bk4 = new Boeking(vl4, 200, false, kl2);
+//		this.bk3 = new Boeking(vl3, 200, false, kl2);
+//		this.bk4 = new Boeking(vl4, 200, false, kl2);
 		
+		// Verwachte resultaten voor vertrekEnBestemming
 		this.expResult1 = new TreeMap<String, Vlucht>();
 		this.expResult1.put(formatter.format(vl1.getVertrekTijd().getTime()), vl1);
-		
 		this.expResult2 = new TreeMap<String, Vlucht>();
-		this.expResult2.put(formatter.format(vl2.getVertrekTijd().getTime()), vl2);
-		
 		this.expResult3 = new TreeMap<String, Vlucht>();
+		
+		// Verwachte resultaten voor vlucht
+		this.expResult4 = new Object[1][4];
+		expResult4[0][0] = "F.Masolijn";
+		expResult4[0][1] = "Culemborg";
+		expResult4[0][2] = "400";
+		expResult4[0][3] = "Nee";
+		
+		this.expResult5 = new Object[0][4];
 		
 		System.out.println("Setup completed.");
 		System.out.println("Vluchten: " + domeinLaag.Vlucht.getAlleVluchten().size());
@@ -149,7 +159,7 @@ public class OvBkPerVlControllerTest
 		assertEquals(expResult1, result);
 		
 		System.out.println("vertrekpuntEnBestemming - Test 2");
-		vertrekpunt = lhvn2;
+		vertrekpunt = lhvn1;
 		bestemming = lhvn1;
 		result = instance.vertrekpuntEnBestemming(vertrekpunt, bestemming);
 		assertEquals(expResult2, result);
@@ -167,14 +177,16 @@ public class OvBkPerVlControllerTest
 	@Test
 	public void vlucht()
 	{
-		System.out.println("vlucht");
-		Vlucht vl = null;
+		System.out.println("vlucht - Test 1");
+		Vlucht vl = vl1;
 		OvBkPerVlController instance = new OvBkPerVlController();
-		Object[][] expResult = null;
 		Object[][] result = instance.vlucht(vl);
-		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		assertEquals(expResult4, result);
+		
+		System.out.println("vlucht - Test 2");
+		vl = vl3;
+		result = instance.vlucht(vl);
+		assertEquals(expResult5, result);	
 	}
 
 	/**
@@ -183,11 +195,9 @@ public class OvBkPerVlControllerTest
 	@Test
 	public void cancel()
 	{
-		System.out.println("cancel");
+		System.out.println("cancel - Test 1");
 		OvBkPerVlController instance = new OvBkPerVlController();
 		instance.cancel();
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -196,10 +206,8 @@ public class OvBkPerVlControllerTest
 	@Test
 	public void ok()
 	{
-		System.out.println("ok");
+		System.out.println("ok - Test 1");
 		OvBkPerVlController instance = new OvBkPerVlController();
 		instance.ok();
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 }
