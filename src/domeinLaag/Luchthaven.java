@@ -39,6 +39,7 @@ public class Luchthaven
 		this.werkPlaats = wp;
 		this.land = ln;
 		alleLuchthavens.add(this);
+		land.addLuchthaven(this);
 	}
 
 	/**
