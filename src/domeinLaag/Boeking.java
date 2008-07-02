@@ -34,6 +34,7 @@ public class Boeking
 		this.aantalPlaatsen = ap;
 		this.roken = rkn;
 		this.klant = kl;
+		vlucht.addBoeking(this);
 	}
 	
 	/**
